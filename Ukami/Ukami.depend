@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1551885911 source:/home/rrm73/Desktop/FV-Ukami/Ukami/main.cpp
+	<SFML/Graphics.hpp>
+	"Game.h"
+
+1551885683 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Game.h
+	"SFML/Graphics.hpp"
+
+1551885930 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Game.cpp
+	"Game.h"
+	<iostream>
+	<math.h>
+
