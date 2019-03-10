@@ -15,11 +15,13 @@ class Ninja2 : public Ninja
         }
         virtual ~Ninja2();
 
-    protected:
+
 
     private:
         Ninja2();
         static Ninja2 *unicaInstancia;
+
+    protected:
 };
 
 #endif // NINJA2_H

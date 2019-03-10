@@ -16,7 +16,7 @@ Game::Game(int x, int y, string title)
 
     window = new sf::RenderWindow(sf::VideoMode(x,y),title);
     event = new sf::Event();
-    window->setFramerateLimit(240);
+    window->setFramerateLimit(60);
 
     personaje1 = Ninja1::getInstance();
     personaje2 = Ninja2::getInstance();
@@ -45,16 +45,19 @@ void Game::gameLoop(){
         deltaTime = deltaClock.restart();
         eventsLoop();
 
+        //Movemos los personajes asi porque tenemos que multiplicarlos por el deltaTime
         personaje1->moverse(deltaTime.asMilliseconds());
         personaje2->moverse(deltaTime.asMilliseconds());
 
+
+        //Si esta en sigilo entra y mientras se le acabe el sigilo va descargandolo
         if(personaje1->getEnSigilo()){
             if(personaje1->getTiempoSigilo().getElapsedTime().asSeconds()>personaje1->getDuracionSigilo()){
                 personaje1->desactivarSigilo();
             }else{
                 personaje1->descargarSigilo(deltaTime.asSeconds());
             }
-
+        //Aqui entra cuando el sigilo se descarga por complejo y aun no se ha cargado entero
         }else if(!personaje1->getEnSigilo() && !personaje1->getSigiloMax()){
             personaje1->cargarSigilo(deltaTime.asSeconds());
         }
@@ -80,12 +83,12 @@ void Game::eventsLoop(){
                         window->close();
                         break;
 
-                    case sf::Keyboard::D: //Presiona la D
+                    case sf::Keyboard::D:
                         personaje1->setDireccion(1);
                         personaje1->setMoviendose(true);
                         break;
 
-                    case sf::Keyboard::A: //Presiona la A
+                    case sf::Keyboard::A:
                         personaje1->setDireccion(-1);
                         personaje1->setMoviendose(true);
                         break;

@@ -32,7 +32,7 @@ class Ninja
         void desactivarSigilo();
         void descargarSigilo(float);
         void cargarSigilo(float);
-        void moverse(float); //Metodo abstracto que definen las sublcases
+        void moverse(float); //Movemos al personaje mediante deltatime
 
 
     protected:
@@ -40,8 +40,8 @@ class Ninja
         //Varialbes
         int direccion = 1; //1-> derecha / -1-> izquierda
         bool moviendose = false; //Dice si se esta moviendo o no
-        bool enSigilo = false;
-        bool sigiloMax = true;
+        bool enSigilo = false; //Booleano para saber si esta en sigilo
+        bool sigiloMax = true; //Booleano para saber si tiene el sigilo cargado al maximo
         float duracionSigilo = 5; //Duracion del sigilo
         float maxSigilo = 100; //Duracion maxima del sigilo (se usa en los sliders tambien)
         float recargaSigilo = 10; //Tiempo para recargar el sigilo

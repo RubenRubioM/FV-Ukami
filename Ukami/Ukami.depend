@@ -14,14 +14,14 @@
 	<math.h>
 	<algorithm>
 
-1552237122 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja.h
+1552238803 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja.h
 	"SFML/Graphics.hpp"
 	<iostream>
 
 1552229620 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja1.h
 	<Ninja.h>
 
-1552237195 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Ninja.cpp
+1552238352 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Ninja.cpp
 	"Ninja.h"
 
 1552236462 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Ninja1.cpp
@@ -32,6 +32,6 @@
 1552229855 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Ninja2.cpp
 	"Ninja2.h"
 
-1552229638 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja2.h
+1552238818 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja2.h
 	<Ninja.h>
 
