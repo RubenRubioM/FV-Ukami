@@ -4,6 +4,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "Ninja1.h"
+#include "Ninja2.h"
 
 using namespace std;
 
@@ -39,6 +40,7 @@ class Game
         sf::Event *event; //Para manejar los eventos
         sf::Time deltaTime; //Tiempo trascurrido entre cada frame
         Ninja *personaje1; //Personaje 1
+        Ninja *personaje2; //Personaje 2
 };
 
 #endif // GAME_H

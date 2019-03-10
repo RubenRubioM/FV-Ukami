@@ -25,7 +25,6 @@ class Ninja1 : public Ninja
 
 
         //Metodos
-        void moverse(float); //Funcion para moverse
 
 
 
