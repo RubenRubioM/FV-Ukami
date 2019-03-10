@@ -43,11 +43,16 @@
 		</Compiler>
 		<Unit filename="cb.bmp" />
 		<Unit filename="include/Game.h" />
+		<Unit filename="include/Ninja.h" />
+		<Unit filename="include/Ninja1.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/Ninja.cpp" />
+		<Unit filename="src/Ninja1.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
