@@ -2,8 +2,7 @@
 #include "Game.h"
 int main()
 {
-    Game *game = new Game(1280,720,"Ukami");
-
+    Game* game= Game::getInstance();
 
     return EXIT_SUCCESS;
 }

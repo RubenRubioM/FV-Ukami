@@ -3,6 +3,7 @@
 #define GAME_H
 
 #include "SFML/Graphics.hpp"
+#include "Ninja1.h"
 
 using namespace std;
 
@@ -10,19 +11,34 @@ using namespace std;
 class Game
 {
     public:
-        Game(int x,int y, std::string title);
-        void draw();
-        void gameLoop();
-        void eventsLoop();
+        //Singleton
+        static Game *getInstance(){
+            if(unicaInstancia == 0)
+                unicaInstancia = new Game(1280,720,"Ukami");
 
+            return unicaInstancia;
+        }
+        //Fin del Singleton
+
+        void gameLoop(); //Bucle mientras que la ventana este abierta
+        void draw(); //Metodo para dibujar todo
+        void eventsLoop(); //Metodo para detetar los eventos
+
+        //Getters
+        sf::RenderWindow* getWindow();
         virtual ~Game();
 
     protected:
 
     private:
+        Game(int,int,string);
+        static Game *unicaInstancia;
 
-        sf::RenderWindow *window;
-        sf::Event *event;
+
+        sf::RenderWindow *window; //La ventana
+        sf::Event *event; //Para manejar los eventos
+        sf::Time deltaTime; //Tiempo trascurrido entre cada frame
+        Ninja *personaje1; //Personaje 1
 };
 
 #endif // GAME_H
