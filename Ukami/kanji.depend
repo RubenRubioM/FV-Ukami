@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1552239058 source:/home/javi/Escritorio/FV/Practica Grupal/Kanji/kanji/main.cpp
+1552269585 source:/home/javi/Escritorio/FV/Practica Grupal/Kanji/kanji/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"kanji.h"
@@ -11,6 +11,6 @@
 	<stdlib.h>
 	<ctime>
 
-1552244172 source:/home/javi/Escritorio/FV/Practica Grupal/Kanji/kanji/src/kanji.cpp
+1552324624 source:/home/javi/Escritorio/FV/Practica Grupal/Kanji/kanji/src/kanji.cpp
 	"kanji.h"
 
