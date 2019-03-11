@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="kanji" />
+		<Option title="movement_ukami" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/kanji" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/movement_ukami" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,13 +16,13 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add library="sfml-graphics" />
-					<Add library="sfml-window" />
-					<Add library="sfml-system" />
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/kanji" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/movement_ukami" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -40,16 +40,26 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/sfml/include" />
 		</Compiler>
+		<Linker>
+			<Add library="mingw32" />
+			<Add library="user32" />
+			<Add library="gdi32" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/sfml/lib" />
+		</Linker>
 		<Unit filename="cb.bmp" />
-		<Unit filename="include/kanji.h" />
+		<Unit filename="include/Animation.h" />
+		<Unit filename="include/AnimationSprite.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/kanji.cpp" />
+		<Unit filename="src/Animation.cpp" />
+		<Unit filename="src/AnimationSprite.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
-			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
