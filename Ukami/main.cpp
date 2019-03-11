@@ -1,8 +1,15 @@
 #include <SFML/Graphics.hpp>
-#include "Game.h"
+#include <iostream>
+
+#include "kanji.h"
+
+using namespace sf;
+
 int main()
 {
-    Game* game= Game::getInstance();
+
+    kanji* puzzle;
+    puzzle = new kanji(1080, 720, 0, "Puzzle Kanji");
 
     return EXIT_SUCCESS;
 }
