@@ -159,16 +159,13 @@ void kanji::loadBackground()
 
 bool kanji::checkRep(int n, int rango, int num[]) //con este metodo compruebo si el numero aleatorio generado ya se ha generado previamente o no
 {
-    bool estaRepe;
+    bool estaRepe = false;
     for(int i = 0; i < rango; i++)
     {
         if(n == num[i])
         {
             estaRepe = true;
-        }
-        else
-        {
-            estaRepe = false;
+            break;
         }
     }
     return estaRepe;
@@ -250,9 +247,9 @@ void kanji::updateKanji()
                {
                    if(!win)
                    {
-                        if(n <= 0)
+                        if(n <= 0) //si estoy en la primera circunferencia (la mas externa), y le vuelvo a dar a la flecha de arriba, me voy a la ultima circunferencia (la mas interna).
                         {
-                            n = 0;
+                            n = 3;
                         }
                         else
                         {
@@ -264,9 +261,9 @@ void kanji::updateKanji()
                {
                    if(!win)
                    {
-                        if(n >= 3)
+                        if(n >= 3) //si estoy en la ultima circunferencia (la mas interna), y le vuelvo a dar a la flecha de abajo, me voy a la primera circunferencia (la mas externa).
                         {
-                            n = 3;
+                            n = 0;
                         }
                         else
                         {
