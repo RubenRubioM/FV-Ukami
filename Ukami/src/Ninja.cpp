@@ -5,6 +5,15 @@ Ninja::Ninja()
     //ctor
 }
 
+void Ninja::moverse(float _deltaTime){
+
+    if(moviendose){
+
+        sprite->move(direccion*velocidad* _deltaTime,0);
+    }
+
+}
+
 
 //Getters
 int Ninja::getDireccion(){return direccion;}

@@ -21,14 +21,7 @@ Ninja1::Ninja1()
 
 }
 
-void Ninja1::moverse(float _deltaTime){
 
-    if(moviendose){
-
-        sprite->move(direccion*velocidad* _deltaTime,0);
-    }
-
-}
 
 Ninja1::~Ninja1()
 {

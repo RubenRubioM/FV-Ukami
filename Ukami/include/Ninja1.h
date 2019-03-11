@@ -2,6 +2,7 @@
 #define NINJA1_H
 
 #include <Ninja.h>
+#include <Guardia.h>
 
 
 class Ninja1 : public Ninja
@@ -16,17 +17,15 @@ class Ninja1 : public Ninja
 
 
 
+
+        //Metodos
+
         virtual ~Ninja1();
 
 
     private:
         Ninja1();
         static Ninja1 *unicaInstancia;
-
-
-        //Metodos
-        void moverse(float); //Funcion para moverse
-
 
 
     protected:

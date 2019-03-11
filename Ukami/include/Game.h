@@ -4,7 +4,10 @@
 
 #include "SFML/Graphics.hpp"
 #include "Ninja1.h"
+#include "Guardia.h"
+#include <vector>
 
+#define MAX_GUARDIAS    10
 using namespace std;
 
 
@@ -24,6 +27,7 @@ class Game
         void draw(); //Metodo para dibujar todo
         void eventsLoop(); //Metodo para detetar los eventos
 
+
         //Getters
         sf::RenderWindow* getWindow();
         virtual ~Game();
@@ -38,7 +42,12 @@ class Game
         sf::RenderWindow *window; //La ventana
         sf::Event *event; //Para manejar los eventos
         sf::Time deltaTime; //Tiempo trascurrido entre cada frame
-        Ninja *personaje1; //Personaje 1
+        Ninja1 *personaje1; //Personaje 1
+        vector<Guardia*> guardias; //Array con todos los guardias (quiza luego se hace herencia en diferentes tipos de guardias)
+        Guardia* guardiaCercano; //Me guardo que guardia es el mas cercano cuando silbo
+
+        //metodos
+        Guardia* guardiaMasCercano();
 };
 
 #endif // GAME_H
