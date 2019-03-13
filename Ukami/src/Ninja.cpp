@@ -8,9 +8,16 @@ Ninja::Ninja()
 
 //Getters
 int Ninja::getDireccion(){return direccion;}
+int Ninja::getVisto(){return visto;}
 bool Ninja::getMoviendose(){return moviendose;}
 float Ninja::getVelocidad(){return velocidad;}
+bool Ninja::getEnSigilo(){return enSigilo;}
+bool Ninja::getSigiloMax(){return sigiloMax;}
+float Ninja::getDuracionSigilo(){return duracionSigilo;}
+sf::Clock Ninja::getTiempoSigilo(){return tiempoSigilo;}
 sf::Sprite* Ninja::getSprite(){return sprite;}
+sf::RectangleShape* Ninja::getSliderSigilo(){return sliderSigilo;}
+sf::RectangleShape* Ninja::getSliderVisto(){return sliderVisto;}
 
 
 //Setters
@@ -24,7 +31,65 @@ void Ninja::setDireccion(int _dir){
         sprite->setTextureRect(sf::IntRect(0,0,sprite->getTexture()->getSize().x,sprite->getTexture()->getSize().y));
     }
 }
+
 void Ninja::setMoviendose(bool _moviendose){moviendose = _moviendose;}
+
+void Ninja::setEnSigilo(bool _enSigilo){enSigilo = _enSigilo;}
+
+//Metodos
+void Ninja::restaVisto(int resta){
+if(visto>0){
+    visto = visto-resta;
+			std::cout << "Resta y queda " << visto << "." << std::endl;
+			sliderVisto[0].setSize(sf::Vector2f(visto,10));
+			}
+			else{
+			std::cout << "Game Over "<< std::endl;
+			}
+}
+
+//Se llama cuando presionas el sigilo
+void Ninja::activarSigilo(){
+    setEnSigilo(true);
+    tiempoSigilo.restart(); //Reiniciamos el reloj para que se vaya desgastando el sigilo
+    sprite->setColor(sf::Color(255,255,255,75));
+
+}
+
+//Cuando acaba el tiempo de (duracionSigilo) se llama para desactivarlo
+void Ninja::desactivarSigilo(){
+    sprite->setColor(sf::Color(255,255,255,255));
+    setEnSigilo(false);
+
+    //Reiniciamos el reloj para que ahora haga otros (recargaSigilo) segundos para cargalo
+    tiempoSigilo.restart();
+
+}
+
+//Va ejecutandose cada frame mientras que activas el sigilo hasta que el tiempo trascurrido sea igual a duracionSigilo
+//Y va decrementando la barra de sigilo
+void Ninja::descargarSigilo(float _deltaTime){
+    sigiloMax = false;
+
+    float tiempoDeSigiloTrascurrido = getTiempoSigilo().getElapsedTime().asSeconds();
+    float decremento = maxSigilo-(tiempoDeSigiloTrascurrido*(maxSigilo/duracionSigilo));
+
+    sliderSigilo[0].setSize(sf::Vector2f(decremento,10));
+}
+
+//Va ejecutandose cada frame mientras que no este en sigilo y el sigilo no este al maximo
+//Y va aumentando el slider interior del sigilo
+void Ninja::cargarSigilo(float _deltaTime){
+    float tiempoDeSigiloTrascurrido = getTiempoSigilo().getElapsedTime().asSeconds();
+    float incremento = (tiempoDeSigiloTrascurrido*(maxSigilo/recargaSigilo));
+
+    //Si llenamos el sigilo actulizamos la variable de sigiloMax
+    if(incremento >=maxSigilo){
+        sigiloMax = true;
+    }
+    sliderSigilo[0].setSize(sf::Vector2f(incremento,10));
+
+}
 
 Ninja::~Ninja()
 {

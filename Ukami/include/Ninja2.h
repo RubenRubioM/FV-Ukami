@@ -1,39 +1,30 @@
-#ifndef NINJA1_H
-#define NINJA1_H
+#ifndef NINJA2_H
+#define NINJA2_H
 
 #include <Ninja.h>
 
 
-class Ninja1 : public Ninja
+class Ninja2 : public Ninja
 {
     public:
-        static Ninja1 *getInstance(){
+        static Ninja2 *getInstance(){
             if(unicaInstancia==0){
-                unicaInstancia = new Ninja1();
+                unicaInstancia = new Ninja2();
             }
             return unicaInstancia;
         }
+        virtual ~Ninja2();
 
-
-
-        virtual ~Ninja1();
 
 
     private:
-        Ninja1();
-        static Ninja1 *unicaInstancia;
+        Ninja2();
+        static Ninja2 *unicaInstancia;
 
-
+    protected:
         //Metodos
         void moverse(float); //Funcion para moverse
         void detectado(sf::FloatRect, sf::FloatRect, sf::FloatRect); //Funcion para deteccion
-
-
-
-    protected:
-
-
-
 };
 
-#endif // NINJA1_H
+#endif // NINJA2_H

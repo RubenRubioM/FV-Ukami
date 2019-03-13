@@ -1,10 +1,10 @@
-#include "Ninja1.h"
+#include "Ninja2.h"
 #include <iostream>
 #include <Game.h>
-Ninja1* Ninja1::unicaInstancia=0;
+Ninja2* Ninja2::unicaInstancia=0;
 
-//Constructor del ninja1
-Ninja1::Ninja1()
+
+Ninja2::Ninja2()
 {
     velocidad = 0.3;
 
@@ -13,15 +13,12 @@ Ninja1::Ninja1()
     texture->loadFromFile("Assets/Adventurer/adventurer-Sheet.png",sf::IntRect(0,0,48,43));
     sprite = new sf::Sprite(*texture);
     sprite->setOrigin(sprite->getTexture()->getSize().x/2.f,sprite->getTexture()->getSize().y/2.f);
-    sprite->setPosition(40,40); //We set origin to 16,16 so now we have to spawn him at 16,16 instead of 0,0
+    sprite->setPosition(40,400); //We set origin to 16,16 so now we have to spawn him at 16,16 instead of 0,0
     sprite->scale(2.f,2.f);
-
-
-
-
 }
 
-void Ninja1::moverse(float _deltaTime){
+
+void Ninja2::moverse(float _deltaTime){
 
     if(moviendose){
 
@@ -30,10 +27,10 @@ void Ninja1::moverse(float _deltaTime){
 
 }
 
-int veces=0; //Esto es temporal para pruebas, luego hay que meterlo como variable al ninja
+//int veces=0; //Esto es temporal para pruebas, luego hay que meterlo como variable al ninja
 
 //Recibe por parametro las posiciones del nina (s1) y de la vista del enemigo (s2)
-void Ninja1::detectado(sf::FloatRect s1, sf::FloatRect s2, sf::FloatRect s3){
+void Ninja2::detectado(sf::FloatRect s1, sf::FloatRect s2, sf::FloatRect s3){
 
 
         if(!this->enSigilo){
@@ -53,7 +50,7 @@ void Ninja1::detectado(sf::FloatRect s1, sf::FloatRect s2, sf::FloatRect s3){
         }
 }
 
-Ninja1::~Ninja1()
+Ninja2::~Ninja2()
 {
     //dtor
 }
