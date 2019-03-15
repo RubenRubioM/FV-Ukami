@@ -4,6 +4,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#define TIEMPO_DE_ESPERA 4
+
 using namespace std;
 
 class Guardia
@@ -12,25 +14,36 @@ class Guardia
         Guardia(float, float);
         virtual ~Guardia();
 
-        float getVelocidad();
-        float getAntiguaX();
-        float getPosicionSilbido();
-        bool getEfectoSilbido();
+        //Metodos
+        void moverse(float);
+        void activarRelojDeEspera(); //Se llama cuando ha llegado al destino y tiene que esperar para volver
 
-        void moverseAlSilbido(float);
+
+        //Getters
+        float getVelocidad();
+        float getxInicial();
+        float getPosicionDestino();
+        bool getMoviendose();
+        bool getEsperando();
+        bool getVolviendo();
         sf::Sprite *getSprite();
+        sf::Clock getTiempoAntesDeVolver();
 
         //Setters
-        void setPosicionSilbido(float);
-        void setAntiguaX(float);
-        void setEfectoSilbido(bool);
+        void setPosicionDestino(float);
+        void setEsperando(bool);
+        void setVolviendo(bool);
+
+        void setMoviendose(bool);
 
     private:
-        bool efectoSilbido = false;
+        bool moviendose = false; //Principalemnte se pone a true cuando le silbas (guardias estaticos)
+        bool esperando = false; //Se pone a true cuando le silban, va al destino, y tiene que esperar
+        bool volviendo = false; //Cuando esta volviendo a la posicion inicial
         float velocidad;
-        float antiguaX; //La posicion donde esta originalmente antes de ir al silbido
-        float posicionSilbido; //Posicion donde tiene que ir cuando le silban
-        int direccionDelSilbido; //Direccion donde le pilla el silbido 1 o -1
+        float xInicial; //la posicion inicial para un guardia estatico para asi poder regresarlo despues de moverse
+        float posicionDestino; //Posicion donde tiene que ir cuando le silban
+        int direccionDestino; //Direccion donde le pilla el silbido 1 o -1
         sf::Texture *texture;
         sf::Sprite *sprite;
         sf::Clock tiempoAntesDeVolver; //Tiempo que pasa en el sitio hasta que vuelve al sitio donde estaba despues del silbido

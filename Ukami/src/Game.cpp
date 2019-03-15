@@ -23,7 +23,7 @@ Game::Game(int x, int y, string title)
 
     window = new sf::RenderWindow(sf::VideoMode(x,y),title);
     event = new sf::Event();
-    window->setFramerateLimit(10);
+    window->setFramerateLimit(240);
     guardiaCercano = 0;
     personaje1 = Ninja1::getInstance();
     guardias.push_back(new Guardia(200.f,200.f));
@@ -57,9 +57,21 @@ void Game::gameLoop(){
         eventsLoop();
         personaje1->moverse(deltaTime.asMilliseconds());
 
-        if(guardiaCercano != 0 && guardiaCercano->getEfectoSilbido()){
+        if(guardiaCercano != 0){
+            //Se mueve a la posicion donde le dices
+            if(guardiaCercano->getMoviendose() && !guardiaCercano->getEsperando()){
+                guardiaCercano->moverse(deltaTime.asMilliseconds());
+            }
 
-            guardiaCercano->moverseAlSilbido(deltaTime.asMilliseconds());
+            //Despues de esperar un TIEMPO_DE_ESPERA vuelve a la posicion original
+            if(guardiaCercano->getEsperando() && guardiaCercano->getTiempoAntesDeVolver().getElapsedTime().asSeconds() > TIEMPO_DE_ESPERA){
+               //Vuelve a la posicion inicial
+
+                guardiaCercano->setPosicionDestino(guardiaCercano->getxInicial()); //La posicion destino será la posición inicial
+                guardiaCercano->setMoviendose(true);
+                guardiaCercano->setEsperando(false);
+                guardiaCercano->setVolviendo(true);
+            }
         }
 
         draw();
@@ -96,10 +108,14 @@ void Game::eventsLoop(){
                         break;
 
                     case sf::Keyboard::R:
+                        //Solo se llama al silbido si el guardia ha llegado ya (mas tarde implementarmeos un CD de la habilidad en el mismo if)
                         guardiaCercano = guardiaMasCercano();
-                        guardiaCercano->setEfectoSilbido(true);
-                        guardiaCercano->setAntiguaX(guardiaCercano->getSprite()->getPosition().x); //Le decimos que guarde la posicion donde estaba antes de moverse para despues volver
-                        guardiaCercano->setPosicionSilbido(personaje1->getSprite()->getPosition().x); //Le decimos que tiene que ir hasta el X del personaje que silba
+                        if(guardiaCercano != 0 && !guardiaCercano->getMoviendose()){
+
+                            guardiaCercano->setMoviendose(true);
+                            guardiaCercano->setPosicionDestino(personaje1->getSprite()->getPosition().x); //Le decimos que tiene que ir hasta el X del personaje que silba
+                        }
+
                         break;
 
                     default:
