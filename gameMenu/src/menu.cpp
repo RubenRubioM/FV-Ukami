@@ -457,7 +457,7 @@ void menu::actualizarMenu()
                 }
                 else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
                 {
-                    if(idMenu != 1 && idMenu != 2 && idMenu != 3 && idMenu != 4)
+                    if(idMenu == 0)
                     {
                         cont = 0;
                     }
@@ -465,7 +465,7 @@ void menu::actualizarMenu()
                     {
                         cont = 2;
                     }
-                    if(idMenu == 0 && presionado == 0 && actual == 1)
+                    if(idMenu == 0 && actual == 1)
                     {
                         actual = 0;
                         idMenu = 1;
@@ -489,8 +489,10 @@ void menu::actualizarMenu()
                         idMenu = 4;
                         cont = 1;
                     }
-                    else if(idMenu == 0 && presionado == 0 && actual == 3)
+                    else if(idMenu == 0 && actual == 3)
                     {
+                        presionado = actual;
+                        escribirPorConsola();
                         ventanaMenu->close();
                         ventanaMenu = NULL;
                         exit(1);
