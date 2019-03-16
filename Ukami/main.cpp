@@ -6,29 +6,28 @@ int main()
 {
     // setup window
     sf::Vector2i screenDimensions(800,600);
-    sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Movement animation");
+    sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Movement_ukami");
     window.setFramerateLimit(60);
 
     // load texture (spritesheet)
-    sf::Texture texture;
-    if (!texture.loadFromFile("right.png"))
+    sf::Texture textureRight;
+    if (!textureRight.loadFromFile("right.png"))
     {
-        std::cout << "Failed to load player spritesheet!" << std::endl;
+        std::cout << "Fallo al cargar la textura" << std::endl;
         return 1;
     }
 
-    sf::Texture texture1;
+    sf::Texture textureLeft;
 
-        if (!texture1.loadFromFile("left.png"))
+        if (!textureLeft.loadFromFile("left.png"))
     {
-        std::cout << "Failed to load player spritesheet!" << std::endl;
+        std::cout << "Fallo al cargar la textura" << std::endl;
         return 1;
     }
-
 
     // set up the animations for all four directions (set spritesheet and push frames)
     Animation walkingAnimationLeft;
-    walkingAnimationLeft.setSpriteSheet(texture1);
+    walkingAnimationLeft.setSpriteSheet(textureLeft);
     walkingAnimationLeft.addFrame(sf::IntRect(750, 0, 150, 90));
     walkingAnimationLeft.addFrame(sf::IntRect(600, 0, 150, 90));
     walkingAnimationLeft.addFrame(sf::IntRect(450, 0, 150, 90));
@@ -37,7 +36,7 @@ int main()
     walkingAnimationLeft.addFrame(sf::IntRect(0, 0, 150, 90));
 
     Animation walkingAnimationRight;
-    walkingAnimationRight.setSpriteSheet(texture);
+    walkingAnimationRight.setSpriteSheet(textureRight);
     walkingAnimationRight.addFrame(sf::IntRect(0, 0, 150, 90));
     walkingAnimationRight.addFrame(sf::IntRect(150, 0, 150, 90));
     walkingAnimationRight.addFrame(sf::IntRect(300, 0, 150, 90));
@@ -46,7 +45,6 @@ int main()
     walkingAnimationRight.addFrame(sf::IntRect(750, 0, 150, 90));
 
     Animation* currentAnimation = &walkingAnimationRight;
-
     // set up AnimatedSprite
     AnimatedSprite animatedSprite(sf::seconds(0.2), true, false);
     animatedSprite.setPosition(sf::Vector2f(screenDimensions / 2));
@@ -83,6 +81,7 @@ int main()
             movement.x += speed;
             noKeyWasPressed = false;
         }
+
         animatedSprite.play(*currentAnimation);
         animatedSprite.move(movement * frameTime.asSeconds());
 
