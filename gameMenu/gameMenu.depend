@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1552696607 source:/home/javi/Escritorio/FV/Practica Grupal/gameMenu/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	"menu.h"
+
+1552723515 /home/javi/Escritorio/FV/Practica Grupal/gameMenu/include/menu.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<cstring>
+
+1552723949 source:/home/javi/Escritorio/FV/Practica Grupal/gameMenu/src/menu.cpp
+	"menu.h"
+

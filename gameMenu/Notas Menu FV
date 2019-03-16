@@ -1,0 +1,64 @@
+void menu::copiarTextArray(sf::Text* origen [4], sf::Text* destino [4])
+{
+    for(int i = 0; i < 4; i++)
+    {
+        destino[i] = new sf::Text();
+        destino[i]->setFont(*fuente);
+        destino[i]->setString(origen[i]->getString());
+        destino[i]->setOrigin(origen[i]->getOrigin());
+        destino[i]->setPosition(origen[i]->getPosition());
+        destino[i]->setColor(origen[i]->getColor());
+    }
+}
+
+void menu::vaciarTextArray(sf::Text* textArray [4])
+{
+    for(int i = 0; i < 4; i++)
+    {
+        textArray[i] = NULL;
+    }
+}
+
+void menu::renderMenu(int queMenu)
+{
+    sf::Text* menuAPintar [4];
+    int tam;
+    vaciarTextArray(menuAPintar);
+    if(queMenu == 0)
+    {
+        copiarTextArray(menuInicial, menuAPintar);
+        tam = 4;
+    }
+    else if(queMenu == 1)
+    {
+        copiarTextArray(menuSelectNivel, menuAPintar);
+        tam = 2;
+    }
+    else if(queMenu == 2)
+    {
+        copiarTextArray(menuNiveles, menuAPintar);
+        tam = 3;
+    }
+    else if(queMenu == 3)
+    {
+        copiarTextArray(menuEstad, menuAPintar);
+        tam = 3;
+    }
+    else
+    {
+        copiarTextArray(menuMejoras, menuAPintar);
+        tam = 4;
+    }
+    hoverMenu(menuAPintar);
+    for(int i = 0; i < tam; i++)
+    {
+        ventanaMenu->draw(*menuAPintar[i]);
+    }
+}
+
+void menu::hoverMenu(sf::Text* menuAPintar [4])
+{
+    sf::Color hover(197, 36, 36);
+    menuAPintar[actual]->setColor(hover);
+}
+
