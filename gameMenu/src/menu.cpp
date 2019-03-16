@@ -20,6 +20,7 @@ menu::menu()
     actual = 0;
     presionado = 0;
     idMenu = 0;
+    cont = 0;
 
     ventanaMenu = new sf::RenderWindow(sf::VideoMode(1080, 720), "Menu");
     ventanaMenu->setFramerateLimit(fps);
@@ -77,7 +78,7 @@ void menu::rellenarArrayMensajesConsolaMI(int indice)
         }
         case (1):
         {
-            mensajesConsolaMI[indice] = "Ver Niveles";
+            mensajesConsolaMI[indice] = "Ver Selector de Niveles";
             break;
         }
         case (2):
@@ -456,28 +457,37 @@ void menu::actualizarMenu()
                 }
                 else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
                 {
+                    if(idMenu != 1 && idMenu != 2 && idMenu != 3 && idMenu != 4)
+                    {
+                        cont = 0;
+                    }
+                    else
+                    {
+                        cont = 2;
+                    }
                     if(idMenu == 0 && presionado == 0 && actual == 1)
                     {
                         actual = 0;
                         idMenu = 1;
+                        cont = 1;
                     }
                     else if(idMenu == 1 && actual == 0)
                     {
                         actual = 0;
                         idMenu = 2;
-                        cout << "Lista de Niveles" << endl;
+                        cont = 1;
                     }
                     else if(idMenu == 1 && actual == 1)
                     {
                         actual = 0;
                         idMenu = 3;
-                        cout << "Lista de Estadisticas" << endl;
+                        cont = 1;
                     }
                     else if(idMenu == 0 && actual == 2)
                     {
                         actual = 0;
                         idMenu = 4;
-                        cout << "Lista de Mejoras" << endl;
+                        cont = 1;
                     }
                     else if(idMenu == 0 && presionado == 0 && actual == 3)
                     {
@@ -512,18 +522,46 @@ void menu::escribirPorConsola()
     }
     else if(idMenu == 1)
     {
-        cout << mensajesConsolaSelectNiv[presionado] << endl;
+        if(cont == 2)
+        {
+            cout << mensajesConsolaSelectNiv[presionado] << endl;
+        }
+        else
+        {
+            cout << mensajesConsolaMI[1] << endl;
+        }
     }
     else if(idMenu == 2)
     {
-        cout << mensajesConsolaNivel[presionado] << endl;
+        if(cont == 2)
+        {
+            cout << mensajesConsolaNivel[presionado] << endl;
+        }
+        else
+        {
+            cout << "Lista de Niveles" << endl;
+        }
     }
     else if(idMenu == 3)
     {
-        cout << mensajesConsolaEstad[presionado] << endl;
+        if(cont == 2)
+        {
+            cout << mensajesConsolaEstad[presionado] << endl;
+        }
+        else
+        {
+            cout << "Lista de Estadisticas" << endl;
+        }
     }
     else
     {
-        cout << mensajesConsolaMej[presionado] << endl;
+        if(cont == 2)
+        {
+            cout << mensajesConsolaMej[presionado] << endl;
+        }
+        else
+        {
+            cout << mensajesConsolaMI[2] << endl;
+        }
     }
 }

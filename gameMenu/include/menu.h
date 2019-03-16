@@ -32,6 +32,7 @@ class menu
         int actual;
         int presionado;
         int idMenu;
+        int cont;
         string textoMenuInicial [4];
         string textoMenuSelectNivel [2];
         string textoMenuNiveles [3];
