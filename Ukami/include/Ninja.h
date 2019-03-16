@@ -22,7 +22,7 @@ class Ninja
         void setMoviendose(bool);
 
         //Metodos
-        virtual void moverse(float) = 0; //Metodo abstracto que definen las sublcases
+        void moverse(float);
 
 
     protected:

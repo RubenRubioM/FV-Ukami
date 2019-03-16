@@ -13,6 +13,16 @@ float Ninja::getVelocidad(){return velocidad;}
 sf::Sprite* Ninja::getSprite(){return sprite;}
 
 
+void Ninja::moverse(float _deltaTime){
+
+    if(moviendose){
+        sprite->move(direccion*velocidad* _deltaTime,0);
+    }
+
+}
+
+
+
 //Setters
 void Ninja::setDireccion(int _dir){
     direccion = _dir;

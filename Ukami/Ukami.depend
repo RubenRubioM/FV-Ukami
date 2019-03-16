@@ -1,30 +1,37 @@
 # depslib dependency file v1.0
-1552154160 source:/home/rrm73/Desktop/FV-Ukami/Ukami/main.cpp
+1552747349 source:/home/rrm73/Desktop/FV-Ukami/Ukami/main.cpp
 	<SFML/Graphics.hpp>
 	"Game.h"
 
-1552212237 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Game.h
+1552747636 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Game.h
 	"SFML/Graphics.hpp"
 	"Ninja1.h"
+	"Ninja2.h"
 
-1552213201 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Game.cpp
+1552747349 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Game.cpp
 	"Game.h"
 	<iostream>
 	<math.h>
 	<algorithm>
 
-1552210624 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja.h
+1552747591 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja.h
 	"SFML/Graphics.hpp"
 	<iostream>
 
-1552166984 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja1.h
+1552747349 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja1.h
 	<Ninja.h>
 
-1552211873 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Ninja.cpp
+1552747526 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Ninja.cpp
 	"Ninja.h"
 
-1552213259 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Ninja1.cpp
+1552747349 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Ninja1.cpp
 	"Ninja1.h"
 	<iostream>
 	<Game.h>
+
+1552747425 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Ninja2.cpp
+	"Ninja2.h"
+
+1552747444 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Ninja2.h
+	<Ninja.h>
 
