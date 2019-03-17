@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Ukami" />
+		<Option title="dash_ukami" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Ukami" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/dash_ukami" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -22,7 +22,7 @@
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Ukami" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/dash_ukami" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -42,17 +42,16 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="cb.bmp" />
-		<Unit filename="include/Game.h" />
-		<Unit filename="include/Ninja.h" />
-		<Unit filename="include/Ninja1.h" />
+		<Unit filename="include/Animation.h" />
+		<Unit filename="include/AnimationSprite.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Game.cpp" />
-		<Unit filename="src/Ninja.cpp" />
-		<Unit filename="src/Ninja1.cpp" />
+		<Unit filename="src/Animation.cpp" />
+		<Unit filename="src/AnimationSprite.cpp" />
 		<Extensions>
+			<envvars />
 			<code_completion />
 			<debugger />
-			<envvars />
+			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
