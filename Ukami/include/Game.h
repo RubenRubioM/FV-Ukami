@@ -5,6 +5,7 @@
 #include "SFML/Graphics.hpp"
 #include "Ninja1.h"
 #include "Ninja2.h"
+#include "Camara.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ class Game
         void gameLoop(); //Bucle mientras que la ventana este abierta
         void draw(); //Metodo para dibujar todo
         void eventsLoop(); //Metodo para detetar los eventos
+        float comprobarDistanciaEntrePersonajes();
 
         //Getters
         sf::RenderWindow* getWindow();
@@ -35,12 +37,14 @@ class Game
         Game(int,int,string);
         static Game *unicaInstancia;
 
-
+        Camara *camara;
         sf::RenderWindow *window; //La ventana
         sf::Event *event; //Para manejar los eventos
         sf::Time deltaTime; //Tiempo trascurrido entre cada frame
         Ninja *personaje1; //Personaje 1
-        Ninja *personaje2;
+        Ninja *personaje2; //Personaje 2
+        sf::Texture *bgTexture; //Textura del background
+        sf::Sprite *background; //Imagen del background
 };
 
 #endif // GAME_H
