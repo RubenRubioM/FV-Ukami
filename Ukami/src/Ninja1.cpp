@@ -16,19 +16,14 @@ Ninja1::Ninja1()
     sprite->setPosition(40,40); //We set origin to 16,16 so now we have to spawn him at 16,16 instead of 0,0
     sprite->scale(2.f,2.f);
 
-
+    lastX = 0;
+    lastY = 0;
+    newX = 40;
 
 
 }
 
-void Ninja1::moverse(float _deltaTime){
 
-    if(moviendose){
-
-        sprite->move(direccion*velocidad* _deltaTime,0);
-    }
-
-}
 
 Ninja1::~Ninja1()
 {

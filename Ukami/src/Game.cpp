@@ -5,7 +5,7 @@
 #include <math.h>
 #include <algorithm>
 
-#define UPDATE_TICK 1000.0/15.0
+#define UPDATE_TICK 66.6666
 
 using namespace std;
 
@@ -16,7 +16,7 @@ Game::Game(int x, int y, string title)
 
     window = new sf::RenderWindow(sf::VideoMode(x,y),title);
     event = new sf::Event();
-    window->setFramerateLimit(240);
+    window->setFramerateLimit(90);
 
     personaje1 = Ninja1::getInstance();
 
@@ -36,14 +36,24 @@ void Game::draw(){
 //Function that executes once per frame
 void Game::gameLoop(){
 
-    sf::Clock deltaClock;
     while(window->isOpen()){
         deltaTime = deltaClock.restart();
-        //cout << deltaTime.asMilliseconds() << endl;
+
 
         eventsLoop();
-        personaje1->moverse(deltaTime.asMilliseconds());
 
+        if(updateClock.getElapsedTime().asMilliseconds()>UPDATE_TICK){
+            tiempoDesdeIA = updateClock.restart();
+
+            personaje1->nuevoEstado(personaje1->getNewX(),personaje1->getSprite()->getPosition().y);
+            personaje1->setNewX(personaje1->getNewX()+5);
+        }
+
+        float percentTick2 = (float)updateClock.getElapsedTime().asMilliseconds()/(float)UPDATE_TICK;
+        float percentTick = min(1.f,percentTick2);
+
+        //personaje1->moverse(deltaTime.asMilliseconds());
+        personaje1->moverseInterpolado(deltaTime.asMilliseconds(),percentTick);
         draw();
     }
 }
@@ -70,11 +80,13 @@ void Game::eventsLoop(){
                     case sf::Keyboard::D: //Presiona la D
                         personaje1->setDireccion(1);
                         personaje1->setMoviendose(true);
+
                         break;
 
                     case sf::Keyboard::A: //Presiona la A
                         personaje1->setDireccion(-1);
                         personaje1->setMoviendose(true);
+
                         break;
 
                     default:

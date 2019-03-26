@@ -24,9 +24,6 @@ class Ninja1 : public Ninja
         static Ninja1 *unicaInstancia;
 
 
-        //Metodos
-        void moverse(float); //Funcion para moverse
-
 
 
     protected:

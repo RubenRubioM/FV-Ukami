@@ -38,6 +38,9 @@ class Game
         sf::RenderWindow *window; //La ventana
         sf::Event *event; //Para manejar los eventos
         sf::Time deltaTime; //Tiempo trascurrido entre cada frame
+        sf::Time tiempoDesdeIA;
+        sf::Clock deltaClock;
+        sf::Clock updateClock;
         Ninja *personaje1; //Personaje 1
 };
 

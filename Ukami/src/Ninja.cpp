@@ -10,8 +10,30 @@ Ninja::Ninja()
 int Ninja::getDireccion(){return direccion;}
 bool Ninja::getMoviendose(){return moviendose;}
 float Ninja::getVelocidad(){return velocidad;}
+float Ninja::getNewX(){return newX;}
 sf::Sprite* Ninja::getSprite(){return sprite;}
 
+
+
+void Ninja::moverse(float _deltaTime){
+
+    if(moviendose){
+        sprite->move(direccion*velocidad* _deltaTime,0);
+    }
+
+}
+
+void Ninja::moverseInterpolado(float _deltaTime, float _percentTick){
+    float x = lastX*(1-_percentTick)+newX*_percentTick;
+    cout << "Inicio - Posicion - Final: " << lastX << " - "<< x << " - "<<newX << endl;
+
+    sprite->setPosition(x,40);
+}
+
+void Ninja::nuevoEstado(float _x, float _y){
+    lastX = _x;
+    lastY = _y;
+}
 
 //Setters
 void Ninja::setDireccion(int _dir){
@@ -25,6 +47,7 @@ void Ninja::setDireccion(int _dir){
     }
 }
 void Ninja::setMoviendose(bool _moviendose){moviendose = _moviendose;}
+void Ninja::setNewX(float _x){newX = _x;}
 
 Ninja::~Ninja()
 {
