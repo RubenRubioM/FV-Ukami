@@ -1,38 +1,22 @@
 #ifndef NINJA1_H
 #define NINJA1_H
 
-#include <Ninja.h>
-
+#include "Ninja.h"
 
 class Ninja1 : public Ninja
 {
     public:
-        static Ninja1 *getInstance(){
-            if(unicaInstancia==0){
-                unicaInstancia = new Ninja1();
-            }
-            return unicaInstancia;
-        }
-
-
-
+        Ninja1(float posx, float posy, b2World* world);
         virtual ~Ninja1();
-
-
-    private:
-        Ninja1();
-        static Ninja1 *unicaInstancia;
-
-
-        //Metodos
-        void moverse(float); //Funcion para moverse
-
-
-
+        void updateMovement(View &view);
+        void drawNinja(RenderWindow &window);
+        Sprite getSprite();
     protected:
 
-
-
+    private:
+        Texture texture;
+        Sprite sprite;
+        b2Body *ninjaBody;
 };
 
 #endif // NINJA1_H

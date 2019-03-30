@@ -1,46 +1,38 @@
-
 #ifndef GAME_H
 #define GAME_H
-
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include "tinyxml2.h"
+#include "TextureHolder.h"
+#include "Map.h"
+#include "Ninja.h"
 #include "Ninja1.h"
 #include "Ninja2.h"
+#include <iostream>
+#include <vector>
+#include <map>
+#include "Box2D/Box2D.h"
+#include "SFMLDebugDraw.h"
 
+using namespace tinyxml2;
 using namespace std;
-
+using namespace sf;
 
 class Game
 {
     public:
-        //Singleton
         static Game *getInstance(){
             if(unicaInstancia == 0)
-                unicaInstancia = new Game(1280,720,"Ukami");
-
+                    unicaInstancia = new Game();
             return unicaInstancia;
         }
-        //Fin del Singleton
-
-        void gameLoop(); //Bucle mientras que la ventana este abierta
-        void draw(); //Metodo para dibujar todo
-        void eventsLoop(); //Metodo para detetar los eventos
-
-        //Getters
-        sf::RenderWindow* getWindow();
         virtual ~Game();
 
     protected:
 
     private:
-        Game(int,int,string);
+        Game();
         static Game *unicaInstancia;
-
-
-        sf::RenderWindow *window; //La ventana
-        sf::Event *event; //Para manejar los eventos
-        sf::Time deltaTime; //Tiempo trascurrido entre cada frame
-        Ninja *personaje1; //Personaje 1
-        Ninja *personaje2;
 };
 
 #endif // GAME_H
