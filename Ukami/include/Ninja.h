@@ -21,6 +21,8 @@ class Ninja
         virtual ~Ninja();
 
     protected:
+        bool saltando = false;
+        sf::Clock cdSalto;
 
     private:
 

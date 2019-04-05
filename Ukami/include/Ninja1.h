@@ -3,7 +3,7 @@
 
 #include "Ninja.h"
 
-class Ninja1
+class Ninja1 : public Ninja
 {
     public:
         Ninja1(float posx, float posy, b2World* world);

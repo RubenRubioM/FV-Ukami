@@ -35,6 +35,13 @@ Ninja1::~Ninja1()
 void Ninja1::updateMovement(View &view,float _deltaTime)
 {
 
+    //Comprobamos que puede volver a saltar
+    cout << cdSalto.getElapsedTime().asSeconds() << endl;
+    if(cdSalto.getElapsedTime().asSeconds() > 1.f){
+        cdSalto.restart();
+        saltando = false;
+    }
+
     if(Keyboard::isKeyPressed(Keyboard::Right))
     {
         b2Vec2 vel = ninjaBody->GetLinearVelocity();
@@ -56,7 +63,11 @@ void Ninja1::updateMovement(View &view,float _deltaTime)
     if(Keyboard::isKeyPressed(Keyboard::Space))
     {
 
-        ninjaBody->ApplyLinearImpulse(b2Vec2(0, -15.0f),ninjaBody->GetWorldCenter(), true);
+        if(!saltando){
+            ninjaBody->ApplyLinearImpulse(b2Vec2(0, -100.0f),ninjaBody->GetWorldCenter(), true);
+            saltando = true;
+        }
+
     }
 
 
