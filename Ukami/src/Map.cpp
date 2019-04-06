@@ -239,7 +239,8 @@ void Map::createCollision(float x, float y, float width, float height)
     b2PolygonShape shape;
     shape.SetAsBox((width / 2.f) / F, (height / 2.f) / F);
     b2FixtureDef fixtureDef;
-    fixtureDef.density = 0.f;
+    fixtureDef.density = 10.f;
+    fixtureDef.restitution = 0.f;
     fixtureDef.shape = &shape;
     body->CreateFixture(&fixtureDef);
 

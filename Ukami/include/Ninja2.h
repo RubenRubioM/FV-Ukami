@@ -3,7 +3,7 @@
 
 #include "Ninja.h"
 
-class Ninja2
+class Ninja2 : public Ninja
 {
     public:
         Ninja2(float posx, float posy, b2World* world);
@@ -15,10 +15,9 @@ class Ninja2
     protected:
 
     private:
-        Texture texture;
-        Sprite sprite;
         b2Body *ninjaBody;
-        float velocity = 1;
+
+
 };
 
 #endif // NINJA2_H

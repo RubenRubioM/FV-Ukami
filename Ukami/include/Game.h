@@ -14,6 +14,7 @@
 #include "Box2D/Box2D.h"
 #include "SFMLDebugDraw.h"
 
+
 using namespace tinyxml2;
 using namespace std;
 using namespace sf;
@@ -35,6 +36,7 @@ class Game
     private:
         Game();
         static Game *unicaInstancia;
+
 };
 
 #endif // GAME_H

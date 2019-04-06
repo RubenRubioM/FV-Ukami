@@ -14,10 +14,9 @@ class Ninja1 : public Ninja
     protected:
 
     private:
-        Texture texture;
-        Sprite sprite;
         b2Body *ninjaBody;
-        float velocity = 0.8;
+
+
 };
 
 #endif // NINJA1_H

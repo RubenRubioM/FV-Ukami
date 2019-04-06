@@ -33,7 +33,6 @@ Game::Game()
     {
         Event event;
         deltaTime = deltaClock.restart();
-        cout << deltaTime.asMilliseconds() << endl;
         while (window.pollEvent(event))
         {
             if (event.type == Event::Closed)
@@ -59,6 +58,8 @@ Game::Game()
 
         //=======View============
         updateView(ninja1, ninja2, view);
+
+
 
         pal->drawPalanca(window);
         //=======================

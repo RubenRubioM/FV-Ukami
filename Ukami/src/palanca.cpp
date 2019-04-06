@@ -10,7 +10,7 @@ palanca::palanca()
 void palanca::loadTexture()
 {
     texture = new sf::Texture;
-    texture->loadFromFile("C:/Users/kezav/Desktop/Ukami/Ukami/tileset/closed_scroll.jpg");
+    texture->loadFromFile("tileset/closed_scroll.jpg");
 }
 
 void palanca::loadSprite()
