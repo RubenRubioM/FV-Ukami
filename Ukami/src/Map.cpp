@@ -241,6 +241,7 @@ void Map::createCollision(float x, float y, float width, float height)
     b2FixtureDef fixtureDef;
     fixtureDef.density = 10.f;
     fixtureDef.restitution = 0.f;
+    fixtureDef.friction = 5.f;
     fixtureDef.shape = &shape;
     body->CreateFixture(&fixtureDef);
 
