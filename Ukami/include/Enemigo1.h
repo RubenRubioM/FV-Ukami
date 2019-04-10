@@ -18,15 +18,15 @@ class Enemigo1 : public Enemigo
 
         virtual ~Enemigo1();
 
+        //Metodos
+        void setDireccion(int);
+        void moverse(float); //Funcion para moverse
 
     private:
         Enemigo1();
         static Enemigo1 *unicaInstancia;
 
 
-        //Metodos
-        void moverse(float); //Funcion para moverse
-        void detectado(bool); //Funcion para detectar ninjas
 
 
 

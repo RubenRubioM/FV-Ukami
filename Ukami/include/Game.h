@@ -43,8 +43,8 @@ class Game
         sf::Time deltaTime; //Tiempo trascurrido entre cada frame
         Ninja *personaje1; //Personaje 1
         Ninja *personaje2; //Personaje 2
-        Enemigo *enemigo1; //Personaje 1
-        Enemigo *enemigo2; //Personaje 1
+        Enemigo1 *enemigo1; //Personaje 1
+        Enemigo2 *enemigo2; //Personaje 1
 
 };
 

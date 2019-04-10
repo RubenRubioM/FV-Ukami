@@ -12,23 +12,22 @@ class Enemigo
         virtual ~Enemigo();
         sf::Texture *texture;
         sf::Sprite *sprite;
-        sf::Texture *luz;
         sf::Sprite *vista;
+        sf::ConvexShape *triangle;
 
         //Getters
         int getDireccion();
         bool getMoviendose();
         float getVelocidad();
         sf::Sprite *getSprite();
-        sf::Sprite *getVista();
+        sf::ConvexShape *getVista();
 
         //Setters
-        void setDireccion(int);
         void setMoviendose(bool);
 
         //Metodos
-        virtual void moverse(float) = 0; //Metodo abstracto que definen las sublcases
-        virtual void detectado(bool) = 0; //Metodo abstracto que definen las sublcases
+        virtual void setDireccion(int) = 0;
+        virtual void moverse(float) = 0; //Funcion para moverse
 
 
     protected:

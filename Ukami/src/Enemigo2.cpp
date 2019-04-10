@@ -15,33 +15,23 @@ Enemigo2::Enemigo2()
     sprite->setOrigin(sprite->getTexture()->getSize().x/2.f,sprite->getTexture()->getSize().y/2.f);
     sprite->setPosition(800,400); //We set origin to 16,16 so now we have to spawn him at 16,16 instead of 0,0
 
-    luz = new sf::Texture();
-
-    luz->loadFromFile("Assets/Adventurer/radial.png");
-    vista = new sf::Sprite(*luz);
-    vista->setOrigin(vista->getTexture()->getSize().x/2.f,vista->getTexture()->getSize().y/2.f);
-    vista->setPosition(sprite->getPosition().x, sprite->getPosition().y);
 
 
+    triangle = new sf::ConvexShape();
+    triangle->setPointCount(3);
+
+    // define the position of the triangle's points
+    triangle->setPoint(0, sf::Vector2f(sprite->getPosition().x, sprite->getPosition().y));
+    triangle->setPoint(1, sf::Vector2f(sprite->getPosition().x+50, sprite->getPosition().y+250));
+    triangle->setPoint(2, sf::Vector2f(sprite->getPosition().x-50, sprite->getPosition().y+250));
 
 }
+
+void Enemigo2::setDireccion(int _dir){
+}
+
 
 void Enemigo2::moverse(float _deltaTime){
-
-    if(moviendose){
-
-        sprite->move(direccion*velocidad* _deltaTime,0);
-        vista->move(direccion*velocidad* _deltaTime,0);
-    }
-
-}
-
-void Enemigo2::detectado(bool detectado){
-
-    if(detectado){
-
-    }
-
 }
 
 Enemigo2::~Enemigo2()

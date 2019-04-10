@@ -92,7 +92,6 @@ void Game::gameLoop(){
         }
 
         enemigo1->moverse(deltaTime.asMilliseconds());
-        enemigo2->moverse(deltaTime.asMilliseconds());
         draw();
     }
 }
