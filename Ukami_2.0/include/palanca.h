@@ -5,20 +5,17 @@
 
 using namespace std;
 
-class palanca
+class Palanca
 {
     public:
-        palanca();
-        virtual ~palanca();
+        Palanca();
+        virtual ~Palanca();
         void drawPalanca(sf::RenderWindow & window);
     protected:
 
     private:
-        sf::Texture* texture;
-        sf::Sprite* sprite;
-        void loadTexture();
-        void loadSprite();
-        void colocarSprite();
+        sf::Texture texture;
+        sf::Sprite sprite;
 };
 
 #endif // PALANCA_H

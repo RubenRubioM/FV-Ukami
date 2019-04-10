@@ -1,7 +1,4 @@
 #include "Game.h"
-#include "palanca.h"
-#include "Puerta.h"
-
 #define F 30.0f
 
 Game *Game::unicaInstancia = 0;
@@ -24,7 +21,7 @@ Game::Game()
     Ninja1 ninja1(400.f, 900.f, mapa.getb2World());
     Ninja2 ninja2(400.f, 400.f, mapa.getb2World());
 
-    palanca *pal = new palanca();
+    Palanca *pal = new Palanca();
     Puerta *pu = new Puerta();
 
     sf::Clock deltaClock;

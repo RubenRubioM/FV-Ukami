@@ -41,12 +41,22 @@ Ninja1::Ninja1(float posx, float posy, b2World* world)
     bodydef.type = b2_dynamicBody;
     ninjaBody = world->CreateBody(&bodydef);
     fixtureDef.density = 1.0f;
-    fixtureDef.friction = 1.0f;
+    fixtureDef.friction = 5.0f;
 
     shape.SetAsBox((233 / 2.f) / F, (176 / 2.f) / F);
     fixtureDef.shape = &shape;
     ninjaBody->CreateFixture(&fixtureDef);
     // =============================
+
+     //Slider del sigilo
+    sliderSigilo[0].setSize(sf::Vector2f(maxSigilo,10));
+    sliderSigilo[0].setFillColor(sf::Color::Red);
+    sliderSigilo[0].setPosition(sf::Vector2f(100,100));
+    sliderSigilo[1].setSize(sf::Vector2f(maxSigilo,10));
+    sliderSigilo[1].setFillColor(sf::Color::Transparent);
+    sliderSigilo[1].setOutlineColor(sf::Color::White);
+    sliderSigilo[1].setOutlineThickness(3);
+    sliderSigilo[1].setPosition(sf::Vector2f(100,100));
 }
 
 Ninja1::~Ninja1()
@@ -133,6 +143,8 @@ void Ninja1::drawNinja(RenderWindow &window)
     animatedSprite.setOrigin(animatedSprite.getGlobalBounds().width / 2.f, animatedSprite.getGlobalBounds().height / 2.f);
     animatedSprite.setPosition(ninjaBody->GetPosition().x * F, ninjaBody->GetPosition().y * F );
     window.draw(animatedSprite);
+    window.draw(sliderSigilo[0]);
+    window.draw(sliderSigilo[1]);
 }
 
 AnimatedSprite Ninja1::getSprite()

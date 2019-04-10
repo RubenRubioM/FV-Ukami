@@ -8,6 +8,8 @@
 #include "Ninja.h"
 #include "Ninja1.h"
 #include "Ninja2.h"
+#include "Palanca.h"
+#include "Puerta.h"
 #include <iostream>
 #include <vector>
 #include <map>

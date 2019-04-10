@@ -1,36 +1,20 @@
-#include "palanca.h"
+#include "Palanca.h"
 
-palanca::palanca()
+Palanca::Palanca()
 {
-    //ctor
-    loadSprite();
-    colocarSprite();
+    texture.loadFromFile("/tileset/door1.png");
+    sprite.setTexture(texture);
+    sprite.setScale(1005, 1005);
+    sprite.setOrigin(sprite.getTexture()->getSize().x / 2.f, sprite.getTexture()->getSize().y / 2.f);
+    sprite.setPosition(120,50); //no lo veo, no se porque
 }
 
-void palanca::loadTexture()
+void Palanca::drawPalanca(sf::RenderWindow &window)
 {
-    texture = new sf::Texture;
-    //texture->loadFromFile("C:/Users/kezav/Desktop/Ukami/Ukami/tileset/closed_scroll.jpg");
+    window.draw(sprite);
 }
 
-void palanca::loadSprite()
-{
-    loadTexture();
-    sprite = new sf::Sprite(*texture);
-}
-
-void palanca::colocarSprite()
-{
-    sprite->setOrigin(sprite->getTexture()->getSize().x / 2, sprite->getTexture()->getSize().y / 2);
-    sprite->setPosition(0,0); //no lo veo, no se porque
-}
-
-void palanca::drawPalanca(sf::RenderWindow &window)
-{
-    window.draw(*sprite);
-}
-
-palanca::~palanca()
+Palanca::~Palanca()
 {
     //dtor
 }
