@@ -22,6 +22,7 @@ Game::Game()
     Ninja2 ninja2(400.f, 400.f, mapa.getb2World());
 
     Puerta *pu = new Puerta();
+    Kanji* kanji = new Kanji(1,"ukami",window);
 
     hud = Hud::getInstance();
 
@@ -65,6 +66,11 @@ Game::Game()
         //=======HUD============
         hud->drawSigilo(window, ninja1.getSliderSigilo());
         hud->drawHUD(window);
+
+        //=======Kanji============
+        //TODO: tendremos que hacer un patron state mas adelante
+        kanji->updateKanji();
+        kanji->drawKanji();
 
         //=======================
         //mapa.getb2World()->DrawDebugData();

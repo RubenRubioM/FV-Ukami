@@ -10,6 +10,7 @@
 #include "Ninja2.h"
 #include "Hud.h"
 #include "Puerta.h"
+#include "Kanji.h"
 #include <iostream>
 #include <vector>
 #include <map>
