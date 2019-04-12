@@ -22,7 +22,11 @@ Game::Game()
     Ninja2 ninja2(400.f, 400.f, mapa.getb2World());
 
     Puerta *pu = new Puerta();
-    Kanji* kanji = new Kanji(1,"ukami",window);
+
+    //creamos el evento para poder pasarselo al kanji
+    Event event;
+
+    Kanji* kanji = new Kanji(0,"ukami",window, event); //creamos el kanji de ukami
 
     hud = Hud::getInstance();
 
@@ -31,7 +35,6 @@ Game::Game()
     sf::Clock frameClock;
     while (window.isOpen())
     {
-        Event event;
         deltaTime = deltaClock.restart();
         while (window.pollEvent(event))
         {

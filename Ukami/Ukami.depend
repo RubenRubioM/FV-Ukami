@@ -670,3 +670,674 @@
 1555011705 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Kanji.cpp
 	"Kanji.h"
 
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2BroadPhase.cpp
+	"Box2D/Collision/b2BroadPhase.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2BroadPhase.h
+	"Box2D/Common/b2Settings.h"
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/b2DynamicTree.h"
+	<algorithm>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2Settings.h
+	<stddef.h>
+	<assert.h>
+	<float.h>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2Collision.h
+	"Box2D/Common/b2Math.h"
+	<limits.h>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2Math.h
+	"Box2D/Common/b2Settings.h"
+	<math.h>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2DynamicTree.h
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Common/b2GrowableStack.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2GrowableStack.h
+	"Box2D/Common/b2Settings.h"
+	<string.h>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2CollideCircle.cpp
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/Shapes/b2CircleShape.h"
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/Shapes/b2CircleShape.h
+	"Box2D/Collision/Shapes/b2Shape.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/Shapes/b2Shape.h
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Common/b2Math.h"
+	"Box2D/Collision/b2Collision.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2BlockAllocator.h
+	"Box2D/Common/b2Settings.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/Shapes/b2PolygonShape.h
+	"Box2D/Collision/Shapes/b2Shape.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2CollideEdge.cpp
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/Shapes/b2CircleShape.h"
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/Shapes/b2EdgeShape.h
+	"Box2D/Collision/Shapes/b2Shape.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2CollidePolygon.cpp
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2Collision.cpp
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/b2Distance.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2Distance.h
+	"Box2D/Common/b2Math.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2Distance.cpp
+	"Box2D/Collision/b2Distance.h"
+	"Box2D/Collision/Shapes/b2CircleShape.h"
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	"Box2D/Collision/Shapes/b2ChainShape.h"
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/Shapes/b2ChainShape.h
+	"Box2D/Collision/Shapes/b2Shape.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2DynamicTree.cpp
+	"Box2D/Collision/b2DynamicTree.h"
+	<string.h>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2TimeOfImpact.cpp
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/b2Distance.h"
+	"Box2D/Collision/b2TimeOfImpact.h"
+	"Box2D/Collision/Shapes/b2CircleShape.h"
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+	"Box2D/Common/b2Timer.h"
+	<stdio.h>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2TimeOfImpact.h
+	"Box2D/Common/b2Math.h"
+	"Box2D/Collision/b2Distance.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2Timer.h
+	"Box2D/Common/b2Settings.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/Shapes/b2ChainShape.cpp
+	"Box2D/Collision/Shapes/b2ChainShape.h"
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	<new>
+	<string.h>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/Shapes/b2CircleShape.cpp
+	"Box2D/Collision/Shapes/b2CircleShape.h"
+	<new>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/Shapes/b2EdgeShape.cpp
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	<new>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/Shapes/b2PolygonShape.cpp
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+	<new>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2BlockAllocator.cpp
+	"Box2D/Common/b2BlockAllocator.h"
+	<limits.h>
+	<string.h>
+	<stddef.h>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2Draw.cpp
+	"Box2D/Common/b2Draw.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2Draw.h
+	"Box2D/Common/b2Math.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2Math.cpp
+	"Box2D/Common/b2Math.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2Settings.cpp
+	"Box2D/Common/b2Settings.h"
+	<stdio.h>
+	<stdarg.h>
+	<stdlib.h>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2StackAllocator.cpp
+	"Box2D/Common/b2StackAllocator.h"
+	"Box2D/Common/b2Math.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2StackAllocator.h
+	"Box2D/Common/b2Settings.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Common/b2Timer.cpp
+	"Box2D/Common/b2Timer.h"
+	<windows.h>
+	<sys/time.h>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2Body.cpp
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2World.h"
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2Body.h
+	"Box2D/Common/b2Math.h"
+	"Box2D/Collision/Shapes/b2Shape.h"
+	<memory>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2Fixture.h
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/Shapes/b2Shape.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2World.h
+	"Box2D/Common/b2Math.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Common/b2StackAllocator.h"
+	"Box2D/Dynamics/b2ContactManager.h"
+	"Box2D/Dynamics/b2WorldCallbacks.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2ContactManager.h
+	"Box2D/Collision/b2BroadPhase.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2WorldCallbacks.h
+	"Box2D/Common/b2Settings.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2TimeStep.h
+	"Box2D/Common/b2Math.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2Contact.h
+	"Box2D/Common/b2Math.h"
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/Shapes/b2Shape.h"
+	"Box2D/Dynamics/b2Fixture.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2Joint.h
+	"Box2D/Common/b2Math.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2ContactManager.cpp
+	"Box2D/Dynamics/b2ContactManager.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2WorldCallbacks.h"
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2Fixture.cpp
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+	"Box2D/Dynamics/b2World.h"
+	"Box2D/Collision/Shapes/b2CircleShape.h"
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+	"Box2D/Collision/Shapes/b2ChainShape.h"
+	"Box2D/Collision/b2BroadPhase.h"
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Common/b2BlockAllocator.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2Island.cpp
+	"Box2D/Collision/b2Distance.h"
+	"Box2D/Dynamics/b2Island.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2World.h"
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+	"Box2D/Dynamics/Contacts/b2ContactSolver.h"
+	"Box2D/Dynamics/Joints/b2Joint.h"
+	"Box2D/Common/b2StackAllocator.h"
+	"Box2D/Common/b2Timer.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2Island.h
+	"Box2D/Common/b2Math.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2ContactSolver.h
+	"Box2D/Common/b2Math.h"
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2World.cpp
+	"Box2D/Dynamics/b2World.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2Island.h"
+	"Box2D/Dynamics/Joints/b2PulleyJoint.h"
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+	"Box2D/Dynamics/Contacts/b2ContactSolver.h"
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/b2BroadPhase.h"
+	"Box2D/Collision/Shapes/b2CircleShape.h"
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	"Box2D/Collision/Shapes/b2ChainShape.h"
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+	"Box2D/Collision/b2TimeOfImpact.h"
+	"Box2D/Common/b2Draw.h"
+	"Box2D/Common/b2Timer.h"
+	<new>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2PulleyJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/b2WorldCallbacks.cpp
+	"Box2D/Dynamics/b2WorldCallbacks.h"
+	"Box2D/Dynamics/b2Fixture.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp
+	"Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Collision/Shapes/b2ChainShape.h"
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	<new>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp
+	"Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Collision/Shapes/b2ChainShape.h"
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	<new>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2CircleContact.cpp
+	"Box2D/Dynamics/Contacts/b2CircleContact.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2WorldCallbacks.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Collision/b2TimeOfImpact.h"
+	<new>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2CircleContact.h
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2Contact.cpp
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+	"Box2D/Dynamics/Contacts/b2CircleContact.h"
+	"Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h"
+	"Box2D/Dynamics/Contacts/b2PolygonContact.h"
+	"Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h"
+	"Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h"
+	"Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h"
+	"Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h"
+	"Box2D/Dynamics/Contacts/b2ContactSolver.h"
+	"Box2D/Collision/b2Collision.h"
+	"Box2D/Collision/b2TimeOfImpact.h"
+	"Box2D/Collision/Shapes/b2Shape.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2World.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2PolygonContact.h
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2ContactSolver.cpp
+	"Box2D/Dynamics/Contacts/b2ContactSolver.h"
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2World.h"
+	"Box2D/Common/b2StackAllocator.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp
+	"Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	<new>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp
+	"Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	<new>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp
+	"Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	<new>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Contacts/b2PolygonContact.cpp
+	"Box2D/Dynamics/Contacts/b2PolygonContact.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	"Box2D/Collision/b2TimeOfImpact.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2WorldCallbacks.h"
+	<new>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2DistanceJoint.cpp
+	"Box2D/Dynamics/Joints/b2DistanceJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2DistanceJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2FrictionJoint.cpp
+	"Box2D/Dynamics/Joints/b2FrictionJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2FrictionJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2GearJoint.cpp
+	"Box2D/Dynamics/Joints/b2GearJoint.h"
+	"Box2D/Dynamics/Joints/b2RevoluteJoint.h"
+	"Box2D/Dynamics/Joints/b2PrismaticJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2GearJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2RevoluteJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2PrismaticJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2Joint.cpp
+	"Box2D/Dynamics/Joints/b2Joint.h"
+	"Box2D/Dynamics/Joints/b2DistanceJoint.h"
+	"Box2D/Dynamics/Joints/b2WheelJoint.h"
+	"Box2D/Dynamics/Joints/b2MouseJoint.h"
+	"Box2D/Dynamics/Joints/b2RevoluteJoint.h"
+	"Box2D/Dynamics/Joints/b2PrismaticJoint.h"
+	"Box2D/Dynamics/Joints/b2PulleyJoint.h"
+	"Box2D/Dynamics/Joints/b2GearJoint.h"
+	"Box2D/Dynamics/Joints/b2WeldJoint.h"
+	"Box2D/Dynamics/Joints/b2FrictionJoint.h"
+	"Box2D/Dynamics/Joints/b2RopeJoint.h"
+	"Box2D/Dynamics/Joints/b2MotorJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2World.h"
+	"Box2D/Common/b2BlockAllocator.h"
+	<new>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2WheelJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2MouseJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2WeldJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2RopeJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2MotorJoint.h
+	"Box2D/Dynamics/Joints/b2Joint.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2MotorJoint.cpp
+	"Box2D/Dynamics/Joints/b2MotorJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2MouseJoint.cpp
+	"Box2D/Dynamics/Joints/b2MouseJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp
+	"Box2D/Dynamics/Joints/b2PrismaticJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2PulleyJoint.cpp
+	"Box2D/Dynamics/Joints/b2PulleyJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp
+	"Box2D/Dynamics/Joints/b2RevoluteJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2RopeJoint.cpp
+	"Box2D/Dynamics/Joints/b2RopeJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2WeldJoint.cpp
+	"Box2D/Dynamics/Joints/b2WeldJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Dynamics/Joints/b2WheelJoint.cpp
+	"Box2D/Dynamics/Joints/b2WheelJoint.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Rope/b2Rope.cpp
+	"Box2D/Rope/b2Rope.h"
+	"Box2D/Common/b2Draw.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Rope/b2Rope.h
+	"Box2D/Common/b2Math.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	"tinyxml2.h"
+	"TextureHolder.h"
+	"Map.h"
+	"Ninja.h"
+	"Game.h"
+	<iostream>
+	<vector>
+	<map>
+	"Box2D/Box2D.h"
+	"SFMLDebugDraw.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/tinyxml2.h
+	<ctype.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stddef.h>
+	<cctype>
+	<climits>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<stdint.h>
+	<android/log.h>
+	<assert.h>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/TextureHolder.h
+	<SFML/Graphics.hpp>
+	"tinyxml2.h"
+	<iostream>
+	<vector>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Map.h
+	<SFML/Graphics.hpp>
+	"tinyxml2.h"
+	"TextureHolder.h"
+	"Box2D/Box2D.h"
+	<iostream>
+	<vector>
+	<map>
+	<string>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Box2D.h
+	"Box2D/Common/b2Settings.h"
+	"Box2D/Common/b2Draw.h"
+	"Box2D/Common/b2Timer.h"
+	"Box2D/Collision/Shapes/b2CircleShape.h"
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	"Box2D/Collision/Shapes/b2ChainShape.h"
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+	"Box2D/Collision/b2BroadPhase.h"
+	"Box2D/Collision/b2Distance.h"
+	"Box2D/Collision/b2DynamicTree.h"
+	"Box2D/Collision/b2TimeOfImpact.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2WorldCallbacks.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+	"Box2D/Dynamics/b2World.h"
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+	"Box2D/Dynamics/Joints/b2DistanceJoint.h"
+	"Box2D/Dynamics/Joints/b2FrictionJoint.h"
+	"Box2D/Dynamics/Joints/b2GearJoint.h"
+	"Box2D/Dynamics/Joints/b2MotorJoint.h"
+	"Box2D/Dynamics/Joints/b2MouseJoint.h"
+	"Box2D/Dynamics/Joints/b2PrismaticJoint.h"
+	"Box2D/Dynamics/Joints/b2PulleyJoint.h"
+	"Box2D/Dynamics/Joints/b2RevoluteJoint.h"
+	"Box2D/Dynamics/Joints/b2RopeJoint.h"
+	"Box2D/Dynamics/Joints/b2WeldJoint.h"
+	"Box2D/Dynamics/Joints/b2WheelJoint.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Ninja.h
+	<SFML/Graphics.hpp>
+	"tinyxml2.h"
+	"TextureHolder.h"
+	"Map.h"
+	"Box2D/Box2D.h"
+	<iostream>
+	<vector>
+	<map>
+	"AnimatedSprite.h"
+	"Animation.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/AnimatedSprite.h
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/System/Vector2.hpp>
+	"Animation.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Animation.h
+	<vector>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Texture.hpp>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Game.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	"tinyxml2.h"
+	"TextureHolder.h"
+	"Map.h"
+	"Ninja.h"
+	"Ninja1.h"
+	"Ninja2.h"
+	"Hud.h"
+	"Puerta.h"
+	"Kanji.h"
+	<iostream>
+	<vector>
+	<map>
+	"Box2D/Box2D.h"
+	"SFMLDebugDraw.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Ninja1.h
+	"Ninja.h"
+	"AnimatedSprite.h"
+	"Animation.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Ninja2.h
+	"Ninja.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Hud.h
+	<SFML/Graphics.hpp>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Puerta.h
+	<SFML/Graphics.hpp>
+
+1555029116 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Kanji.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<cstdlib>
+	<stdlib.h>
+	<ctime>
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/SFMLDebugDraw.h
+	<Box2D/Box2D.h>
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<cmath>
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/AnimatedSprite.cpp
+	"AnimatedSprite.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Animation.cpp
+	"Animation.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Collision.cpp
+	"Collision.h"
+
+1555019260 /home/javi/Escritorio/FV/Practica Grupal/Ukami/include/Collision.h
+	<SFML/Graphics.hpp>
+	"tinyxml2.h"
+	<iostream>
+	<vector>
+	<map>
+
+1555029885 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Game.cpp
+	"Game.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Hud.cpp
+	"Hud.h"
+
+1555029493 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Kanji.cpp
+	"Kanji.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Map.cpp
+	"Map.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Ninja.cpp
+	"Ninja.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Ninja1.cpp
+	"Ninja1.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Ninja2.cpp
+	"Ninja2.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/Puerta.cpp
+	"Puerta.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/SFMLDebugDraw.cpp
+	"SFMLDebugDraw.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/TextureHolder.cpp
+	"TextureHolder.h"
+
+1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/src/tinyxml2.cpp
+	"../include/tinyxml2.h"
+	<new>
+	<stddef.h>
+	<stdarg.h>
+	<cstddef>
+	<cstdarg>
+

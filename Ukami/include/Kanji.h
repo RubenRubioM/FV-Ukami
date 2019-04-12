@@ -12,7 +12,7 @@ using namespace std;
 class Kanji
 {
     public:
-        Kanji(int kanjiSelected, string title, sf::RenderWindow &window); //Le pasamos la ventana ya en el constructor y la almacenamos para no pasarsela cada draw
+        Kanji(int kanjiSelected, string title, sf::RenderWindow &window, sf::Event &eventGame); //Le pasamos la ventana ya en el constructor y la almacenamos para no pasarsela cada draw
         virtual ~Kanji();
 
         void drawKanji();
@@ -34,7 +34,6 @@ class Kanji
         sf::Sprite* kanjiBack; //sprite del fondo de pantalla
         sf::Texture* finalKanji;
         sf::Sprite* correctKanji;
-        sf::Event* keyEvent;
         sf::RenderWindow* kanjiWindow;
         void selectKanji(int idKanji);
         void createKanjiTextures();
@@ -48,7 +47,6 @@ class Kanji
         void renderSprites();
         void doRotationToSprites();
         void gameLoop();
-
         void checkKanji();
         bool checkRep(int n, int rango, int num[]);
         void genRandRotIndices(int* rot);

@@ -1,8 +1,7 @@
 #include "Kanji.h"
 
-Kanji::Kanji(int kanjiSelected, string title, sf::RenderWindow &window)
+Kanji::Kanji(int kanjiSelected, string title, sf::RenderWindow &window, sf::Event &eventGame)
 {
-    keyEvent = new sf::Event();
     kanjiWindow = &window;
     for(int i = 0; i < 4; i++)
     {
@@ -209,90 +208,82 @@ void Kanji::drawKanji()
     }
 }
 
-void Kanji::updateKanji()
+void Kanji::updateKanji() //no se crea ningun estado adicional porque al manejar mas de un estado aunque uno sea un puntero al otro, se gestiona mal y no funciona como deberia por el tiempo que tarda en llegar la informacion del evento actualizada al nuevo evento creado
 {
+
     int auxAngle;
-    switch(keyEvent->type)
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) //si en el teclado esta presionada la tecla "Up", ejecuta estas instrucciones (Up es la flecha para arriba).
     {
-
-        case sf::Event::KeyPressed:
+        if(!win)
         {
-           if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) //si en el teclado esta presionada la tecla "Up", ejecuta estas instrucciones (Up es la flecha para arriba).
-           {
-               if(!win)
-               {
-                    if(n <= 0) //si estoy en la primera circunferencia (la mas externa), y le vuelvo a dar a la flecha de arriba, me voy a la ultima circunferencia (la mas interna).
-                    {
-                        n = 3;
-                    }
-                    else
-                    {
-                        n = n - 1;
-                    }
-               }
-           }
-           else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-           {
-               if(!win)
-               {
-                    if(n >= 3) //si estoy en la ultima circunferencia (la mas interna), y le vuelvo a dar a la flecha de abajo, me voy a la primera circunferencia (la mas externa).
-                    {
-                        n = 0;
-                    }
-                    else
-                    {
-                        n = n + 1;
-                    }
-               }
-
-           }
-           else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-           {
-               if(!win)
-               {
-                    if(kanjiSprites[n]->getRotation() - angle <= 0)
-                    {
-                        auxAngle = kanjiSprites[n]->getRotation() - angle + 360;
-                    }
-                    else
-                    {
-                        auxAngle = kanjiSprites[n]->getRotation() - angle;
-                    }
-                    if(auxAngle == 360) //como con la flecha izquierda soy capaz de llegar a 360 grados, pongo el valor de auxAngle a 0 cuando ocurra esta situacion, ya que 360 grados es lo mismo que 0 grados en uno de los 2 sentidos de la circunferencia.
-                    {
-                        auxAngle = 0;
-                    }
-                    rotationsKanji[n] = auxAngle/angle; //actualizo el valor de las rotaciones que posee la circunferencia actual seleccionada. Angle, se corresponde con un valor de 30 grados-
-                    kanjiSprites[n]->setRotation(auxAngle);
-               }
-
-           }
-           else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-           {
-               if(!win)
-               {
-                   if(kanjiSprites[n]->getRotation() + angle >= 360)
-                   {
-                       auxAngle = kanjiSprites[n]->getRotation() + angle - 360;
-                   }
-                   else
-                   {
-                       auxAngle = kanjiSprites[n]->getRotation() + angle;
-                   }
-                   rotationsKanji[n] = auxAngle/angle;
-                   kanjiSprites[n]->setRotation(auxAngle);
-               }
-
-           }
-
-            if(!win) //mientras no se haya ganado, se comprueba si el kanji esta correcto o no
+            if(n <= 0) //si estoy en la primera circunferencia (la mas externa), y le vuelvo a dar a la flecha de arriba, me voy a la ultima circunferencia (la mas interna).
             {
-                checkKanji();
+                n = 3;
             }
-
-           break;
+            else
+            {
+                n = n - 1;
+            }
+        }
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+    {
+        if(!win)
+        {
+            if(n >= 3) //si estoy en la ultima circunferencia (la mas interna), y le vuelvo a dar a la flecha de abajo, me voy a la primera circunferencia (la mas externa).
+            {
+                n = 0;
+            }
+            else
+            {
+                n = n + 1;
+            }
         }
 
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    {
+        if(!win)
+        {
+            if(kanjiSprites[n]->getRotation() - angle <= 0)
+            {
+                auxAngle = kanjiSprites[n]->getRotation() - angle + 360;
+            }
+            else
+            {
+                auxAngle = kanjiSprites[n]->getRotation() - angle;
+            }
+            if(auxAngle == 360) //como con la flecha izquierda soy capaz de llegar a 360 grados, pongo el valor de auxAngle a 0 cuando ocurra esta situacion, ya que 360 grados es lo mismo que 0 grados en uno de los 2 sentidos de la circunferencia.
+            {
+                auxAngle = 0;
+            }
+            rotationsKanji[n] = auxAngle/angle; //actualizo el valor de las rotaciones que posee la circunferencia actual seleccionada. Angle, se corresponde con un valor de 30 grados-
+            kanjiSprites[n]->setRotation(auxAngle);
+        }
+
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    {
+        if(!win)
+        {
+            if(kanjiSprites[n]->getRotation() + angle >= 360)
+            {
+                auxAngle = kanjiSprites[n]->getRotation() + angle - 360;
+            }
+            else
+            {
+                auxAngle = kanjiSprites[n]->getRotation() + angle;
+            }
+            rotationsKanji[n] = auxAngle/angle;
+            kanjiSprites[n]->setRotation(auxAngle);
+        }
+
+    }
+
+    if(!win) //mientras no se haya ganado, se comprueba si el kanji esta correcto o no
+    {
+        checkKanji();
     }
 
 }
@@ -312,6 +303,8 @@ void Kanji::checkKanji()
     {
         cout << "¡Has ganado!" << endl;
         win = true;
+
+        //TODO: aqui se cambiara el evento pzra que se vuelve al mapa del juego
     }
 }
 
