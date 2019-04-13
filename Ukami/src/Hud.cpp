@@ -25,19 +25,35 @@ Hud::Hud()
     spriteFront->setPosition(249,47);
     spritesSigilo[1] = spriteFront;
 
+    // ==== FPS ====
+    aldhesFont = new sf::Font();
+    aldhesFont->loadFromFile("tileset/Aldhes.ttf");
+    fpsText = new sf::Text();
+    fpsText->setFont(*aldhesFont);
+    fpsText->setCharacterSize(40);
+    fpsText->setPosition(1200,20);
+    fpsText->setColor(sf::Color::Red);
+
 }
 
-void Hud::drawHUD(sf::RenderWindow &window){
-    window.setView(*vistaHUD);
+void Hud::updateFPS(int _fps){
+    string fps = to_string(_fps);
 
-    window.draw(*spritesSigilo[0]);
-    window.draw(*spritesSigilo[1]);
+    fpsText->setString(fps);
+
 }
 
 void Hud::drawSigilo(sf::RenderWindow &window, sf::RectangleShape* sliderSigilo){
     window.setView(*vistaHUD);
+    // ==== Ninja 2 ====
     window.draw(sliderSigilo[0]);
     window.draw(sliderSigilo[1]);
+    window.draw(*spritesSigilo[0]);
+    window.draw(*spritesSigilo[1]);
+}
+
+void Hud::drawFPS(sf::RenderWindow &window){
+    window.draw(*fpsText);
 }
 
 Hud::~Hud()

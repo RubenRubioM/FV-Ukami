@@ -40,7 +40,7 @@ void Ninja2::updateMovement(View &view, float _deltaTime)
     if(Keyboard::isKeyPressed(Keyboard::D))
     {
         b2Vec2 vel = ninjaBody->GetLinearVelocity();
-        vel.x = velocity;
+        vel.x = velocity*10;
         vel.y = ninjaBody->GetLinearVelocity().y;
         ninjaBody->SetLinearVelocity(vel);
     }

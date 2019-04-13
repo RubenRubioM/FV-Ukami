@@ -3,8 +3,24 @@
 
 Game *Game::unicaInstancia = 0;
 
+struct Palanca{
+    sf::Sprite* palancaSprite;
+    sf::Texture* palancaTexture;
+
+    void inicializar(){
+        palancaTexture = new sf::Texture();
+        palancaTexture->loadFromFile("tileset/lever.png");
+        palancaSprite = new sf::Sprite(*palancaTexture);
+        palancaSprite->setOrigin(palancaTexture->getSize().x/2.f , palancaTexture->getSize().y/2.f);
+        palancaSprite->setScale(0.2,0.2);
+        palancaSprite->setPosition(700,440);
+    }
+};
+
 Game::Game()
 {
+    Palanca palanca1;
+    palanca1.inicializar();
     // Definimos una ventana
     RenderWindow window(VideoMode(1280, 720), "Ukami");
     window.setFramerateLimit(60);
@@ -30,53 +46,82 @@ Game::Game()
 
     hud = Hud::getInstance();
 
-    sf::Clock deltaClock;
-    sf::Time deltaTime;
-    sf::Clock frameClock;
     while (window.isOpen())
     {
+
         deltaTime = deltaClock.restart();
         while (window.pollEvent(event))
         {
             if (event.type == Event::Closed)
                 window.close();
+
+            //Activar y desactivar los fps
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::F4)){
+                if(mostrarFPS){
+                    mostrarFPS = false;
+                }else{
+                    mostrarFPS = true;
+                }
+            }
         }
 
         window.clear();
         // Le asignamos a nuesro viewport la view
         window.setView(view);
 
-        // Funcion para dibujar nuestro mapa
-        mapa.drawMap(window);
+        if(estado==0){
+            // Funcion para dibujar nuestro mapa
+            mapa.drawMap(window);
 
-         // ========Ninja1=========
-        ninja1.updateMovement(view, deltaTime.asMilliseconds(), frameClock);
-        ninja1.drawNinja(window);
-        // ======================
+            //=======View============
+            updateView(ninja1, ninja2, view);
 
-        // ========Ninja2=========
-        ninja2.updateMovement(view, deltaTime.asMilliseconds());
-        ninja2.drawNinja(window);
-        // ======================
+             // ========Ninja1=========
+            ninja1.updateMovement(view, deltaTime.asMilliseconds(), frameClock);
+            ninja1.drawNinja(window);
+            // ======================
+
+            // ========Ninja2=========
+            ninja2.updateMovement(view, deltaTime.asMilliseconds());
+            ninja2.drawNinja(window);
+
+            // ======================
+            pu->drawPuerta(window);
+            window.draw(*palanca1.palancaSprite);
+
+            //=======HUD============
+            //El HUD debe dibujarse siempre al final (a excepcion de los minijuegos que no tienen o tendras otro hud)
+            hud->drawSigilo(window, ninja1.getSliderSigilo());
+        }
 
 
 
-        //=======View============
-        updateView(ninja1, ninja2, view);
-
-        pu->drawPuerta(window);
-
-        //=======HUD============
-        hud->drawSigilo(window, ninja1.getSliderSigilo());
-        hud->drawHUD(window);
 
         //=======Kanji============
         //TODO: tendremos que hacer un patron state mas adelante
-        kanji->updateKanji();
-        kanji->drawKanji();
+        if(estado==1){
+            if(kanji->updateKanji()){
+                estado = 0;
+                palanca1.palancaSprite->setScale(0,0);
+            }
+            kanji->drawKanji();
 
-        //=======================
-        //mapa.getb2World()->DrawDebugData();
+        }
+
+
+        //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
+        if(ninja2.getSprite().getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds())){
+            cout << "Colisiona" << endl;
+            estado=1;
+        }
+
+
+        //En cualquier estado se dibujaran los FPS
+        calcularFPS();
+        if(mostrarFPS){
+            hud->drawFPS(window);
+        }
+
         window.display();
     }
 }
@@ -84,6 +129,20 @@ Game::Game()
 Game::~Game()
 {
     //dtor
+}
+
+void Game::calcularFPS(){
+
+    //Calculamos los fps
+    if(fpsClock.getElapsedTime().asSeconds()>=1.f){
+        hud->updateFPS(contadorFPS);
+        contadorFPS = 0;
+        fpsClock.restart();
+    }else{
+        contadorFPS++;
+    }
+
+
 }
 
 void Game::updateView(Ninja1 ninja1, Ninja2 ninja2, View &view)

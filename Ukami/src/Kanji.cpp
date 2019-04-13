@@ -2,7 +2,11 @@
 
 Kanji::Kanji(int kanjiSelected, string title, sf::RenderWindow &window, sf::Event &eventGame)
 {
+    cout << "==== Creamos el kanji ====" << endl;
     kanjiWindow = &window;
+    kanjiView = new sf::View();
+    kanjiView->setSize(1280,720);
+    kanjiView->setCenter(kanjiView->getSize().x / 2, kanjiView->getSize().y / 2);
     for(int i = 0; i < 4; i++)
     {
         correctKanjiArray[i] = 0;
@@ -56,21 +60,25 @@ void Kanji::loadKanjiTextures(int idText)
         case (0):
         {
             kanjiTextures[idText]->loadFromFile("./kanjiImages/" + kanjiName + "/puzzle/circunf1.png");
+            kanjiTextures[idText]->setSmooth(true);
             break;
         }
         case (1):
         {
             kanjiTextures[idText]->loadFromFile("./kanjiImages/" + kanjiName + "/puzzle/circunf2.png");
+            kanjiTextures[idText]->setSmooth(true);
             break;
         }
         case (2):
         {
             kanjiTextures[idText]->loadFromFile("./kanjiImages/" + kanjiName + "/puzzle/circunf3.png");
+            kanjiTextures[idText]->setSmooth(true);
             break;
         }
         case (3):
         {
             kanjiTextures[idText]->loadFromFile("./kanjiImages/" + kanjiName + "/puzzle/circunf4.png");
+            kanjiTextures[idText]->setSmooth(true);
             break;
         }
     }
@@ -121,6 +129,7 @@ void Kanji::loadKanjiSprites()
 {
     for(int i = 0; i < 4; i++){
         kanjiSprites[i] = new sf::Sprite(*kanjiTextures[i]);
+
         kanjiSpritesPosition(kanjiSprites[i]);
     }
 }
@@ -191,7 +200,7 @@ void Kanji::doRotationToSprites() //le aplico las rotaciones a los sprites carga
 void Kanji::drawKanji()
 {
 
-
+    kanjiWindow->setView(*kanjiView);
     kanjiWindow->draw(*kanjiBack); //pinto el background
 
     // ==== Renderizamos los sprites ====
@@ -208,88 +217,99 @@ void Kanji::drawKanji()
     }
 }
 
-void Kanji::updateKanji() //no se crea ningun estado adicional porque al manejar mas de un estado aunque uno sea un puntero al otro, se gestiona mal y no funciona como deberia por el tiempo que tarda en llegar la informacion del evento actualizada al nuevo evento creado
+bool Kanji::updateKanji() //no se crea ningun estado adicional porque al manejar mas de un estado aunque uno sea un puntero al otro, se gestiona mal y no funciona como deberia por el tiempo que tarda en llegar la informacion del evento actualizada al nuevo evento creado
 {
 
+    bool devolucion = false;
     int auxAngle;
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) //si en el teclado esta presionada la tecla "Up", ejecuta estas instrucciones (Up es la flecha para arriba).
-    {
-        if(!win)
+    if(tiempoEntreTecla.getElapsedTime().asSeconds()>0.5f){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) //si en el teclado esta presionada la tecla "Up", ejecuta estas instrucciones (Up es la flecha para arriba).
         {
-            if(n <= 0) //si estoy en la primera circunferencia (la mas externa), y le vuelvo a dar a la flecha de arriba, me voy a la ultima circunferencia (la mas interna).
+            tiempoEntreTecla.restart();
+            if(!win)
             {
-                n = 3;
-            }
-            else
-            {
-                n = n - 1;
+                if(n <= 0) //si estoy en la primera circunferencia (la mas externa), y le vuelvo a dar a la flecha de arriba, me voy a la ultima circunferencia (la mas interna).
+                {
+                    n = 3;
+                }
+                else
+                {
+                    n = n - 1;
+                }
             }
         }
-    }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-    {
-        if(!win)
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
-            if(n >= 3) //si estoy en la ultima circunferencia (la mas interna), y le vuelvo a dar a la flecha de abajo, me voy a la primera circunferencia (la mas externa).
+            tiempoEntreTecla.restart();
+            if(!win)
             {
-                n = 0;
+                if(n >= 3) //si estoy en la ultima circunferencia (la mas interna), y le vuelvo a dar a la flecha de abajo, me voy a la primera circunferencia (la mas externa).
+                {
+                    n = 0;
+                }
+                else
+                {
+                    n = n + 1;
+                }
             }
-            else
-            {
-                n = n + 1;
-            }
-        }
 
-    }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-    {
-        if(!win)
-        {
-            if(kanjiSprites[n]->getRotation() - angle <= 0)
-            {
-                auxAngle = kanjiSprites[n]->getRotation() - angle + 360;
-            }
-            else
-            {
-                auxAngle = kanjiSprites[n]->getRotation() - angle;
-            }
-            if(auxAngle == 360) //como con la flecha izquierda soy capaz de llegar a 360 grados, pongo el valor de auxAngle a 0 cuando ocurra esta situacion, ya que 360 grados es lo mismo que 0 grados en uno de los 2 sentidos de la circunferencia.
-            {
-                auxAngle = 0;
-            }
-            rotationsKanji[n] = auxAngle/angle; //actualizo el valor de las rotaciones que posee la circunferencia actual seleccionada. Angle, se corresponde con un valor de 30 grados-
-            kanjiSprites[n]->setRotation(auxAngle);
         }
-
-    }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-    {
-        if(!win)
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            if(kanjiSprites[n]->getRotation() + angle >= 360)
+            tiempoEntreTecla.restart();
+            if(!win)
             {
-                auxAngle = kanjiSprites[n]->getRotation() + angle - 360;
+                if(kanjiSprites[n]->getRotation() - angle <= 0)
+                {
+                    auxAngle = kanjiSprites[n]->getRotation() - angle + 360;
+                }
+                else
+                {
+                    auxAngle = kanjiSprites[n]->getRotation() - angle;
+                }
+                if(auxAngle == 360) //como con la flecha izquierda soy capaz de llegar a 360 grados, pongo el valor de auxAngle a 0 cuando ocurra esta situacion, ya que 360 grados es lo mismo que 0 grados en uno de los 2 sentidos de la circunferencia.
+                {
+                    auxAngle = 0;
+                }
+                rotationsKanji[n] = auxAngle/angle; //actualizo el valor de las rotaciones que posee la circunferencia actual seleccionada. Angle, se corresponde con un valor de 30 grados-
+                kanjiSprites[n]->setRotation(auxAngle);
             }
-            else
-            {
-                auxAngle = kanjiSprites[n]->getRotation() + angle;
-            }
-            rotationsKanji[n] = auxAngle/angle;
-            kanjiSprites[n]->setRotation(auxAngle);
-        }
 
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            tiempoEntreTecla.restart();
+            if(!win)
+            {
+                if(kanjiSprites[n]->getRotation() + angle >= 360)
+                {
+                    auxAngle = kanjiSprites[n]->getRotation() + angle - 360;
+                }
+                else
+                {
+                    auxAngle = kanjiSprites[n]->getRotation() + angle;
+                }
+                rotationsKanji[n] = auxAngle/angle;
+                kanjiSprites[n]->setRotation(auxAngle);
+            }
+
+        }
     }
+
 
     if(!win) //mientras no se haya ganado, se comprueba si el kanji esta correcto o no
     {
-        checkKanji();
+        devolucion = checkKanji();
     }
+
+    return devolucion;
 
 }
 
-void Kanji::checkKanji()
+bool Kanji::checkKanji()
 {
+    bool devolucion = false;
     int cont = 0;
     for(int i = 0; i < 4; i++)
     {
@@ -303,12 +323,23 @@ void Kanji::checkKanji()
     {
         cout << "¡Has ganado!" << endl;
         win = true;
+        devolucion = true;
 
         //TODO: aqui se cambiara el evento pzra que se vuelve al mapa del juego
     }
+
+    return devolucion;
 }
 
 Kanji::~Kanji()
 {
-    //dtor
+    delete font1;
+    delete winText;
+    delete[] kanjiTextures;
+    delete[] kanjiSprites;
+    delete background;
+    delete kanjiBack;
+    delete correctKanji;
+    delete kanjiWindow;
+    delete kanjiView;
 }

@@ -16,6 +16,7 @@
 #include <map>
 #include "Box2D/Box2D.h"
 #include "SFMLDebugDraw.h"
+#include <stddef.h>
 
 using namespace tinyxml2;
 using namespace std;
@@ -30,8 +31,7 @@ class Game
             return unicaInstancia;
         }
         virtual ~Game();
-        // Método para actualizar la vista cuando los ninjas se mueven por el mapa
-        void updateView(Ninja1 ninja1, Ninja2 ninja2, View &view);
+
 
     protected:
 
@@ -40,6 +40,17 @@ class Game
         static Game *unicaInstancia;
 
         Hud* hud;
+        sf::Clock fpsClock;
+        sf::Clock deltaClock;
+        sf::Time deltaTime;
+        sf::Clock frameClock;
+        int contadorFPS = 0;
+        bool mostrarFPS = true;
+        int estado = 0; // Como sustitucion hasta que tengamos el patron State ||||  0 = juego normal   1 = minijuego Kanji"
+
+        void calcularFPS();
+        // Método para actualizar la vista cuando los ninjas se mueven por el mapa
+        void updateView(Ninja1 ninja1, Ninja2 ninja2, View &view);
 };
 
 #endif // GAME_H

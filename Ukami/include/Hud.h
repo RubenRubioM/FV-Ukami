@@ -2,7 +2,11 @@
 #define HUD_H
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <stdlib.h>
+#include <string>
 
+using namespace std;
 class Hud
 {
     public:
@@ -13,9 +17,9 @@ class Hud
             return unicaInstancia;
         }
 
-
-        void drawHUD(sf::RenderWindow &window);
         void drawSigilo(sf::RenderWindow &window, sf::RectangleShape*);
+        void drawFPS(sf::RenderWindow &window);
+        void updateFPS(int);
         virtual ~Hud();
 
 
@@ -24,6 +28,8 @@ class Hud
         static Hud *unicaInstancia;
 
         sf::View* vistaHUD;
+        sf::Font* aldhesFont;
+        sf::Text* fpsText;
 
         sf::Sprite* spritesSigilo[2];
 };

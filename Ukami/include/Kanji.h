@@ -16,7 +16,7 @@ class Kanji
         virtual ~Kanji();
 
         void drawKanji();
-        void updateKanji();
+        bool updateKanji();
 
     private:
         int fps; //posibilidad de pasarlo a una clase generica puzzle
@@ -35,6 +35,10 @@ class Kanji
         sf::Texture* finalKanji;
         sf::Sprite* correctKanji;
         sf::RenderWindow* kanjiWindow;
+        sf::View* kanjiView;
+
+        sf::Clock tiempoEntreTecla;
+
         void selectKanji(int idKanji);
         void createKanjiTextures();
         void loadKanjiTextures(int idText);
@@ -47,7 +51,7 @@ class Kanji
         void renderSprites();
         void doRotationToSprites();
         void gameLoop();
-        void checkKanji();
+        bool checkKanji();
         bool checkRep(int n, int rango, int num[]);
         void genRandRotIndices(int* rot);
 };
