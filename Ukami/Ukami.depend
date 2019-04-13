@@ -232,7 +232,7 @@
 	<SFML/Graphics/Rect.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1555143401 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Game.h
+1555188203 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	"tinyxml2.h"
@@ -241,6 +241,8 @@
 	"Ninja.h"
 	"Ninja1.h"
 	"Ninja2.h"
+	"Enemigo.h"
+	"Enemigo1.h"
 	"Hud.h"
 	"Puerta.h"
 	"Kanji.h"
@@ -284,7 +286,7 @@
 	<vector>
 	<map>
 
-1555143439 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Game.cpp
+1555188726 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Game.cpp
 	"Game.h"
 
 1555101059 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Map.cpp
@@ -671,7 +673,7 @@
 	<stdlib.h>
 	<ctime>
 
-1555143220 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Kanji.cpp
+1555143493 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Kanji.cpp
 	"Kanji.h"
 
 1555019260 source:/home/javi/Escritorio/FV/Practica Grupal/Ukami/Box2D/Box2D/Collision/b2BroadPhase.cpp
@@ -1344,4 +1346,25 @@
 	<stdarg.h>
 	<cstddef>
 	<cstdarg>
+
+1555188845 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Enemigo.h
+	<SFML/Graphics.hpp>
+	"tinyxml2.h"
+	"TextureHolder.h"
+	"Map.h"
+	"Box2D/Box2D.h"
+	<iostream>
+	<vector>
+	<map>
+	"AnimatedSprite.h"
+	"Animation.h"
+
+1555189066 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Enemigo1.h
+	"Enemigo.h"
+
+1555188473 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Enemigo.cpp
+	"Enemigo.h"
+
+1555189332 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/Enemigo1.cpp
+	"Enemigo1.h"
 

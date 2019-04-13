@@ -13,14 +13,13 @@ struct Palanca{
         palancaSprite = new sf::Sprite(*palancaTexture);
         palancaSprite->setOrigin(palancaTexture->getSize().x/2.f , palancaTexture->getSize().y/2.f);
         palancaSprite->setScale(0.2,0.2);
-        palancaSprite->setPosition(700,440);
+
     }
 };
 
 Game::Game()
 {
-    Palanca palanca1;
-    palanca1.inicializar();
+
     // Definimos una ventana
     RenderWindow window(VideoMode(1280, 720), "Ukami");
     window.setFramerateLimit(60);
@@ -33,11 +32,23 @@ Game::Game()
     Map mapa;
     mapa.initMap("map1.tmx");
 
-    // Creamos un ninja
-    Ninja1 ninja1(400.f, 900.f, mapa.getb2World());
-    Ninja2 ninja2(400.f, 400.f, mapa.getb2World());
+    // Creamos los ninja
+    ninja1 = new Ninja1(400.f, 900.f, mapa.getb2World());
+    ninja2 = new Ninja2(400.f, 400.f, mapa.getb2World());
+
+    //Creamos los Enemigos
+    enemigoCercano = 0;
+    enemigos.push_back(new Enemigo1(600.f, 900.f, mapa.getb2World()));
+    enemigos.push_back(new Enemigo1(900.f, 400.f, mapa.getb2World()));
+
 
     Puerta *pu = new Puerta();
+
+    // ==== Inicializamos palanca ====
+    Palanca palanca1;
+    palanca1.inicializar();
+    palanca1.palancaSprite->setPosition(700,440);
+
 
     //creamos el evento para poder pasarselo al kanji
     Event event;
@@ -74,16 +85,22 @@ Game::Game()
             mapa.drawMap(window);
 
             //=======View============
-            updateView(ninja1, ninja2, view);
+            updateView(*ninja1, *ninja2, view);
 
              // ========Ninja1=========
-            ninja1.updateMovement(view, deltaTime.asMilliseconds(), frameClock);
-            ninja1.drawNinja(window);
+            ninja1->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
+            ninja1->drawNinja(window);
             // ======================
 
             // ========Ninja2=========
-            ninja2.updateMovement(view, deltaTime.asMilliseconds());
-            ninja2.drawNinja(window);
+            ninja2->updateMovement(view, deltaTime.asMilliseconds());
+            ninja2->drawNinja(window);
+
+            //========Enemigos=========
+            for(int i=0; i<enemigos.size(); i++){
+                enemigos.at(i)->ia(deltaTime.asMilliseconds());
+                enemigos.at(i)->drawEnemigo(window);
+            }
 
             // ======================
             pu->drawPuerta(window);
@@ -91,7 +108,7 @@ Game::Game()
 
             //=======HUD============
             //El HUD debe dibujarse siempre al final (a excepcion de los minijuegos que no tienen o tendras otro hud)
-            hud->drawSigilo(window, ninja1.getSliderSigilo());
+            hud->drawSigilo(window, ninja1->getSliderSigilo());
         }
 
 
@@ -110,7 +127,7 @@ Game::Game()
 
 
         //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
-        if(ninja2.getSprite().getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds())){
+        if(ninja2->getSprite().getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds())){
             cout << "Colisiona" << endl;
             estado=1;
         }
@@ -143,6 +160,34 @@ void Game::calcularFPS(){
     }
 
 
+}
+
+
+Enemigo* Game::enemigoMasCercano(){
+    float distanciaMinima = 999999;
+    float distancia = 0;
+    float powX = 0;
+    float powY = 0;
+    Enemigo* guardiaCercano;
+
+    //Recorremos todos los guardas y calculamos cual esta mas cerca
+    for(int i=0; i < enemigos.size();i++){
+        powX = pow(ninja1->getSprite().getPosition().x-(enemigos.at(i)->getSprite()->getPosition().x),2);
+        powY = pow(ninja1->getSprite().getPosition().y-(enemigos.at(i)->getSprite()->getPosition().y),2);
+
+        distancia = fabs(sqrt(powX+powY));
+        cout << "Distancia entre Ninja 1 y Enemigo " << i << " ->" << distancia << endl;
+
+        //Se devuelve el guardia mas cercano
+        if(distancia < distanciaMinima){
+
+            guardiaCercano = enemigos.at(i);
+            distanciaMinima = distancia;
+        }
+
+    }
+
+    return guardiaCercano;
 }
 
 void Game::updateView(Ninja1 ninja1, Ninja2 ninja2, View &view)

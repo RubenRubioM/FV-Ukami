@@ -8,6 +8,8 @@
 #include "Ninja.h"
 #include "Ninja1.h"
 #include "Ninja2.h"
+#include "Enemigo.h"
+#include "Enemigo1.h"
 #include "Hud.h"
 #include "Puerta.h"
 #include "Kanji.h"
@@ -39,7 +41,14 @@ class Game
         Game();
         static Game *unicaInstancia;
 
+        Ninja1 *ninja1;
+        Ninja2 *ninja2;
+
         Hud* hud;
+
+        vector<Enemigo*> enemigos;
+        Enemigo* enemigoCercano;
+
         sf::Clock fpsClock;
         sf::Clock deltaClock;
         sf::Time deltaTime;
@@ -51,6 +60,7 @@ class Game
         void calcularFPS();
         // Método para actualizar la vista cuando los ninjas se mueven por el mapa
         void updateView(Ninja1 ninja1, Ninja2 ninja2, View &view);
+        Enemigo* enemigoMasCercano();
 };
 
 #endif // GAME_H
