@@ -46,8 +46,13 @@ Game::Game()
 
     //creamos el evento para poder pasarselo al kanji
     Event event;
-    GuardiaEstatico* g = new GuardiaEstatico(400,700);
 
+    //Enemigos
+    guardiaEstaticoCercano = 0;
+    GuardiaEstatico* g = new GuardiaEstatico(900,900);
+    guardiasEstaticos.push_back(g);
+
+    //Kanji
     Kanji* kanji = new Kanji(0,"ukami",window, event); //creamos el kanji de ukami
 
     hud = Hud::getInstance();
@@ -82,7 +87,19 @@ Game::Game()
             //=======View============
             updateView(*ninja1, *ninja2, view);
 
-             // ========Ninja1=========
+            // ========Ninja1=========
+
+             if(Keyboard::isKeyPressed(Keyboard::R)){
+                //Solo se llama al silbido si el guardia ha llegado ya (mas tarde implementarmeos un CD de la habilidad en el mismo if)
+                guardiaEstaticoCercano = guardiaEstaticoMasCercano();
+                if(guardiaEstaticoCercano != 0 && !guardiaEstaticoCercano->getMoviendose()){
+
+                    guardiaEstaticoCercano->setMoviendose(true);
+                    guardiaEstaticoCercano->setPosicionDestino(ninja1->getSprite().getPosition().x); //Le decimos que tiene que ir hasta el X del personaje que silba
+                }
+            }
+
+
             ninja1->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
             ninja1->drawNinja(window);
             // ======================
@@ -91,8 +108,31 @@ Game::Game()
             ninja2->updateMovement(view, deltaTime.asMilliseconds());
             ninja2->drawNinja(window);
 
+
+
             //========Enemigos=========
+
+            if(guardiaEstaticoCercano != 0){
+                //Se mueve a la posicion donde le dices
+                if(guardiaEstaticoCercano->getMoviendose() && !guardiaEstaticoCercano->getEsperando()){
+                    guardiaEstaticoCercano->moverse(deltaTime.asMilliseconds());
+                }
+
+                //Despues de esperar un TIEMPO_DE_ESPERA vuelve a la posicion original
+                if(guardiaEstaticoCercano->getEsperando() && guardiaEstaticoCercano->getTiempoAntesDeVolver().getElapsedTime().asSeconds() > TIEMPO_DE_ESPERA){
+                   //Vuelve a la posicion inicial
+
+                    guardiaEstaticoCercano->setPosicionDestino(guardiaEstaticoCercano->getxInicial()); //La posicion destino será la posición inicial
+                    guardiaEstaticoCercano->setMoviendose(true);
+                    guardiaEstaticoCercano->setEsperando(false);
+                    guardiaEstaticoCercano->setVolviendo(true);
+                }
+            }
+
             g->drawNinjaEstatico(window);
+
+
+
 
             // ======================
             pu->drawPuerta(window);
@@ -152,6 +192,34 @@ void Game::calcularFPS(){
     }
 
 
+}
+
+
+GuardiaEstatico* Game::guardiaEstaticoMasCercano(){
+    float distanciaMinima = 999999;
+    float distancia = 0;
+    float powX = 0;
+    float powY = 0;
+    GuardiaEstatico* guardiaCercano;
+
+    //Recorremos todos los guardas y calculamos cual esta mas cerca
+    for(int i=0; i < guardiasEstaticos.size();i++){
+        powX = pow(ninja1->getSprite().getPosition().x-(guardiasEstaticos.at(i)->getSprite()->getPosition().x),2);
+        powY = pow(ninja1->getSprite().getPosition().y-(guardiasEstaticos.at(i)->getSprite()->getPosition().y),2);
+
+        distancia = fabs(sqrt(powX+powY));
+        cout << "Distancia entre Ninja 1 y Guardia " << i << " ->" << distancia << endl;
+
+        //Se devuelve el guardia mas cercano
+        if(distancia < distanciaMinima){
+
+            guardiaCercano = guardiasEstaticos.at(i);
+            distanciaMinima = distancia;
+        }
+
+    }
+
+    return guardiaCercano;
 }
 
 

@@ -232,7 +232,7 @@
 	<SFML/Graphics/Rect.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1555232309 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Game.h
+1555248085 /home/rrm73/Desktop/FV-Ukami/Ukami/include/Game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	"tinyxml2.h"
@@ -1370,4 +1370,7 @@
 1555232734 /home/rrm73/Desktop/FV-Ukami/Ukami/include/GuardiaEstatico.h
 	<iostream>
 	<SFML/Graphics.hpp>
+
+1555244410 source:/home/rrm73/Desktop/FV-Ukami/Ukami/src/GuardiaEstatico.cpp
+	"GuardiaEstatico.h"
 

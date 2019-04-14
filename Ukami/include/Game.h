@@ -54,9 +54,16 @@ class Game
         bool mostrarFPS = true;
         int estado = 0; // Como sustitucion hasta que tengamos el patron State ||||  0 = juego normal   1 = minijuego Kanji"
 
+        vector<GuardiaEstatico*> guardiasEstaticos; //Array con todos los guardias (quiza luego se hace herencia en diferentes tipos de guardias)
+        GuardiaEstatico* guardiaEstaticoCercano; //Me guardo que guardia es el mas cercano cuando silbo
+
+
+
         void calcularFPS();
         // Método para actualizar la vista cuando los ninjas se mueven por el mapa
         void updateView(Ninja1 ninja1, Ninja2 ninja2, View &view);
+        //metodos
+        GuardiaEstatico* guardiaEstaticoMasCercano();
 
 };
 
