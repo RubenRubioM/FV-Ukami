@@ -36,12 +36,6 @@ Game::Game()
     ninja1 = new Ninja1(400.f, 900.f, mapa.getb2World());
     ninja2 = new Ninja2(400.f, 400.f, mapa.getb2World());
 
-    //Creamos los Enemigos
-    enemigoCercano = 0;
-    enemigos.push_back(new Enemigo1(600.f, 900.f, mapa.getb2World()));
-    enemigos.push_back(new Enemigo1(900.f, 400.f, mapa.getb2World()));
-
-
     Puerta *pu = new Puerta();
 
     // ==== Inicializamos palanca ====
@@ -52,6 +46,7 @@ Game::Game()
 
     //creamos el evento para poder pasarselo al kanji
     Event event;
+    GuardiaEstatico* g = new GuardiaEstatico(400,700);
 
     Kanji* kanji = new Kanji(0,"ukami",window, event); //creamos el kanji de ukami
 
@@ -97,10 +92,7 @@ Game::Game()
             ninja2->drawNinja(window);
 
             //========Enemigos=========
-            for(int i=0; i<enemigos.size(); i++){
-                enemigos.at(i)->ia(deltaTime.asMilliseconds());
-                enemigos.at(i)->drawEnemigo(window);
-            }
+            g->drawNinjaEstatico(window);
 
             // ======================
             pu->drawPuerta(window);
@@ -163,32 +155,6 @@ void Game::calcularFPS(){
 }
 
 
-Enemigo* Game::enemigoMasCercano(){
-    float distanciaMinima = 999999;
-    float distancia = 0;
-    float powX = 0;
-    float powY = 0;
-    Enemigo* guardiaCercano;
-
-    //Recorremos todos los guardas y calculamos cual esta mas cerca
-    for(int i=0; i < enemigos.size();i++){
-        powX = pow(ninja1->getSprite().getPosition().x-(enemigos.at(i)->getSprite()->getPosition().x),2);
-        powY = pow(ninja1->getSprite().getPosition().y-(enemigos.at(i)->getSprite()->getPosition().y),2);
-
-        distancia = fabs(sqrt(powX+powY));
-        cout << "Distancia entre Ninja 1 y Enemigo " << i << " ->" << distancia << endl;
-
-        //Se devuelve el guardia mas cercano
-        if(distancia < distanciaMinima){
-
-            guardiaCercano = enemigos.at(i);
-            distanciaMinima = distancia;
-        }
-
-    }
-
-    return guardiaCercano;
-}
 
 void Game::updateView(Ninja1 ninja1, Ninja2 ninja2, View &view)
 {
