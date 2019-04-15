@@ -23,6 +23,10 @@ Game::Game()
     // Definimos una ventana
     RenderWindow window(VideoMode(1280, 720), "Ukami");
     window.setFramerateLimit(60);
+
+    //creamos el evento para poder pasarselo al kanji
+    Event event;
+
     // Definimos una vista
     View view;
     view.setSize(1920, 1080);
@@ -43,9 +47,14 @@ Game::Game()
     palanca1.inicializar();
     palanca1.palancaSprite->setPosition(700,440);
 
+    Palanca palanca2;
+    palanca2.inicializar();
+    palanca2.palancaSprite->setPosition(900,440);
 
-    //creamos el evento para poder pasarselo al kanji
-    Event event;
+    menu* menu = menu::getInstance(window,event);
+
+
+
 
     //Enemigos
     guardiaEstaticoCercano = 0;
@@ -56,29 +65,54 @@ Game::Game()
     Kanji* kanji = new Kanji(0,"ukami",window, event); //creamos el kanji de ukami
 
     hud = Hud::getInstance();
-
+    sf::Clock tiempoEntreTeclas;
     while (window.isOpen())
     {
+
+
+
 
         deltaTime = deltaClock.restart();
         while (window.pollEvent(event))
         {
-            if (event.type == Event::Closed)
+            if(tiempoEntreTeclas.getElapsedTime().asSeconds()>0.5f){
+                if (event.type == Event::Closed)
                 window.close();
 
-            //Activar y desactivar los fps
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::F4)){
-                if(mostrarFPS){
-                    mostrarFPS = false;
-                }else{
-                    mostrarFPS = true;
+                //Activar y desactivar los fps
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::F4)){
+                    tiempoEntreTeclas.restart();
+                    if(mostrarFPS){
+                        mostrarFPS = false;
+                    }else{
+                        mostrarFPS = true;
+                    }
+                }
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::M)){
+                    tiempoEntreTeclas.restart();
+                    if(estado==2){
+                        estado=0;
+                        cout << "Estado -> " << estado  << endl;
+                    }else{
+
+                        estado=2;
+                        cout << "Estado -> " << estado  << endl;
+                    }
                 }
             }
+
         }
 
         window.clear();
         // Le asignamos a nuesro viewport la view
         window.setView(view);
+
+        if(estado==2){
+            cout << "Entra estado 2" << endl;
+            menu->drawMenu();
+        }
+
 
         if(estado==0){
             // Funcion para dibujar nuestro mapa
@@ -137,6 +171,7 @@ Game::Game()
             // ======================
             pu->drawPuerta(window);
             window.draw(*palanca1.palancaSprite);
+            window.draw(*palanca2.palancaSprite);
 
             //=======HUD============
             hud->drawHUD(window);
@@ -152,6 +187,9 @@ Game::Game()
             if(kanji->updateKanji()){
                 estado = 0;
                 palanca1.palancaSprite->setScale(0,0);
+                //delete kanji;
+                kanji = NULL;
+                kanji = new Kanji(1,"kanji",window,event);
             }
             kanji->drawKanji();
 
@@ -159,7 +197,13 @@ Game::Game()
 
 
         //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
-        if(ninja2->getSprite().getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds())){
+        if(ninja2->getSprite().getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
+            cout << "Colisiona" << endl;
+            estado=1;
+        }
+
+        //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
+        if(ninja2->getSprite().getGlobalBounds().intersects(palanca2.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
             cout << "Colisiona" << endl;
             estado=1;
         }

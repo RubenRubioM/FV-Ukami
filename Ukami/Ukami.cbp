@@ -151,6 +151,7 @@
 		<Unit filename="include/Puerta.h" />
 		<Unit filename="include/SFMLDebugDraw.h" />
 		<Unit filename="include/TextureHolder.h" />
+		<Unit filename="include/menu.h" />
 		<Unit filename="include/tinyxml2.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AnimatedSprite.cpp" />
@@ -167,6 +168,7 @@
 		<Unit filename="src/Puerta.cpp" />
 		<Unit filename="src/SFMLDebugDraw.cpp" />
 		<Unit filename="src/TextureHolder.cpp" />
+		<Unit filename="src/menu.cpp" />
 		<Unit filename="src/tinyxml2.cpp" />
 		<Extensions>
 			<envvars />

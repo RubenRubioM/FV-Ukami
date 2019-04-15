@@ -1946,7 +1946,7 @@
 	<SFML/Graphics/Rect.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1555312214 /home/rrm73/Escritorio/FV-Ukami/Ukami/include/Game.h
+1555320004 /home/rrm73/Escritorio/FV-Ukami/Ukami/include/Game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	"tinyxml2.h"
@@ -1964,6 +1964,7 @@
 	<map>
 	"Box2D/Box2D.h"
 	"SFMLDebugDraw.h"
+	"menu.h"
 	<stddef.h>
 
 1555312214 /home/rrm73/Escritorio/FV-Ukami/Ukami/include/Ninja1.h
@@ -2016,7 +2017,7 @@
 	<vector>
 	<map>
 
-1555315391 source:/home/rrm73/Escritorio/FV-Ukami/Ukami/src/Game.cpp
+1555323546 source:/home/rrm73/Escritorio/FV-Ukami/Ukami/src/Game.cpp
 	"Game.h"
 
 1555315028 source:/home/rrm73/Escritorio/FV-Ukami/Ukami/src/Hud.cpp
@@ -2056,4 +2057,12 @@
 
 1555312214 source:/home/rrm73/Escritorio/FV-Ukami/Ukami/src/GuardiaEstatico.cpp
 	"GuardiaEstatico.h"
+
+1555322789 /home/rrm73/Escritorio/FV-Ukami/Ukami/include/menu.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<cstring>
+
+1555323078 source:/home/rrm73/Escritorio/FV-Ukami/Ukami/src/menu.cpp
+	"menu.h"
 

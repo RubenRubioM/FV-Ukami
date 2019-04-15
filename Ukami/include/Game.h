@@ -17,6 +17,7 @@
 #include <map>
 #include "Box2D/Box2D.h"
 #include "SFMLDebugDraw.h"
+#include "menu.h"
 #include <stddef.h>
 
 using namespace tinyxml2;
@@ -53,6 +54,7 @@ class Game
         int contadorFPS = 0;
         bool mostrarFPS = true;
         int estado = 0; // Como sustitucion hasta que tengamos el patron State ||||  0 = juego normal   1 = minijuego Kanji"
+        int numKanji = 0;
 
         vector<GuardiaEstatico*> guardiasEstaticos; //Array con todos los guardias (quiza luego se hace herencia en diferentes tipos de guardias)
         GuardiaEstatico* guardiaEstaticoCercano; //Me guardo que guardia es el mas cercano cuando silbo
