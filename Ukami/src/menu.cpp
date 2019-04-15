@@ -384,11 +384,7 @@ void menu::actualizarMenu()
     memcpy(menuActual, menuInicial, 4);
 
     if(tiempoEntreTeclas.getElapsedTime().asSeconds()>0.2f){
-        switch(evento->type)
-        {
 
-            case sf::Event::KeyPressed:
-            {
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::M))
                 {
                     tiempoEntreTeclas.restart();
@@ -487,10 +483,7 @@ void menu::actualizarMenu()
                     presionado = 0;
                     actual = 0;
                 }
-                break;
-            }
 
-        }
     }
 
 }

@@ -109,7 +109,7 @@ Game::Game()
         window.setView(view);
 
         if(estado==2){
-            cout << "Entra estado 2" << endl;
+
             menu->drawMenu();
         }
 
