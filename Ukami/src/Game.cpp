@@ -139,7 +139,7 @@ Game::Game()
             window.draw(*palanca1.palancaSprite);
 
             //=======HUD============
-            //El HUD debe dibujarse siempre al final (a excepcion de los minijuegos que no tienen o tendras otro hud)
+            hud->drawHUD(window);
             hud->drawSigilo(window, ninja1->getSliderSigilo());
         }
 

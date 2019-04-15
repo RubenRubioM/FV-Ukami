@@ -19,6 +19,7 @@ class Hud
 
         void drawSigilo(sf::RenderWindow &window, sf::RectangleShape*);
         void drawFPS(sf::RenderWindow &window);
+        void drawHUD(sf::RenderWindow &window);
         void updateFPS(int);
         virtual ~Hud();
 
@@ -31,6 +32,11 @@ class Hud
         sf::Font* aldhesFont;
         sf::Text* fpsText;
 
+        //HUD
+        sf::Texture* hudTextureNinja1;
+        sf::Sprite* hudSpriteNinja1;
+        sf::Texture* hudTextureNinja2;
+        sf::Sprite* hudSpriteNinja2;
         sf::Sprite* spritesSigilo[2];
 };
 

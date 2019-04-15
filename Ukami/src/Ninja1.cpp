@@ -52,12 +52,12 @@ Ninja1::Ninja1(float posx, float posy, b2World* world)
 
     sliderSigilo[0].setSize(sf::Vector2f(maxSigilo,5));
     sliderSigilo[0].setFillColor(sf::Color::Blue);
-    sliderSigilo[0].setPosition(sf::Vector2f(80,45));
+    sliderSigilo[0].setPosition(sf::Vector2f(210,100));
     sliderSigilo[1].setSize(sf::Vector2f(maxSigilo,5));
     sliderSigilo[1].setFillColor(sf::Color::Transparent);
     sliderSigilo[1].setOutlineColor(sf::Color::Blue);
     sliderSigilo[1].setOutlineThickness(3);
-    sliderSigilo[1].setPosition(sf::Vector2f(80,45));
+    sliderSigilo[1].setPosition(sf::Vector2f(210,100));
     texturaSigilo = new sf::Texture();
 
 

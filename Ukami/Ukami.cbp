@@ -140,9 +140,8 @@
 		<Unit filename="include/AnimatedSprite.h" />
 		<Unit filename="include/Animation.h" />
 		<Unit filename="include/Collision.h" />
-		<Unit filename="include/Enemigo.h" />
-		<Unit filename="include/Enemigo1.h" />
 		<Unit filename="include/Game.h" />
+		<Unit filename="include/GuardiaEstatico.h" />
 		<Unit filename="include/Hud.h" />
 		<Unit filename="include/Kanji.h" />
 		<Unit filename="include/Map.h" />
@@ -157,9 +156,8 @@
 		<Unit filename="src/AnimatedSprite.cpp" />
 		<Unit filename="src/Animation.cpp" />
 		<Unit filename="src/Collision.cpp" />
-		<Unit filename="src/Enemigo.cpp" />
-		<Unit filename="src/Enemigo1.cpp" />
 		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/GuardiaEstatico.cpp" />
 		<Unit filename="src/Hud.cpp" />
 		<Unit filename="src/Kanji.cpp" />
 		<Unit filename="src/Map.cpp" />
