@@ -2,6 +2,8 @@
 
 menu* menu::menuUnico = 0;
 
+
+
 menu* menu::getInstance(sf::RenderWindow &window, sf::Event &eventGame)
 {
     if(menuUnico == 0){
@@ -19,6 +21,8 @@ menu::menu(sf::RenderWindow &window, sf::Event &eventGame)
     presionado = 0;
     idMenu = 0;
     cont = 0;
+
+    //Game *game = Game::getInstance();
 
     ventanaMenu = &window;
     evento = &eventGame;
@@ -304,14 +308,15 @@ void menu::cargarMenu()
     }
 }
 
-void menu::drawMenu()
+int menu::drawMenu()
 {
+    int devolucion = -1;
     ventanaMenu->setView(*vistaMenu);
-    actualizarMenu();
+    devolucion = actualizarMenu();
     ventanaMenu->draw(*fondo);
     renderMenu(idMenu);
 
-
+    return devolucion;
 }
 
 void menu::copiarTextArray(sf::Text* origen [4], sf::Text* destino [4])
@@ -378,8 +383,9 @@ void menu::hoverMenu(sf::Text* menuAPintar [4])
     menuAPintar[actual]->setColor(hover);
 }
 
-void menu::actualizarMenu()
+int menu::actualizarMenu()
 {
+    int devolucion = -1;
     sf::Text* menuActual [4];
     memcpy(menuActual, menuInicial, 4);
 
@@ -436,6 +442,8 @@ void menu::actualizarMenu()
                     if(idMenu == 0)
                     {
                         cont = 0;
+                        cout << "ENTRA";
+                        devolucion = 0;
                     }
                     else
                     {
@@ -485,6 +493,7 @@ void menu::actualizarMenu()
                 }
 
     }
+    return devolucion;
 
 }
 

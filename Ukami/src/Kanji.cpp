@@ -223,7 +223,7 @@ bool Kanji::updateKanji() //no se crea ningun estado adicional porque al manejar
     bool devolucion = false;
     int auxAngle;
 
-    if(tiempoEntreTecla.getElapsedTime().asSeconds()>0.5f){
+    if(tiempoEntreTecla.getElapsedTime().asSeconds()>0.2f){
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) //si en el teclado esta presionada la tecla "Up", ejecuta estas instrucciones (Up es la flecha para arriba).
         {
             tiempoEntreTecla.restart();
@@ -298,9 +298,9 @@ bool Kanji::updateKanji() //no se crea ningun estado adicional porque al manejar
     }
 
 
-    if(!win) //mientras no se haya ganado, se comprueba si el kanji esta correcto o no
+    if(checkKanji() && sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
     {
-        devolucion = checkKanji();
+        devolucion = true;
     }
 
     return devolucion;

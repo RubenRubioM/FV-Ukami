@@ -33,6 +33,7 @@ class Game
             return unicaInstancia;
         }
         virtual ~Game();
+        void setEstado(int state);
 
 
     protected:
@@ -53,7 +54,7 @@ class Game
         sf::Clock frameClock;
         int contadorFPS = 0;
         bool mostrarFPS = true;
-        int estado = 0; // Como sustitucion hasta que tengamos el patron State ||||  0 = juego normal   1 = minijuego Kanji"
+        int estado = 2; // Como sustitucion hasta que tengamos el patron State ||||  0 = juego normal   1 = minijuego Kanji"
         int numKanji = 0;
 
         vector<GuardiaEstatico*> guardiasEstaticos; //Array con todos los guardias (quiza luego se hace herencia en diferentes tipos de guardias)

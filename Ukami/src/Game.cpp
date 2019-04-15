@@ -40,16 +40,13 @@ Game::Game()
     ninja1 = new Ninja1(400.f, 900.f, mapa.getb2World());
     ninja2 = new Ninja2(400.f, 400.f, mapa.getb2World());
 
-    Puerta *pu = new Puerta();
+    Puerta pu(1800, 620, mapa.getb2World());
 
     // ==== Inicializamos palanca ====
     Palanca palanca1;
     palanca1.inicializar();
     palanca1.palancaSprite->setPosition(700,440);
 
-    Palanca palanca2;
-    palanca2.inicializar();
-    palanca2.palancaSprite->setPosition(900,440);
 
     menu* menu = menu::getInstance(window,event);
 
@@ -108,12 +105,9 @@ Game::Game()
         // Le asignamos a nuesro viewport la view
         window.setView(view);
 
-        if(estado==2){
-
-            menu->drawMenu();
-        }
 
 
+        // Estado 0 es para mostrar el juego normal
         if(estado==0){
             // Funcion para dibujar nuestro mapa
             mapa.drawMap(window);
@@ -139,7 +133,7 @@ Game::Game()
             // ======================
 
             // ========Ninja2=========
-            ninja2->updateMovement(view, deltaTime.asMilliseconds());
+            ninja2->updateMovement(view, deltaTime.asMilliseconds(),frameClock);
             ninja2->drawNinja(window);
 
 
@@ -168,10 +162,9 @@ Game::Game()
 
 
 
-            // ======================
-            pu->drawPuerta(window);
+            // =========PUERTA Y PALANCA=============
+            pu.drawPuerta(window);
             window.draw(*palanca1.palancaSprite);
-            window.draw(*palanca2.palancaSprite);
 
             //=======HUD============
             hud->drawHUD(window);
@@ -184,7 +177,9 @@ Game::Game()
         //=======Kanji============
         //TODO: tendremos que hacer un patron state mas adelante
         if(estado==1){
+            // Comprobamos si hemos ganado el kanji
             if(kanji->updateKanji()){
+                pu.ocultarPuerta();
                 estado = 0;
                 palanca1.palancaSprite->setScale(0,0);
                 //delete kanji;
@@ -195,15 +190,17 @@ Game::Game()
 
         }
 
+        // Estado 2 es para mostrar el menu
+        if(estado==2){
+            if(menu->drawMenu()==0){
+                estado=0;
+            }
+
+        }
+
 
         //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
         if(ninja2->getSprite().getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
-            cout << "Colisiona" << endl;
-            estado=1;
-        }
-
-        //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
-        if(ninja2->getSprite().getGlobalBounds().intersects(palanca2.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
             cout << "Colisiona" << endl;
             estado=1;
         }
@@ -283,4 +280,10 @@ void Game::updateView(Ninja1 ninja1, Ninja2 ninja2, View &view)
             view.setCenter(ninja2.getSprite().getPosition().x, view.getSize().y / 2);
     }else
         view.setCenter(view.getSize().x / 2, view.getSize().y / 2);
+}
+
+
+void Game::setEstado(int state)
+{
+    estado = state;
 }

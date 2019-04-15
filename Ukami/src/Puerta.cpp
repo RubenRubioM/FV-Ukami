@@ -1,33 +1,43 @@
 #include "Puerta.h"
+#define F 30.0f
 
-Puerta::Puerta()
+Puerta::Puerta(int x, int y, b2World* world)
 {
-    //ctor
-    loadSprite();
-    colocarSprite();
-}
+    texture.loadFromFile("tileset/door1.png");
+    texture.setSmooth(true);
 
-void Puerta::loadTexture()
-{
-    texture = new sf::Texture;
-    texture->loadFromFile("tileset/door1.png");
-    texture->setSmooth(true);
-}
+    sprite.setTexture(texture);
+    // 1800-620
+    sprite.setPosition(x,y);
 
-void Puerta::loadSprite()
-{
-    loadTexture();
-    sprite = new sf::Sprite(*texture);
-}
+      // =========Cosas de box2D======
+    b2BodyDef bodydef;
+    bodydef.position.Set(x / F, y / F);
+    bodydef.type = b2_kinematicBody;
+    puertaBody = world->CreateBody(&bodydef);
 
-void Puerta::colocarSprite()
-{
-    sprite->setPosition(1800,620); //no lo veo, no se porque
+    b2PolygonShape shape;
+    shape.SetAsBox((sprite.getGlobalBounds().width - 350 / 2.f) / F, (sprite.getGlobalBounds().height + 30 / 2.f) / F );
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &shape;
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 5.0f;
+    puertaBody->CreateFixture(&fixtureDef);
+    // =============================
 }
 
 void Puerta::drawPuerta(sf::RenderWindow &window)
 {
-    window.draw(*sprite);
+    window.draw(sprite);
+}
+
+void Puerta::ocultarPuerta()
+{
+    // Con esto haremos desactivar el body de la puerta en el mundo Box2D
+    puertaBody->SetActive(false);
+
+    // Vamos a ocultar el sprite de la puerta
+    sprite.setScale(0, 0);
 }
 
 Puerta::~Puerta()

@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include <SFML/Graphics.hpp>
+#include "Game.h"
 #include <iostream>
 #include <cstring>
 
@@ -12,11 +13,13 @@ class menu
     public:
         static menu* getInstance(sf::RenderWindow &window, sf::Event &eventGame);
 
-        void drawMenu();
+        int drawMenu();
 
     protected:
 
     private:
+
+
         menu(sf::RenderWindow &window, sf::Event &eventGame);
         static menu* menuUnico;
 
@@ -70,7 +73,7 @@ class menu
         void hoverMenu(sf::Text* menuAPintar [4]);
 
         void renderMenu(int queMenu);
-        void actualizarMenu();
+        int actualizarMenu();
 };
 
 #endif // MENU_H

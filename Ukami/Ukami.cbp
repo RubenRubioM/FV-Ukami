@@ -42,7 +42,12 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++14" />
+			<Add directory="C:/Program Files (x86)/SFML_Codeblocks/SFML-2.5.1/include" />
 		</Compiler>
+		<Linker>
+			<Add directory="C:/Program Files (x86)/SFML_Codeblocks/SFML-2.5.1/lib" />
+		</Linker>
 		<Unit filename="Box2D/Box2D/Box2D.h" />
 		<Unit filename="Box2D/Box2D/Collision/Shapes/b2ChainShape.cpp" />
 		<Unit filename="Box2D/Box2D/Collision/Shapes/b2ChainShape.h" />

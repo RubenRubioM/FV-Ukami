@@ -2537,7 +2537,7 @@
 1555328245 c:\users\kezav\desktop\fv-ukami\ukami\box2d\box2d\rope\b2rope.h
 	"Box2D/Common/b2Math.h"
 
-1555328245 source:c:\users\kezav\desktop\fv-ukami\ukami\main.cpp
+1555337683 source:c:\users\kezav\desktop\fv-ukami\ukami\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	"tinyxml2.h"
@@ -3047,7 +3047,7 @@
 	<SFML/Graphics/Rect.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1555328245 c:\users\kezav\desktop\fv-ukami\ukami\include\game.h
+1555341274 c:\users\kezav\desktop\fv-ukami\ukami\include\game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	"tinyxml2.h"
@@ -3073,7 +3073,7 @@
 	"AnimatedSprite.h"
 	"Animation.h"
 
-1555328245 c:\users\kezav\desktop\fv-ukami\ukami\include\ninja2.h
+1555343761 c:\users\kezav\desktop\fv-ukami\ukami\include\ninja2.h
 	"Ninja.h"
 
 1555328245 c:\users\kezav\desktop\fv-ukami\ukami\include\guardiaestatico.h
@@ -3086,7 +3086,8 @@
 	<stdlib.h>
 	<string>
 
-1555328245 c:\users\kezav\desktop\fv-ukami\ukami\include\puerta.h
+1555338783 c:\users\kezav\desktop\fv-ukami\ukami\include\puerta.h
+	"Box2D/Box2D.h"
 	<SFML/Graphics.hpp>
 
 1555328245 c:\users\kezav\desktop\fv-ukami\ukami\include\kanji.h
@@ -3102,8 +3103,9 @@
 	<SFML/Graphics.hpp>
 	<cmath>
 
-1555328245 c:\users\kezav\desktop\fv-ukami\ukami\include\menu.h
+1555342038 c:\users\kezav\desktop\fv-ukami\ukami\include\menu.h
 	<SFML/Graphics.hpp>
+	"Game.h"
 	<iostream>
 	<cstring>
 
@@ -3129,13 +3131,13 @@
 1555328245 source:c:\users\kezav\desktop\fv-ukami\ukami\src\hud.cpp
 	"Hud.h"
 
-1555328245 source:c:\users\kezav\desktop\fv-ukami\ukami\src\kanji.cpp
+1555340710 source:c:\users\kezav\desktop\fv-ukami\ukami\src\kanji.cpp
 	"Kanji.h"
 
 1555328245 source:c:\users\kezav\desktop\fv-ukami\ukami\src\map.cpp
 	"Map.h"
 
-1555329024 source:c:\users\kezav\desktop\fv-ukami\ukami\src\menu.cpp
+1555342289 source:c:\users\kezav\desktop\fv-ukami\ukami\src\menu.cpp
 	"menu.h"
 
 1555328245 source:c:\users\kezav\desktop\fv-ukami\ukami\src\ninja.cpp
@@ -3147,7 +3149,7 @@
 1555328245 source:c:\users\kezav\desktop\fv-ukami\ukami\src\ninja2.cpp
 	"Ninja2.h"
 
-1555328245 source:c:\users\kezav\desktop\fv-ukami\ukami\src\puerta.cpp
+1555339597 source:c:\users\kezav\desktop\fv-ukami\ukami\src\puerta.cpp
 	"Puerta.h"
 
 1555328245 source:c:\users\kezav\desktop\fv-ukami\ukami\src\sfmldebugdraw.cpp
@@ -3164,6 +3166,6 @@
 	<cstddef>
 	<cstdarg>
 
-1555329024 source:c:\users\kezav\desktop\fv-ukami\ukami\src\game.cpp
+1555342971 source:c:\users\kezav\desktop\fv-ukami\ukami\src\game.cpp
 	"Game.h"
 

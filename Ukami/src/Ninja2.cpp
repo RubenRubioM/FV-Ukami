@@ -18,8 +18,6 @@ Ninja2::Ninja2(float posx, float posy, b2World* world)
         b2PolygonShape shape;
         shape.SetAsBox((sprite.getGlobalBounds().width / 2.f) / F, (sprite.getGlobalBounds().height / 2.f) / F);
 
-        cout<<"Anchura: "<<((sprite.getGlobalBounds().width / 2.f) / F)<<endl;
-        cout<<"Altura: "<<((sprite.getGlobalBounds().height / 2.f) / F)<<endl;
         b2FixtureDef fixtureDef;
         fixtureDef.density = 0.5f;
         fixtureDef.friction = 0.5f;
@@ -34,7 +32,7 @@ Ninja2::~Ninja2()
     //dtor
 }
 
-void Ninja2::updateMovement(View &view, float _deltaTime)
+void Ninja2::updateMovement(View &view, float _deltaTime,sf::Clock frameClock)
 {
 
     if(Keyboard::isKeyPressed(Keyboard::D))
@@ -48,14 +46,14 @@ void Ninja2::updateMovement(View &view, float _deltaTime)
     if(Keyboard::isKeyPressed(Keyboard::A))
     {
         b2Vec2 vel = ninjaBody->GetLinearVelocity();
-        vel.x = -velocity;
+        vel.x = -velocity*10;
         vel.y = ninjaBody->GetLinearVelocity().y;
         ninjaBody->SetLinearVelocity(vel);
     }
 
     if(Keyboard::isKeyPressed(Keyboard::W))
     {
-        cout<<"Mass: "<<ninjaBody->GetMass()<<endl;
+
         ninjaBody->ApplyLinearImpulse(b2Vec2(0, -30.0f),ninjaBody->GetWorldCenter(), true);
     }
 
