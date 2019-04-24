@@ -10,7 +10,7 @@ class Ninja2 : public Ninja
         void updateMovement(View &view, float,sf::Clock);
         void drawNinja(RenderWindow &window);
 
-        Sprite getSprite();
+        AnimatedSprite getSprite();
         virtual ~Ninja2();
     protected:
 

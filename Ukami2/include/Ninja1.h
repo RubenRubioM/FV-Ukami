@@ -22,7 +22,7 @@ class Ninja1 : public Ninja
 
         virtual ~Ninja1();
     protected:
-         Texture textureDash;
+        Texture textureDash;
         Sprite spriteDash;
         Animation dashAnimationRight;
         b2PolygonShape shape2;
@@ -34,7 +34,7 @@ class Ninja1 : public Ninja
         sf::Clock tiempoDash; //Reloj para ver la duracion del Dash
         sf::RectangleShape sliderDash[2];
 
-        sf::Clock tiempoEntreTeclas;
+
     private:
 
 };

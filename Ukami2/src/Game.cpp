@@ -133,7 +133,7 @@ Game::Game()
             // ======================
 
             // ========Ninja2=========
-            ninja2->updateMovement(view, deltaTime.asMilliseconds(),frameClock);
+            ninja2->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
             ninja2->drawNinja(window);
 
 
@@ -200,11 +200,12 @@ Game::Game()
 
 
         //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
+        /*
         if(ninja2->getSprite().getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
             cout << "Colisiona" << endl;
             estado=1;
         }
-
+        */
 
         //En cualquier estado se dibujaran los FPS
         calcularFPS();

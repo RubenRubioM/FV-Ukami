@@ -30,7 +30,7 @@ class Ninja
         virtual ~Ninja();
 
     protected:
-         bool saltando = false;
+        bool saltando = false;
         float impulsoSalto = 500.f;
         float velocity = .5f;
 
@@ -44,6 +44,8 @@ class Ninja
         sf::Clock cdSalto;
         sf::RectangleShape sliderSigilo[2];
         sf::Texture* texturaSigilo;
+
+        sf::Clock tiempoEntreTeclas;
 
 
 

@@ -3,7 +3,7 @@
 
 Ninja1::Ninja1(float posx, float posy, b2World* world)
 {
-    cout<<"Creamos ninja"<<endl;
+    cout<<"Creamos ninja 1"<<endl;
     texture.loadFromFile("tileset/ninja1_move_right.png");
     texture.setSmooth(true);
 
