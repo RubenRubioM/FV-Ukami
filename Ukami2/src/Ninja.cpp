@@ -49,6 +49,7 @@ void Ninja::cargarSigilo(float _deltaTime){
 }
 
 sf::RectangleShape* Ninja::getSliderSigilo(){return sliderSigilo;}
+sf::RectangleShape* Ninja::getBoxCollider(){return boxCollider;}
 
 Ninja::~Ninja()
 {

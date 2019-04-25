@@ -33,6 +33,8 @@ Ninja2::Ninja2(float posx, float posy, b2World* world)
     walkingAnimationLeft.addFrame(sf::IntRect(0, 0, 233, 176));
 
 
+
+
     currentAnimation = &walkingAnimationRight;
     noKeyWasPressed = true;
 
@@ -47,6 +49,16 @@ Ninja2::Ninja2(float posx, float posy, b2World* world)
     shape.SetAsBox((233 / 2.f) / F, (176 / 2.f) / F);
     fixtureDef.shape = &shape;
     ninjaBody->CreateFixture(&fixtureDef);
+
+
+    // ======= Colider ficticio porque no va el de la animacion =======
+    boxCollider = new sf::RectangleShape(sf::Vector2f(walkingAnimationLeft.getFrame(0).width,walkingAnimationLeft.getFrame(0).height));
+    boxCollider->setOrigin(boxCollider->getSize().x/2.f,boxCollider->getSize().y/2.f);
+    boxCollider->setPosition(700,400);
+    boxCollider->setFillColor(sf::Color::Transparent);
+    boxCollider->setOutlineColor(sf::Color::Green);
+    boxCollider->setOutlineThickness(5);
+
     // =============================
 
     // =============================
@@ -141,9 +153,12 @@ void Ninja2::drawNinja(RenderWindow &window)
 {
 
     animatedSprite.setOrigin(animatedSprite.getGlobalBounds().width / 2.f, animatedSprite.getGlobalBounds().height / 2.f);
-    cout << "ASD" << endl;
     animatedSprite.setPosition(ninjaBody->GetPosition().x * F, ninjaBody->GetPosition().y * F );
     window.draw(animatedSprite);
+
+    boxCollider->setPosition(ninjaBody->GetPosition().x * F, ninjaBody->GetPosition().y * F );
+    //Quitar esto cuando no queramos ver las hitboxes
+    window.draw(*boxCollider);
 
 
 }

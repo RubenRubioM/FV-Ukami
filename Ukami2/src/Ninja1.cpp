@@ -13,6 +13,7 @@ Ninja1::Ninja1(float posx, float posy, b2World* world)
     textureDash.loadFromFile("tileset/ninja1_dash.png");
     textureDash.setSmooth(true);
 
+    walkingAnimationRight = *new Animation();
     walkingAnimationRight.setSpriteSheet(texture);
     walkingAnimationRight.addFrameInitial(sf::IntRect(0, 0, 233, 176));
     walkingAnimationRight.addFrame(sf::IntRect(233, 0, 233, 176));
@@ -24,6 +25,7 @@ Ninja1::Ninja1(float posx, float posy, b2World* world)
     walkingAnimationRight.addFrame(sf::IntRect(1631, 0, 233, 176));
     walkingAnimationRight.addFrame(sf::IntRect(1864, 0, 233, 176));
 
+    walkingAnimationLeft = *new Animation();
     walkingAnimationLeft.setSpriteSheet(texture2);
     walkingAnimationLeft.addFrameInitial(sf::IntRect(1864, 0, 233, 176));
     walkingAnimationLeft.addFrame(sf::IntRect(1631, 0, 233, 176));
@@ -38,9 +40,11 @@ Ninja1::Ninja1(float posx, float posy, b2World* world)
     dashAnimationRight.setSpriteSheet(textureDash);
     dashAnimationRight.addFrame(sf::IntRect(0, 0, 232, 176));
 
+    currentAnimation = new Animation();
     currentAnimation = &walkingAnimationRight;
     noKeyWasPressed = true;
 
+    animatedSprite = *new AnimatedSprite();
     // =========Cosas de box2D======
     b2BodyDef bodydef;
     bodydef.position.Set(posx / F, posy / F);
@@ -52,6 +56,15 @@ Ninja1::Ninja1(float posx, float posy, b2World* world)
     shape.SetAsBox((233 / 2.f) / F, (176 / 2.f) / F);
     fixtureDef.shape = &shape;
     ninjaBody->CreateFixture(&fixtureDef);
+
+    // ======= Colider ficticio porque no va el de la animacion =======
+    boxCollider = new sf::RectangleShape(sf::Vector2f(walkingAnimationLeft.getFrame(0).width,walkingAnimationLeft.getFrame(0).height));
+    boxCollider->setOrigin(boxCollider->getSize().x/2.f,boxCollider->getSize().y/2.f);
+    boxCollider->setPosition(700,400);
+    boxCollider->setFillColor(sf::Color::Transparent);
+    boxCollider->setOutlineColor(sf::Color::Green);
+    boxCollider->setOutlineThickness(5);
+
     // =============================
 
      //Slider del sigilo
@@ -188,6 +201,10 @@ void Ninja1::drawNinja(RenderWindow &window)
     animatedSprite.setOrigin(animatedSprite.getGlobalBounds().width / 2.f, animatedSprite.getGlobalBounds().height / 2.f);
     animatedSprite.setPosition(ninjaBody->GetPosition().x * F, ninjaBody->GetPosition().y * F );
     window.draw(animatedSprite);
+
+    boxCollider->setPosition(ninjaBody->GetPosition().x * F, ninjaBody->GetPosition().y * F );
+    //Quitar esto cuando no queramos ver las hitboxes
+    window.draw(*boxCollider);
 
 }
 

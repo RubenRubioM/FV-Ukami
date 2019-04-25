@@ -12,6 +12,8 @@
 #include "Hud.h"
 #include "Puerta.h"
 #include "Kanji.h"
+#include "AnimatedSprite.h"
+#include "Animation.h"
 #include <iostream>
 #include <vector>
 #include <map>

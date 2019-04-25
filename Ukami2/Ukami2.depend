@@ -1240,7 +1240,7 @@
 	"Box2D/Dynamics/Joints/b2WeldJoint.h"
 	"Box2D/Dynamics/Joints/b2WheelJoint.h"
 
-1556113085 /home/rrm73/Desktop/FV-Ukami/Ukami2/include/Ninja.h
+1556187183 /home/rrm73/Desktop/FV-Ukami/Ukami2/include/Ninja.h
 	<SFML/Graphics.hpp>
 	"tinyxml2.h"
 	"TextureHolder.h"
@@ -1265,7 +1265,7 @@
 	<SFML/Graphics/Rect.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1555515844 /home/rrm73/Desktop/FV-Ukami/Ukami2/include/Game.h
+1556134096 /home/rrm73/Desktop/FV-Ukami/Ukami2/include/Game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	"tinyxml2.h"
@@ -1278,6 +1278,8 @@
 	"Hud.h"
 	"Puerta.h"
 	"Kanji.h"
+	"AnimatedSprite.h"
+	"Animation.h"
 	<iostream>
 	<vector>
 	<map>
@@ -1343,7 +1345,7 @@
 	<vector>
 	<map>
 
-1556112887 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Game.cpp
+1556187270 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Game.cpp
 	"Game.h"
 
 1555324646 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/GuardiaEstatico.cpp
@@ -1361,13 +1363,13 @@
 1555338690 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/menu.cpp
 	"menu.h"
 
-1555324646 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja.cpp
+1556187211 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja.cpp
 	"Ninja.h"
 
-1556112581 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja1.cpp
+1556187136 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja1.cpp
 	"Ninja1.h"
 
-1555515844 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja2.cpp
+1556187141 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja2.cpp
 	"Ninja2.h"
 
 1555335998 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Puerta.cpp

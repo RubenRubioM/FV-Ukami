@@ -25,6 +25,7 @@ class Ninja
         void desactivarSigilo();
         void descargarSigilo(float);
         void cargarSigilo(float);
+        sf::RectangleShape* getBoxCollider();
 
         sf::RectangleShape* getSliderSigilo();
         virtual ~Ninja();
@@ -33,6 +34,7 @@ class Ninja
         bool saltando = false;
         float impulsoSalto = 500.f;
         float velocity = .5f;
+        sf::RectangleShape* boxCollider;
 
         // ==== Sigilo ====
         bool enSigilo = false; //Booleano para saber si esta en sigilo
