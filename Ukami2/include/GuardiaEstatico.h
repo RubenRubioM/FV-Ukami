@@ -35,11 +35,13 @@ class GuardiaEstatico
         void setEsperando(bool);
         void setVolviendo(bool);
         void setMoviendose(bool);
+        void setHaRegresado(bool);
 
     private:
         bool moviendose = false; //Principalemnte se pone a true cuando le silbas (guardias estaticos)
         bool esperando = false; //Se pone a true cuando le silban, va al destino, y tiene que esperar
         bool volviendo = false; //Cuando esta volviendo a la posicion inicial
+        bool haRegresado = false;
         float velocidad;
         float xInicial; //la posicion inicial para un guardia estatico para asi poder regresarlo despues de moverse
         float posicionDestino; //Posicion donde tiene que ir cuando le silban
@@ -47,6 +49,7 @@ class GuardiaEstatico
         sf::Texture *texture;
         sf::Sprite *sprite;
         sf::Clock tiempoAntesDeVolver; //Tiempo que pasa en el sitio hasta que vuelve al sitio donde estaba despues del silbido
+        sf::ConvexShape *triangle; //Vision
 };
 
 

@@ -2,7 +2,7 @@
 
 GuardiaEstatico::GuardiaEstatico(float _x, float _y)
 {
-     velocidad = 0.3;
+    velocidad = 0.3;
     xInicial = _x;
     texture = new sf::Texture();
 
@@ -11,6 +11,18 @@ GuardiaEstatico::GuardiaEstatico(float _x, float _y)
     sprite->setOrigin(sprite->getTexture()->getSize().x/2.f,sprite->getTexture()->getSize().y/2.f);
     sprite->setPosition(_x,_y); //We set origin to 16,16 so now we have to spawn him at 16,16 instead of 0,0
     sprite->scale(0.8f,0.8f);
+
+    // ==== Triangulo de vision ====
+    triangle = new sf::ConvexShape();
+    triangle->setPointCount(3);
+    triangle->setFillColor(sf::Color(250,250,0,150));
+    triangle->setOutlineThickness(2);
+    triangle->setOutlineColor(sf::Color::Red);
+    triangle->setPoint(0, sf::Vector2f(0, 0));
+    triangle->setPoint(1, sf::Vector2f(250,100));
+    triangle->setPoint(2, sf::Vector2f(250,-80));
+    triangle->setPosition(_x+50,_y-20);
+    triangle->setOrigin(0,0);
 }
 
 void GuardiaEstatico::moverse(float _deltaTime){
@@ -20,11 +32,13 @@ void GuardiaEstatico::moverse(float _deltaTime){
     */
 
     //Detectamos si va hacia la derecha o hacia la izquierda
-    if(posicionDestino > sprite->getPosition().x){
+    if(posicionDestino >= sprite->getPosition().x){
         //hacia la derecha
         direccionDestino = 1;
 
         sprite->move(direccionDestino*velocidad*_deltaTime,0);
+        triangle->setRotation(0);
+        triangle->move(direccionDestino*velocidad*_deltaTime,0);
     }else if(posicionDestino < sprite->getPosition().x){
         //hacia la izquierda
         if(direccionDestino==1){
@@ -37,16 +51,22 @@ void GuardiaEstatico::moverse(float _deltaTime){
                 activarRelojDeEspera();
             }else{
                 cout << "Ha vuelto a la posicion original" << endl;
+                haRegresado=true;
+
             }
+
             volviendo = false;
-
-
 
         }
         direccionDestino = -1;
 
         sprite->move(direccionDestino*velocidad*_deltaTime,0);
+        if(!haRegresado){
+            triangle->setRotation(180);
+        }
+        triangle->move(direccionDestino*velocidad*_deltaTime,0);
     }
+
 }
 
 void GuardiaEstatico::activarRelojDeEspera(){
@@ -59,6 +79,7 @@ void GuardiaEstatico::activarRelojDeEspera(){
 
 void GuardiaEstatico::drawNinjaEstatico(sf::RenderWindow &window){
     window.draw(*sprite);
+    window.draw(*triangle);
 }
 
 
@@ -78,6 +99,7 @@ void GuardiaEstatico::setPosicionDestino(float _x){posicionDestino = _x;}
 void GuardiaEstatico::setEsperando(bool _esperando){esperando = _esperando;}
 void GuardiaEstatico::setMoviendose(bool _silbido){moviendose = _silbido;}
 void GuardiaEstatico::setVolviendo(bool _volviendo){volviendo = _volviendo;}
+void GuardiaEstatico::setHaRegresado(bool _haRegresado){haRegresado = _haRegresado;}
 
 GuardiaEstatico::~GuardiaEstatico()
 {

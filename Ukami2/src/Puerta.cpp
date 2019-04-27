@@ -12,12 +12,13 @@ Puerta::Puerta(int x, int y, b2World* world)
 
       // =========Cosas de box2D======
     b2BodyDef bodydef;
-    bodydef.position.Set(x / F, y / F);
+    bodydef.position.Set(x / F, (y+100) / F);
     bodydef.type = b2_kinematicBody;
     puertaBody = world->CreateBody(&bodydef);
 
     b2PolygonShape shape;
-    shape.SetAsBox((sprite.getGlobalBounds().width - 350 / 2.f) / F, (sprite.getGlobalBounds().height + 30 / 2.f) / F );
+    shape.SetAsBox((sprite.getGlobalBounds().width - 350 / 2.f) / F, (sprite.getGlobalBounds().height - 500 / 2.f) / F );
+    //shape.SetAsBox((233 / 2.f) / F, (176 / 2.f) / F);
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &shape;
     fixtureDef.density = 1.0f;

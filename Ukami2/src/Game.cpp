@@ -143,6 +143,7 @@ Game::Game()
             if(guardiaEstaticoCercano != 0){
                 //Se mueve a la posicion donde le dices
                 if(guardiaEstaticoCercano->getMoviendose() && !guardiaEstaticoCercano->getEsperando()){
+                    guardiaEstaticoCercano->setHaRegresado(false);
                     guardiaEstaticoCercano->moverse(deltaTime.asMilliseconds());
                 }
 

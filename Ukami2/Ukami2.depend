@@ -1296,7 +1296,7 @@
 1556112755 /home/rrm73/Desktop/FV-Ukami/Ukami2/include/Ninja2.h
 	"Ninja.h"
 
-1555324646 /home/rrm73/Desktop/FV-Ukami/Ukami2/include/GuardiaEstatico.h
+1556360632 /home/rrm73/Desktop/FV-Ukami/Ukami2/include/GuardiaEstatico.h
 	<iostream>
 	<SFML/Graphics.hpp>
 
@@ -1345,10 +1345,10 @@
 	<vector>
 	<map>
 
-1556187270 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Game.cpp
+1556360589 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Game.cpp
 	"Game.h"
 
-1555324646 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/GuardiaEstatico.cpp
+1556360611 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/GuardiaEstatico.cpp
 	"GuardiaEstatico.h"
 
 1555515844 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Hud.cpp
@@ -1372,7 +1372,7 @@
 1556187141 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja2.cpp
 	"Ninja2.h"
 
-1555335998 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Puerta.cpp
+1556310889 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Puerta.cpp
 	"Puerta.h"
 
 1555324646 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/SFMLDebugDraw.cpp
