@@ -17,10 +17,11 @@ class Hud
             return unicaInstancia;
         }
 
-        void drawSigilo(sf::RenderWindow &window, sf::RectangleShape*);
+        void drawSigilo(sf::RenderWindow &window, sf::RectangleShape*, sf::RectangleShape*);
         void drawFPS(sf::RenderWindow &window);
         void drawHUD(sf::RenderWindow &window);
         void updateFPS(int);
+        void drawVida(sf::RenderWindow &window, sf::RectangleShape*, sf::RectangleShape*);
         virtual ~Hud();
 
 
@@ -38,6 +39,7 @@ class Hud
         sf::Texture* hudTextureNinja2;
         sf::Sprite* hudSpriteNinja2;
         sf::Sprite* spritesSigilo[2];
+        sf::Sprite* spritesSigilo2[2];
 };
 
 #endif // HUD_H

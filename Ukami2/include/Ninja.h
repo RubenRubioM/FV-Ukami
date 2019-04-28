@@ -21,11 +21,14 @@ class Ninja
     public:
         Ninja();
 
+        void descargarVida(float);
+        void cargarVida(float);
         void activarSigilo();
         void desactivarSigilo();
         void descargarSigilo(float);
         void cargarSigilo(float);
         sf::RectangleShape* getBoxCollider();
+        sf::RectangleShape* getSliderVida();
 
         sf::RectangleShape* getSliderSigilo();
         virtual ~Ninja();
@@ -45,6 +48,8 @@ class Ninja
         sf::Clock tiempoSigilo; //Reloj para ver la duracion del sigilo
         sf::Clock cdSalto;
         sf::RectangleShape sliderSigilo[2];
+        sf::RectangleShape* sliderVida;
+        float maxVida = 317;
         sf::Texture* texturaSigilo;
 
         sf::Clock tiempoEntreTeclas;

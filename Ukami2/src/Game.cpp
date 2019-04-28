@@ -140,6 +140,7 @@ Game::Game()
 
             //========Enemigos=========
 
+            //Movimiento para el guardia al que le has silbado
             if(guardiaEstaticoCercano != 0){
                 //Se mueve a la posicion donde le dices
                 if(guardiaEstaticoCercano->getMoviendose() && !guardiaEstaticoCercano->getEsperando()){
@@ -158,9 +159,20 @@ Game::Game()
                 }
             }
 
-            g->drawNinjaEstatico(window);
+            //Dibujamos todos los guardias estaticos
+            for(int i=0; i<guardiasEstaticos.size();i++){
+                guardiasEstaticos.at(i)->drawNinjaEstatico(window);
+            }
 
-
+            //Comprobamos colisiones de los personajes y las visiones de los enemigos
+            for(int i=0; i<guardiasEstaticos.size();i++){
+                if(ninja1->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds())){
+                    cout << "Detectado " << endl;
+                    ninja1->descargarVida(deltaTime.asMilliseconds());
+                }else{
+                    ninja1->cargarVida(deltaTime.asMilliseconds());
+                }
+            }
 
 
             // =========PUERTA Y PALANCA=============
@@ -169,7 +181,8 @@ Game::Game()
 
             //=======HUD============
             hud->drawHUD(window);
-            hud->drawSigilo(window, ninja1->getSliderSigilo());
+            hud->drawSigilo(window, ninja1->getSliderSigilo(),ninja2->getSliderSigilo());
+            hud->drawVida(window,ninja1->getSliderVida(),ninja2->getSliderVida());
         }
 
 

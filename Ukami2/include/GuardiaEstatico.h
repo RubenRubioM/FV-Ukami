@@ -29,6 +29,7 @@ class GuardiaEstatico
         bool getVolviendo();
         sf::Sprite *getSprite();
         sf::Clock getTiempoAntesDeVolver();
+        sf::ConvexShape* getVision();
 
         //Setters
         void setPosicionDestino(float);

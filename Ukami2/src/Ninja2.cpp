@@ -61,6 +61,25 @@ Ninja2::Ninja2(float posx, float posy, b2World* world)
 
     // =============================
 
+
+    //Slider del sigilo
+
+    sliderSigilo[0].setSize(sf::Vector2f(maxSigilo,5));
+    sliderSigilo[0].setFillColor(sf::Color::Red);
+    sliderSigilo[0].setPosition(sf::Vector2f(705,100));
+    sliderSigilo[1].setSize(sf::Vector2f(maxSigilo,5));
+    sliderSigilo[1].setFillColor(sf::Color::Transparent);
+    sliderSigilo[1].setOutlineColor(sf::Color::Red);
+    sliderSigilo[1].setOutlineThickness(3);
+    sliderSigilo[1].setPosition(sf::Vector2f(705,100));
+
+
+    //Slider de la vida
+    sliderVida = new sf::RectangleShape();
+    sliderVida->setSize(sf::Vector2f(maxVida,20));
+    sliderVida->setFillColor(sf::Color::Red);
+    sliderVida->setPosition(sf::Vector2f(669,60));
+
     // =============================
 }
 

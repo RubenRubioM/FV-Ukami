@@ -92,6 +92,7 @@ float GuardiaEstatico::getVelocidad(){return velocidad;}
 float GuardiaEstatico::getxInicial(){return xInicial;}
 sf::Sprite* GuardiaEstatico::getSprite(){return sprite;}
 sf::Clock GuardiaEstatico::getTiempoAntesDeVolver(){return tiempoAntesDeVolver;}
+sf::ConvexShape* GuardiaEstatico::getVision(){return triangle;}
 
 
 //Setters

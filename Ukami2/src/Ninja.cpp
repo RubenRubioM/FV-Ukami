@@ -48,7 +48,22 @@ void Ninja::cargarSigilo(float _deltaTime){
 
 }
 
+void Ninja::cargarVida(float _deltaTime){
+    if(sliderVida->getSize().x<maxVida){
+        sliderVida->setSize(sf::Vector2f(sliderVida->getSize().x + (0.1*_deltaTime), sliderVida->getSize().y));
+    }
+
+}
+
+void Ninja::descargarVida(float _deltaTime){
+    if(sliderVida->getSize().x>0){
+        sliderVida->setSize(sf::Vector2f(sliderVida->getSize().x - (0.1*_deltaTime), sliderVida->getSize().y));
+    }
+
+}
+
 sf::RectangleShape* Ninja::getSliderSigilo(){return sliderSigilo;}
+sf::RectangleShape* Ninja::getSliderVida(){return sliderVida;}
 sf::RectangleShape* Ninja::getBoxCollider(){return boxCollider;}
 
 Ninja::~Ninja()

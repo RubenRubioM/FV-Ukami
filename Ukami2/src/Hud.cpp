@@ -9,12 +9,14 @@ Hud::Hud()
     vistaHUD->setCenter(vistaHUD->getSize().x / 2, vistaHUD->getSize().y / 2);
 
     // ==== Sprites del sigilo ====
+
+    // Ninja1
     sf::Texture* texturaBack = new sf::Texture();
     texturaBack->loadFromFile("tileset/kunai_back.png");
     sf::Sprite* spriteBack = new sf::Sprite(*texturaBack);
     spriteBack->setOrigin(texturaBack->getSize().x/2.f,texturaBack->getSize().y/2);
     spriteBack->setScale(0.1,0.1);
-    spriteBack->setPosition(200,104);
+    spriteBack->setPosition(100,103);
     spritesSigilo[0] = spriteBack;
 
     sf::Texture* texturaFront = new sf::Texture();
@@ -22,8 +24,21 @@ Hud::Hud()
     sf::Sprite* spriteFront = new sf::Sprite(*texturaFront);
     spriteFront->setOrigin(texturaFront->getSize().x/2.f,texturaFront->getSize().y/2);
     spriteFront->setScale(0.1,0.1);
-    spriteFront->setPosition(338,102);
+    spriteFront->setPosition(238,102);
     spritesSigilo[1] = spriteFront;
+
+    //Ninja2
+    sf::Sprite* spriteBack2 = new sf::Sprite(*texturaBack);
+    spriteBack2->setOrigin(texturaBack->getSize().x/2.f,texturaBack->getSize().y/2);
+    spriteBack2->setScale(0.1,0.1);
+    spriteBack2->setPosition(695,103);
+    spritesSigilo2[0] = spriteBack2;
+
+    sf::Sprite* spriteFront2 = new sf::Sprite(*texturaFront);
+    spriteFront2->setOrigin(texturaFront->getSize().x/2.f,texturaFront->getSize().y/2);
+    spriteFront2->setScale(0.1,0.1);
+    spriteFront2->setPosition(833,102);
+    spritesSigilo2[1] = spriteFront2;
 
     // ==== FPS ====
     aldhesFont = new sf::Font();
@@ -41,6 +56,13 @@ Hud::Hud()
     hudSpriteNinja1->setOrigin(hudTextureNinja1->getSize().x/2.f,hudTextureNinja1->getSize().y/2);
     hudSpriteNinja1->setPosition(210,65);
 
+    // ==== HUD ninjas ====
+    hudTextureNinja2 = new sf::Texture();
+    hudTextureNinja2->loadFromFile("tileset/health_ninja2.png");
+    hudSpriteNinja2 = new sf::Sprite(*hudTextureNinja2);
+    hudSpriteNinja2->setOrigin(hudTextureNinja2->getSize().x/2.f,hudTextureNinja2->getSize().y/2);
+    hudSpriteNinja2->setPosition(800,65);
+
 }
 
 void Hud::updateFPS(int _fps){
@@ -50,18 +72,31 @@ void Hud::updateFPS(int _fps){
 
 }
 
-void Hud::drawSigilo(sf::RenderWindow &window, sf::RectangleShape* sliderSigilo){
+void Hud::drawSigilo(sf::RenderWindow &window, sf::RectangleShape* sliderSigilo1, sf::RectangleShape* sliderSigilo2){
     window.setView(*vistaHUD);
-    // ==== Ninja 2 ====
-    window.draw(sliderSigilo[0]);
-    window.draw(sliderSigilo[1]);
+    // ==== Ninja 1 ====
+    window.draw(sliderSigilo1[0]);
+    window.draw(sliderSigilo1[1]);
     window.draw(*spritesSigilo[0]);
     window.draw(*spritesSigilo[1]);
+
+    // ==== Ninja 2 ====
+    window.draw(sliderSigilo2[0]);
+    window.draw(sliderSigilo2[1]);
+    window.draw(*spritesSigilo2[0]);
+    window.draw(*spritesSigilo2[1]);
+}
+
+void Hud::drawVida(sf::RenderWindow &window, sf::RectangleShape* vida1, sf::RectangleShape* vida2){
+    window.setView(*vistaHUD);
+    window.draw(*vida1);
+    window.draw(*vida2);
 }
 
 void Hud::drawHUD(sf::RenderWindow &window){
     window.setView(*vistaHUD);
     window.draw(*hudSpriteNinja1);
+    window.draw(*hudSpriteNinja2);
 }
 
 void Hud::drawFPS(sf::RenderWindow &window){
