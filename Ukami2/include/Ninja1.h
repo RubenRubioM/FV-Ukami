@@ -21,7 +21,9 @@ class Ninja1 : public Ninja
         // ==============================
 
         virtual ~Ninja1();
-    protected:
+    private:
+
+        //DASH
         Texture textureDash;
         Sprite spriteDash;
         Animation dashAnimationRight;
@@ -35,7 +37,6 @@ class Ninja1 : public Ninja
         sf::RectangleShape sliderDash[2];
 
 
-    private:
 
 };
 

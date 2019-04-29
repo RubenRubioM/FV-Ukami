@@ -63,6 +63,14 @@ Hud::Hud()
     hudSpriteNinja2->setOrigin(hudTextureNinja2->getSize().x/2.f,hudTextureNinja2->getSize().y/2);
     hudSpriteNinja2->setPosition(800,65);
 
+    // ==== VIDA HUD ====
+    sf::Texture* textureVidaHud = new sf::Texture();
+    textureVidaHud->loadFromFile("tileset/hud_damage.png");
+    spriteVidaHud = new sf::Sprite(*textureVidaHud);
+    spriteVidaHud->setPosition(0,0);
+    spriteVidaHud->setScale(0.67,0.67);
+
+
 }
 
 void Hud::updateFPS(int _fps){
@@ -87,10 +95,27 @@ void Hud::drawSigilo(sf::RenderWindow &window, sf::RectangleShape* sliderSigilo1
     window.draw(*spritesSigilo2[1]);
 }
 
-void Hud::drawVida(sf::RenderWindow &window, sf::RectangleShape* vida1, sf::RectangleShape* vida2){
+void Hud::drawVida(sf::RenderWindow &window, sf::RectangleShape* vida1, sf::RectangleShape* vida2, float vidaValor1, float vidaValor2){
     window.setView(*vistaHUD);
     window.draw(*vida1);
     window.draw(*vida2);
+
+    float vidaMinima;
+    if(vidaValor1>0 && vidaValor2>0){
+        if(vidaValor1<vidaValor2){
+        vidaMinima = vidaValor1;
+        }else{
+            vidaMinima = vidaValor2;
+        }
+    }else{
+        vidaMinima=1;
+    }
+
+
+    float trasparencia = (1-((1.0/317.0) *vidaMinima));
+    cout << trasparencia << endl;
+    spriteVidaHud->setColor(sf::Color(255,255,255,255*trasparencia));
+    window.draw(*spriteVidaHud);
 }
 
 void Hud::drawHUD(sf::RenderWindow &window){

@@ -77,7 +77,7 @@ void GuardiaEstatico::activarRelojDeEspera(){
     posicionDestino = xInicial;
 }
 
-void GuardiaEstatico::drawNinjaEstatico(sf::RenderWindow &window){
+void GuardiaEstatico::drawGuardiaEstatico(sf::RenderWindow &window){
     window.draw(*sprite);
     window.draw(*triangle);
 }

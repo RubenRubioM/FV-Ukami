@@ -27,6 +27,9 @@ class Ninja
         void desactivarSigilo();
         void descargarSigilo(float);
         void cargarSigilo(float);
+
+        bool getEnSigilo();
+        float getVidaActual();
         sf::RectangleShape* getBoxCollider();
         sf::RectangleShape* getSliderVida();
 
@@ -42,15 +45,17 @@ class Ninja
         // ==== Sigilo ====
         bool enSigilo = false; //Booleano para saber si esta en sigilo
         bool sigiloMax = true; //Booleano para saber si tiene el sigilo cargado al maximo
-        float duracionSigilo = 5; //Duracion del sigilo
+        float duracionSigilo = 2.5; //Duracion del sigilo
         float maxSigilo = 100; //Duracion maxima del sigilo (se usa en los sliders tambien)
-        float recargaSigilo = 10; //Tiempo para recargar el sigilo
+        float recargaSigilo = 7.5; //Tiempo para recargar el sigilo
         sf::Clock tiempoSigilo; //Reloj para ver la duracion del sigilo
         sf::Clock cdSalto;
         sf::RectangleShape sliderSigilo[2];
+        sf::Texture* texturaSigilo;
+
         sf::RectangleShape* sliderVida;
         float maxVida = 317;
-        sf::Texture* texturaSigilo;
+        float vidaActual = 317;
 
         sf::Clock tiempoEntreTeclas;
 

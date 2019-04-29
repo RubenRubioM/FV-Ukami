@@ -140,6 +140,7 @@
 		<Unit filename="include/Animation.h" />
 		<Unit filename="include/Collision.h" />
 		<Unit filename="include/Game.h" />
+		<Unit filename="include/GuardiaDinamico.h" />
 		<Unit filename="include/GuardiaEstatico.h" />
 		<Unit filename="include/Hud.h" />
 		<Unit filename="include/Kanji.h" />
@@ -157,6 +158,7 @@
 		<Unit filename="src/Animation.cpp" />
 		<Unit filename="src/Collision.cpp" />
 		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/GuardiaDinamico.cpp" />
 		<Unit filename="src/GuardiaEstatico.cpp" />
 		<Unit filename="src/Hud.cpp" />
 		<Unit filename="src/Kanji.cpp" />

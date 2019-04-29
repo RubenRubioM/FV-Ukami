@@ -21,7 +21,7 @@ class Hud
         void drawFPS(sf::RenderWindow &window);
         void drawHUD(sf::RenderWindow &window);
         void updateFPS(int);
-        void drawVida(sf::RenderWindow &window, sf::RectangleShape*, sf::RectangleShape*);
+        void drawVida(sf::RenderWindow &window, sf::RectangleShape*, sf::RectangleShape*, float, float);
         virtual ~Hud();
 
 
@@ -40,6 +40,7 @@ class Hud
         sf::Sprite* hudSpriteNinja2;
         sf::Sprite* spritesSigilo[2];
         sf::Sprite* spritesSigilo2[2];
+        sf::Sprite* spriteVidaHud;
 };
 
 #endif // HUD_H

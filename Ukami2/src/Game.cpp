@@ -47,6 +47,10 @@ Game::Game()
     palanca1.inicializar();
     palanca1.palancaSprite->setPosition(700,440);
 
+    Palanca palanca2;
+    palanca2.inicializar();
+    palanca2.palancaSprite->setPosition(1000,440);
+
 
     menu* menu = menu::getInstance(window,event);
 
@@ -57,6 +61,9 @@ Game::Game()
     guardiaEstaticoCercano = 0;
     GuardiaEstatico* g = new GuardiaEstatico(900,900);
     guardiasEstaticos.push_back(g);
+
+    GuardiaDinamico* gd = new GuardiaDinamico(900,300,mapa.getb2World());
+    guardiasDinamicos.push_back(gd);
 
     //Kanji
     Kanji* kanji = new Kanji(0,"ukami",window, event); //creamos el kanji de ukami
@@ -107,6 +114,7 @@ Game::Game()
 
 
 
+        // ================= JUEGO NORMAL =======================
         // Estado 0 es para mostrar el juego normal
         if(estado==0){
             // Funcion para dibujar nuestro mapa
@@ -161,16 +169,31 @@ Game::Game()
 
             //Dibujamos todos los guardias estaticos
             for(int i=0; i<guardiasEstaticos.size();i++){
-                guardiasEstaticos.at(i)->drawNinjaEstatico(window);
+                guardiasEstaticos.at(i)->drawGuardiaEstatico(window);
+            }
+
+            //Dibujamos todos los guardias dinamicos
+            for(int i=0; i<guardiasDinamicos.size();i++){
+                guardiasDinamicos.at(i)->updateGuardiaDinamico(deltaTime.asMilliseconds());
+                guardiasDinamicos.at(i)->drawGuardiaDinamico(window);
             }
 
             //Comprobamos colisiones de los personajes y las visiones de los enemigos
             for(int i=0; i<guardiasEstaticos.size();i++){
-                if(ninja1->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds())){
+                // == Ninja 1 ==
+                if(ninja1->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds()) && !ninja1->getEnSigilo()){
                     cout << "Detectado " << endl;
                     ninja1->descargarVida(deltaTime.asMilliseconds());
                 }else{
                     ninja1->cargarVida(deltaTime.asMilliseconds());
+                }
+
+                // == Ninja 1 ==
+                if(ninja2->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds()) && !ninja2->getEnSigilo()){
+                    cout << "Detectado " << endl;
+                    ninja2->descargarVida(deltaTime.asMilliseconds());
+                }else{
+                    ninja2->cargarVida(deltaTime.asMilliseconds());
                 }
             }
 
@@ -178,11 +201,12 @@ Game::Game()
             // =========PUERTA Y PALANCA=============
             pu.drawPuerta(window);
             window.draw(*palanca1.palancaSprite);
+            window.draw(*palanca2.palancaSprite);
 
             //=======HUD============
             hud->drawHUD(window);
             hud->drawSigilo(window, ninja1->getSliderSigilo(),ninja2->getSliderSigilo());
-            hud->drawVida(window,ninja1->getSliderVida(),ninja2->getSliderVida());
+            hud->drawVida(window,ninja1->getSliderVida(),ninja2->getSliderVida(),ninja1->getVidaActual(),ninja2->getVidaActual());
         }
 
 
@@ -216,6 +240,11 @@ Game::Game()
         //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
 
         if(ninja2->getBoxCollider()->getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
+            cout << "Colisiona" << endl;
+            estado=1;
+        }
+
+        if(ninja2->getBoxCollider()->getGlobalBounds().intersects(palanca2.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
             cout << "Colisiona" << endl;
             estado=1;
         }

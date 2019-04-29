@@ -2,9 +2,29 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="include/Ninja.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Ninja1.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="576" topLine="15" />
+			<Cursor1 position="635" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="src/Animation.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1626" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="src/Hud.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3915" topLine="92" />
+		</Cursor>
+	</File>
+	<File name="src/GuardiaDinamico.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2108" topLine="44" />
+		</Cursor>
+	</File>
+	<File name="include/Ninja.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1652" topLine="34" />
 		</Cursor>
 	</File>
 	<File name="src/Puerta.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -12,9 +32,14 @@
 			<Cursor1 position="474" topLine="1" />
 		</Cursor>
 	</File>
-	<File name="src/Ninja.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Ninja.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1759" topLine="26" />
+			<Cursor1 position="1825" topLine="28" />
+		</Cursor>
+	</File>
+	<File name="include/GuardiaDinamico.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="645" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include/Game.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -22,14 +47,14 @@
 			<Cursor1 position="359" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Ninja1.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Ninja1.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2438" topLine="34" />
+			<Cursor1 position="4167" topLine="67" />
 		</Cursor>
 	</File>
-	<File name="include/Ninja2.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Ninja2.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="305" topLine="0" />
+			<Cursor1 position="293" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -37,12 +62,17 @@
 			<Cursor1 position="58" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include/GuardiaEstatico.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/GuardiaEstatico.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="988" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="src/GuardiaEstatico.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Hud.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1151" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="src/GuardiaEstatico.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3895" topLine="75" />
 		</Cursor>
@@ -52,13 +82,10 @@
 			<Cursor1 position="0" topLine="38" />
 		</Cursor>
 	</File>
-	<File name="src/Ninja2.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Ninja2.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5320" topLine="60" />
+			<Cursor1 position="3331" topLine="129" />
 		</Cursor>
-		<Folding>
-			<Collapse line="72" />
-		</Folding>
 	</File>
 	<File name="src/AnimatedSprite.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
@@ -67,17 +94,7 @@
 	</File>
 	<File name="src/Game.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4480" topLine="126" />
-		</Cursor>
-	</File>
-	<File name="include/Ninja1.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1227" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="src/Animation.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1626" topLine="21" />
+			<Cursor1 position="7957" topLine="193" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

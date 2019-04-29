@@ -52,7 +52,7 @@ Ninja2::Ninja2(float posx, float posy, b2World* world)
 
 
     // ======= Colider ficticio porque no va el de la animacion =======
-    boxCollider = new sf::RectangleShape(sf::Vector2f(walkingAnimationLeft.getFrame(0).width,walkingAnimationLeft.getFrame(0).height));
+    boxCollider = new sf::RectangleShape(sf::Vector2f(walkingAnimationLeft.getFrame(0).width - 75,walkingAnimationLeft.getFrame(0).height));
     boxCollider->setOrigin(boxCollider->getSize().x/2.f,boxCollider->getSize().y/2.f);
     boxCollider->setPosition(700,400);
     boxCollider->setFillColor(sf::Color::Transparent);

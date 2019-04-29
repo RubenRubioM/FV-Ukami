@@ -50,14 +50,19 @@ void Ninja::cargarSigilo(float _deltaTime){
 
 void Ninja::cargarVida(float _deltaTime){
     if(sliderVida->getSize().x<maxVida){
-        sliderVida->setSize(sf::Vector2f(sliderVida->getSize().x + (0.1*_deltaTime), sliderVida->getSize().y));
+        vidaActual = sliderVida->getSize().x + (0.1*_deltaTime);
+        if(vidaActual>maxVida) vidaActual=maxVida;
+        sliderVida->setSize(sf::Vector2f(vidaActual, sliderVida->getSize().y));
     }
+
 
 }
 
 void Ninja::descargarVida(float _deltaTime){
     if(sliderVida->getSize().x>0){
-        sliderVida->setSize(sf::Vector2f(sliderVida->getSize().x - (0.1*_deltaTime), sliderVida->getSize().y));
+        vidaActual = sliderVida->getSize().x - (0.2*_deltaTime);
+        if(vidaActual<=0) vidaActual=1;
+        sliderVida->setSize(sf::Vector2f(vidaActual, sliderVida->getSize().y));
     }
 
 }
@@ -65,6 +70,8 @@ void Ninja::descargarVida(float _deltaTime){
 sf::RectangleShape* Ninja::getSliderSigilo(){return sliderSigilo;}
 sf::RectangleShape* Ninja::getSliderVida(){return sliderVida;}
 sf::RectangleShape* Ninja::getBoxCollider(){return boxCollider;}
+bool Ninja::getEnSigilo(){return enSigilo;}
+float Ninja::getVidaActual(){return vidaActual;}
 
 Ninja::~Ninja()
 {

@@ -9,6 +9,7 @@
 #include "Ninja1.h"
 #include "Ninja2.h"
 #include "GuardiaEstatico.h"
+#include "GuardiaDinamico.h"
 #include "Hud.h"
 #include "Puerta.h"
 #include "Kanji.h"
@@ -60,6 +61,7 @@ class Game
         int numKanji = 0;
 
         vector<GuardiaEstatico*> guardiasEstaticos; //Array con todos los guardias (quiza luego se hace herencia en diferentes tipos de guardias)
+        vector<GuardiaDinamico*> guardiasDinamicos;
         GuardiaEstatico* guardiaEstaticoCercano; //Me guardo que guardia es el mas cercano cuando silbo
 
 

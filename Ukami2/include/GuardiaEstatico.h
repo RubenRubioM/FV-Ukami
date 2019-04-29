@@ -15,7 +15,7 @@ class GuardiaEstatico
         virtual ~GuardiaEstatico();
 
         //Metodos
-        void drawNinjaEstatico(sf::RenderWindow &window);
+        void drawGuardiaEstatico(sf::RenderWindow &window);
         void moverse(float);
         void activarRelojDeEspera(); //Se llama cuando ha llegado al destino y tiene que esperar para volver
 
