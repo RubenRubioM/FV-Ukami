@@ -135,14 +135,16 @@ Game::Game()
                 }
             }
 
+            if(!mapa.getTransicionando()){
+                ninja1->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
+                ninja1->drawNinja(window);
+                // ======================
 
-            ninja1->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
-            ninja1->drawNinja(window);
-            // ======================
+                // ========Ninja2=========
+                ninja2->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
+                ninja2->drawNinja(window);
+            }
 
-            // ========Ninja2=========
-            ninja2->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
-            ninja2->drawNinja(window);
 
 
 
@@ -167,16 +169,19 @@ Game::Game()
                 }
             }
 
-            //Dibujamos todos los guardias estaticos
-            for(int i=0; i<guardiasEstaticos.size();i++){
-                guardiasEstaticos.at(i)->drawGuardiaEstatico(window);
+            if(!mapa.getTransicionando()){
+                //Dibujamos todos los guardias estaticos
+                for(int i=0; i<guardiasEstaticos.size();i++){
+                    guardiasEstaticos.at(i)->drawGuardiaEstatico(window);
+                }
+
+                //Dibujamos todos los guardias dinamicos
+                for(int i=0; i<guardiasDinamicos.size();i++){
+                    guardiasDinamicos.at(i)->updateGuardiaDinamico(deltaTime.asMilliseconds());
+                    guardiasDinamicos.at(i)->drawGuardiaDinamico(window);
+                }
             }
 
-            //Dibujamos todos los guardias dinamicos
-            for(int i=0; i<guardiasDinamicos.size();i++){
-                guardiasDinamicos.at(i)->updateGuardiaDinamico(deltaTime.asMilliseconds());
-                guardiasDinamicos.at(i)->drawGuardiaDinamico(window);
-            }
 
             //Comprobamos colisiones de los personajes y las visiones de los enemigos
             for(int i=0; i<guardiasEstaticos.size();i++){
@@ -198,15 +203,18 @@ Game::Game()
             }
 
 
-            // =========PUERTA Y PALANCA=============
-            pu.drawPuerta(window);
-            window.draw(*palanca1.palancaSprite);
-            window.draw(*palanca2.palancaSprite);
+            if(!mapa.getTransicionando()){
+                // =========PUERTA Y PALANCA=============
+                pu.drawPuerta(window);
+                window.draw(*palanca1.palancaSprite);
+                window.draw(*palanca2.palancaSprite);
 
-            //=======HUD============
-            hud->drawHUD(window);
-            hud->drawSigilo(window, ninja1->getSliderSigilo(),ninja2->getSliderSigilo());
-            hud->drawVida(window,ninja1->getSliderVida(),ninja2->getSliderVida(),ninja1->getVidaActual(),ninja2->getVidaActual());
+                //=======HUD============
+                hud->drawHUD(window);
+                hud->drawSigilo(window, ninja1->getSliderSigilo(),ninja2->getSliderSigilo());
+                hud->drawVida(window,ninja1->getSliderVida(),ninja2->getSliderVida(),ninja1->getVidaActual(),ninja2->getVidaActual());
+            }
+
         }
 
 
@@ -219,6 +227,7 @@ Game::Game()
             if(kanji->updateKanji()){
                 pu.ocultarPuerta();
                 estado = 0;
+                mapa.empezarTransicion();
                 palanca1.palancaSprite->setScale(0,0);
                 //delete kanji;
                 kanji = NULL;
@@ -232,6 +241,7 @@ Game::Game()
         if(estado==2){
             if(menu->drawMenu()==0){
                 estado=0;
+                mapa.empezarTransicion();
             }
 
         }
@@ -254,7 +264,10 @@ Game::Game()
         //En cualquier estado se dibujaran los FPS
         calcularFPS();
         if(mostrarFPS){
-            hud->drawFPS(window);
+            if(!mapa.getTransicionando()){
+                hud->drawFPS(window);
+            }
+
         }
 
         window.display();

@@ -30,6 +30,10 @@ class Map
         // Guardar los datos de cierto tileset
         vector<const char*> findTileset(int gid);
         b2World* getb2World();
+
+        void setTransicionando(bool);
+        bool getTransicionando();
+        void empezarTransicion();
     protected:
 
     private:
@@ -43,6 +47,10 @@ class Map
         XMLElement *mapa;
         // Nuestro mundo 2D
         b2World *world;
+
+        int frameTransicion = 0;
+        bool transicionando = false;
+        sf::Clock relojTransicion;
 };
 
 #endif // MAP_H

@@ -14,20 +14,7 @@ GuardiaDinamico::GuardiaDinamico(float posx, float posy, b2World* world)
     sprite->setPosition(posx,posy);
 
 
-    // =========Cosas de box2D======
-    b2BodyDef bodydef;
-    bodydef.position.Set(posx / F, posy / F);
-    bodydef.type = b2_kinematicBody;
-    ninjaBody = world->CreateBody(&bodydef);
 
-    b2PolygonShape shape;
-    shape.SetAsBox(1, 1);
-
-    b2FixtureDef fixtureDef;
-    fixtureDef.density = 0.5f;
-    fixtureDef.friction = 0.5f;
-    fixtureDef.shape = &shape;
-    ninjaBody->CreateFixture(&fixtureDef);
 
     // =============================
 

@@ -137,10 +137,24 @@ void Map::drawMap(RenderWindow &window)
 {
     // Dibujamos los sprites
     vector<Sprite>::iterator it;
-    for(it = tileSprite.begin(); it != tileSprite.end(); it++)
-    {
-        window.draw(*it);
+
+    if(transicionando == false){
+        for(int i=0; i< tileSprite.size();i++){
+            window.draw(tileSprite.at(i));
+        }
+    }else{
+        if(frameTransicion<tileSprite.size() && relojTransicion.getElapsedTime().asSeconds()>0.0001){
+            for(int i=0; i < frameTransicion;i++){
+                window.draw(tileSprite.at(i));
+            }
+            frameTransicion += 100;
+            relojTransicion.restart();
+        }else if(frameTransicion>=tileSprite.size()){
+            transicionando = false;
+        }
     }
+
+
 
     // Fisicas
     world->Step(1.0f/30.0f, 6, 2);
@@ -249,4 +263,14 @@ void Map::createCollision(float x, float y, float width, float height)
 b2World* Map::getb2World()
 {
     return world;
+}
+
+void Map::empezarTransicion(){
+    transicionando = true;
+    frameTransicion = 0;
+}
+bool Map::getTransicionando(){return transicionando;}
+
+void Map::setTransicionando(bool _transicionando){
+    transicionando = _transicionando;
 }
