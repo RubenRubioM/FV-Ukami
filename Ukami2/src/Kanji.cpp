@@ -12,6 +12,13 @@ Kanji::Kanji(int kanjiSelected, string title, sf::RenderWindow &window, sf::Even
         correctKanjiArray[i] = 0;
     }
 
+    circuloSelector = new sf::CircleShape(20);
+    circuloSelector->setOrigin(circuloSelector->getRadius(),circuloSelector->getRadius());
+    circuloSelector->setPosition(520, 250);
+    circuloSelector->setFillColor(sf::Color::Transparent);
+    circuloSelector->setOutlineThickness(3);
+    circuloSelector->setOutlineColor(sf::Color::White);
+
     angle = 30;
 
     n = 0;
@@ -215,6 +222,12 @@ void Kanji::drawKanji()
         kanjiWindow->draw(*winText); //pinto el mensaje de has ganado.
 
     }
+
+    //Actualizamos el circulo seleccionador
+    circuloSelector->setRadius(kanjiSprites[n]->getTexture()->getSize().x/2.f);
+    circuloSelector->setOrigin(circuloSelector->getRadius(),circuloSelector->getRadius());
+    circuloSelector->setPosition(kanjiSprites[n]->getPosition().x,kanjiSprites[n]->getPosition().y);
+    kanjiWindow->draw(*circuloSelector);
 }
 
 bool Kanji::updateKanji() //no se crea ningun estado adicional porque al manejar mas de un estado aunque uno sea un puntero al otro, se gestiona mal y no funciona como deberia por el tiempo que tarda en llegar la informacion del evento actualizada al nuevo evento creado

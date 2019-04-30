@@ -36,6 +36,7 @@ class Kanji
         sf::Sprite* correctKanji;
         sf::RenderWindow* kanjiWindow;
         sf::View* kanjiView;
+        sf::CircleShape *circuloSelector;
 
         sf::Clock tiempoEntreTecla;
 
