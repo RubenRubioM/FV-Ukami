@@ -28,12 +28,16 @@ class Ninja
         void descargarSigilo(float);
         void cargarSigilo(float);
 
+        //Getters
         bool getEnSigilo();
+        bool getSiendoDetectado();
         float getVidaActual();
         sf::RectangleShape* getBoxCollider();
         sf::RectangleShape* getSliderVida();
-
         sf::RectangleShape* getSliderSigilo();
+
+        //Setters
+        void setSiendoDetectado(bool);
         virtual ~Ninja();
 
     protected:
@@ -56,6 +60,7 @@ class Ninja
         sf::RectangleShape* sliderVida;
         float maxVida = 317;
         float vidaActual = 317;
+        bool siendoDetectado = false;
 
         sf::Clock tiempoEntreTeclas;
 

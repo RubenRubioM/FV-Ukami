@@ -60,10 +60,14 @@ Game::Game()
     //Enemigos
     guardiaEstaticoCercano = 0;
     GuardiaEstatico* g = new GuardiaEstatico(900,900);
+    GuardiaEstatico* g2 = new GuardiaEstatico(900,200);
     guardiasEstaticos.push_back(g);
+    guardiasEstaticos.push_back(g2);
+    numGuardias += 2;
 
     GuardiaDinamico* gd = new GuardiaDinamico(900,300,mapa.getb2World());
     guardiasDinamicos.push_back(gd);
+    numGuardias++;
 
     //Kanji
     Kanji* kanji = new Kanji(0,"ukami",window, event); //creamos el kanji de ukami
@@ -124,7 +128,9 @@ Game::Game()
             updateView(*ninja1, *ninja2, view);
 
             // ========Ninja1=========
-
+            //Al comienzo de cada frame ponemos que no estan siendo detectados para luego a lo largo de las comprobaciones cambiar o no
+            ninja1->setSiendoDetectado(false);
+            ninja2->setSiendoDetectado(false);
              if(Keyboard::isKeyPressed(Keyboard::R)){
                 //Solo se llama al silbido si el guardia ha llegado ya (mas tarde implementarmeos un CD de la habilidad en el mismo if)
                 guardiaEstaticoCercano = guardiaEstaticoMasCercano();
@@ -188,20 +194,29 @@ Game::Game()
                 // == Ninja 1 ==
                 if(ninja1->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds()) && !ninja1->getEnSigilo()){
                     cout << "Detectado " << endl;
-                    ninja1->descargarVida(deltaTime.asMilliseconds());
-                }else{
-                    ninja1->cargarVida(deltaTime.asMilliseconds());
+                    ninja1->setSiendoDetectado(true);
                 }
 
-                // == Ninja 1 ==
+                // == Ninja 2 ==
                 if(ninja2->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds()) && !ninja2->getEnSigilo()){
                     cout << "Detectado " << endl;
-                    ninja2->descargarVida(deltaTime.asMilliseconds());
-                }else{
-                    ninja2->cargarVida(deltaTime.asMilliseconds());
+                    ninja2->setSiendoDetectado(true);
                 }
             }
 
+
+            //Siempre al final de todas las posibles colisiones subimos o bajamos la vida
+            if(ninja1->getSiendoDetectado()){
+                ninja1->descargarVida(deltaTime.asMilliseconds());
+            }else{
+                ninja1->cargarVida(deltaTime.asMilliseconds());
+            }
+
+            if(ninja2->getSiendoDetectado()){
+                ninja2->descargarVida(deltaTime.asMilliseconds());
+            }else{
+                ninja2->cargarVida(deltaTime.asMilliseconds());
+            }
 
             if(!mapa.getTransicionando()){
                 // =========PUERTA Y PALANCA=============
@@ -215,7 +230,9 @@ Game::Game()
                 hud->drawVida(window,ninja1->getSliderVida(),ninja2->getSliderVida(),ninja1->getVidaActual(),ninja2->getVidaActual());
             }
 
-        }
+
+
+        } //Final del estado de juego
 
 
 

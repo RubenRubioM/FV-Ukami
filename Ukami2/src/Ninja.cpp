@@ -72,6 +72,11 @@ sf::RectangleShape* Ninja::getSliderVida(){return sliderVida;}
 sf::RectangleShape* Ninja::getBoxCollider(){return boxCollider;}
 bool Ninja::getEnSigilo(){return enSigilo;}
 float Ninja::getVidaActual(){return vidaActual;}
+bool Ninja::getSiendoDetectado(){return siendoDetectado;}
+
+void Ninja::setSiendoDetectado(bool _siendoDetectado){
+    siendoDetectado = _siendoDetectado;
+}
 
 Ninja::~Ninja()
 {

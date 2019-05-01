@@ -143,7 +143,7 @@ void Map::drawMap(RenderWindow &window)
             window.draw(tileSprite.at(i));
         }
     }else{
-        if(frameTransicion<tileSprite.size() && relojTransicion.getElapsedTime().asSeconds()>0.0001){
+        if(frameTransicion<tileSprite.size() && relojTransicion.getElapsedTime().asSeconds()>0.00001){
             for(int i=0; i < frameTransicion;i++){
                 window.draw(tileSprite.at(i));
             }
