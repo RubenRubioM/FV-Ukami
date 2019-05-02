@@ -242,13 +242,26 @@ Game::Game()
         if(estado==1){
             // Comprobamos si hemos ganado el kanji
             if(kanji->updateKanji()){
-                pu.ocultarPuerta();
+                if(numKanjisResueltos==0){
+                    //Primer kanji
+                    pu.ocultarPuerta();
+                    mapa.empezarTransicion();
+                    palanca1.palancaSprite->setScale(0,0);
+                    //delete kanji;
+                    kanji = NULL;
+                    kanji = new Kanji(1,"kanji",window,event);
+
+                }else if(numKanjisResueltos==1){
+                    //Segundo Kanji
+                    mapa.empezarTransicion();
+                    palanca2.palancaSprite->setScale(0,0);
+                    //delete kanji;
+                    kanji = NULL;
+                    kanji = new Kanji(1,"kanji",window,event);
+                }
+
                 estado = 0;
-                mapa.empezarTransicion();
-                palanca1.palancaSprite->setScale(0,0);
-                //delete kanji;
-                kanji = NULL;
-                kanji = new Kanji(1,"kanji",window,event);
+                numKanjisResueltos++;
             }
             kanji->drawKanji();
 

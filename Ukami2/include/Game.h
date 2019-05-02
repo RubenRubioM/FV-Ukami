@@ -60,6 +60,7 @@ class Game
         int estado = 2; // Como sustitucion hasta que tengamos el patron State ||||  0 = juego normal   1 = minijuego Kanji"
         int numKanji = 0;
         int numGuardias = 0;
+        int numKanjisResueltos = 0;
 
         vector<GuardiaEstatico*> guardiasEstaticos; //Array con todos los guardias (quiza luego se hace herencia en diferentes tipos de guardias)
         vector<GuardiaDinamico*> guardiasDinamicos;
