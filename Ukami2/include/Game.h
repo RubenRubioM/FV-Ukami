@@ -61,6 +61,7 @@ class Game
         int numKanji = 0;
         int numGuardias = 0;
         int numKanjisResueltos = 0;
+        int nivel = 1;
 
         vector<GuardiaEstatico*> guardiasEstaticos; //Array con todos los guardias (quiza luego se hace herencia en diferentes tipos de guardias)
         vector<GuardiaDinamico*> guardiasDinamicos;

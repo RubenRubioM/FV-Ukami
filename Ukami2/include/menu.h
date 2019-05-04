@@ -1,8 +1,9 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <SFML/Graphics.hpp>
 #include "Game.h"
+#include <SFML/Graphics.hpp>
+
 #include <iostream>
 #include <cstring>
 
@@ -14,6 +15,7 @@ class menu
         static menu* getInstance(sf::RenderWindow &window, sf::Event &eventGame);
 
         int drawMenu();
+        int getNivel();
 
     protected:
 
@@ -22,6 +24,8 @@ class menu
 
         menu(sf::RenderWindow &window, sf::Event &eventGame);
         static menu* menuUnico;
+
+
 
         sf::RenderWindow* ventanaMenu;
         sf::Font* fuente;
@@ -42,6 +46,7 @@ class menu
         int presionado;
         int idMenu;
         int cont;
+        int nivel = 1;
         string textoMenuInicial [4];
         string textoMenuSelectNivel [2];
         string textoMenuNiveles [3];

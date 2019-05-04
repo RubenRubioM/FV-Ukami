@@ -22,7 +22,6 @@ menu::menu(sf::RenderWindow &window, sf::Event &eventGame)
     idMenu = 0;
     cont = 0;
 
-    //Game *game = Game::getInstance();
 
     ventanaMenu = &window;
     evento = &eventGame;
@@ -548,3 +547,5 @@ void menu::escribirPorConsola()
         }
     }
 }
+
+int menu::getNivel(){return nivel;}

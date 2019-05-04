@@ -1,6 +1,7 @@
 #ifndef NINJA_H
 #define NINJA_H
 
+
 #include <SFML/Graphics.hpp>
 #include "tinyxml2.h"
 #include "TextureHolder.h"
@@ -11,6 +12,7 @@
 #include <map>
 #include "AnimatedSprite.h"
 #include "Animation.h"
+
 
 using namespace tinyxml2;
 using namespace std;
@@ -40,11 +42,13 @@ class Ninja
         void setSiendoDetectado(bool);
         virtual ~Ninja();
 
+
     protected:
         bool saltando = false;
         float impulsoSalto = 500.f;
         float velocity = .5f;
         sf::RectangleShape* boxCollider;
+
 
         // ==== Sigilo ====
         bool enSigilo = false; //Booleano para saber si esta en sigilo
@@ -82,6 +86,7 @@ class Ninja
         b2FixtureDef fixtureDef;
 
     private:
+
 };
 
 #endif // NINJA_H

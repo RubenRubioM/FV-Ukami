@@ -3,6 +3,12 @@
 
 Game *Game::unicaInstancia = 0;
 
+/*
+        TO-DO
+En el menu tenemos una variable que es el nivel que deberiamos cambiarla y leerla desde el game.cpp
+
+*/
+
 struct Palanca{
     sf::Sprite* palancaSprite;
     sf::Texture* palancaTexture;
@@ -72,6 +78,8 @@ Game::Game()
     //Kanji
     Kanji* kanji = new Kanji(0,"ukami",window, event); //creamos el kanji de ukami
 
+    nivel = menu->getNivel();
+
     hud = Hud::getInstance();
     sf::Clock tiempoEntreTeclas;
     while (window.isOpen())
@@ -121,114 +129,119 @@ Game::Game()
         // ================= JUEGO NORMAL =======================
         // Estado 0 es para mostrar el juego normal
         if(estado==0){
-            // Funcion para dibujar nuestro mapa
-            mapa.drawMap(window);
+            if(nivel==1){
+                // Funcion para dibujar nuestro mapa
+                mapa.drawMap(window);
 
-            //=======View============
-            updateView(*ninja1, *ninja2, view);
+                //=======View============
+                updateView(*ninja1, *ninja2, view);
 
-            // ========Ninja1=========
-            //Al comienzo de cada frame ponemos que no estan siendo detectados para luego a lo largo de las comprobaciones cambiar o no
-            ninja1->setSiendoDetectado(false);
-            ninja2->setSiendoDetectado(false);
-             if(Keyboard::isKeyPressed(Keyboard::R)){
-                //Solo se llama al silbido si el guardia ha llegado ya (mas tarde implementarmeos un CD de la habilidad en el mismo if)
-                guardiaEstaticoCercano = guardiaEstaticoMasCercano();
-                if(guardiaEstaticoCercano != 0 && !guardiaEstaticoCercano->getMoviendose()){
+                // ========Ninja1=========
+                //Al comienzo de cada frame ponemos que no estan siendo detectados para luego a lo largo de las comprobaciones cambiar o no
+                ninja1->setSiendoDetectado(false);
+                ninja2->setSiendoDetectado(false);
+                 if(Keyboard::isKeyPressed(Keyboard::R)){
+                    //Solo se llama al silbido si el guardia ha llegado ya (mas tarde implementarmeos un CD de la habilidad en el mismo if)
+                    guardiaEstaticoCercano = guardiaEstaticoMasCercano();
+                    if(guardiaEstaticoCercano != 0 && !guardiaEstaticoCercano->getMoviendose()){
 
-                    guardiaEstaticoCercano->setMoviendose(true);
-                    guardiaEstaticoCercano->setPosicionDestino(ninja1->getSprite().getPosition().x); //Le decimos que tiene que ir hasta el X del personaje que silba
-                }
-            }
-
-            if(!mapa.getTransicionando()){
-                ninja1->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
-                ninja1->drawNinja(window);
-                // ======================
-
-                // ========Ninja2=========
-                ninja2->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
-                ninja2->drawNinja(window);
-            }
-
-
-
-
-            //========Enemigos=========
-
-            //Movimiento para el guardia al que le has silbado
-            if(guardiaEstaticoCercano != 0){
-                //Se mueve a la posicion donde le dices
-                if(guardiaEstaticoCercano->getMoviendose() && !guardiaEstaticoCercano->getEsperando()){
-                    guardiaEstaticoCercano->setHaRegresado(false);
-                    guardiaEstaticoCercano->moverse(deltaTime.asMilliseconds());
+                        guardiaEstaticoCercano->setMoviendose(true);
+                        guardiaEstaticoCercano->setPosicionDestino(ninja1->getSprite().getPosition().x); //Le decimos que tiene que ir hasta el X del personaje que silba
+                    }
                 }
 
-                //Despues de esperar un TIEMPO_DE_ESPERA vuelve a la posicion original
-                if(guardiaEstaticoCercano->getEsperando() && guardiaEstaticoCercano->getTiempoAntesDeVolver().getElapsedTime().asSeconds() > TIEMPO_DE_ESPERA){
-                   //Vuelve a la posicion inicial
+                if(!mapa.getTransicionando()){
+                    ninja1->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
+                    ninja1->drawNinja(window);
+                    // ======================
 
-                    guardiaEstaticoCercano->setPosicionDestino(guardiaEstaticoCercano->getxInicial()); //La posicion destino será la posición inicial
-                    guardiaEstaticoCercano->setMoviendose(true);
-                    guardiaEstaticoCercano->setEsperando(false);
-                    guardiaEstaticoCercano->setVolviendo(true);
+                    // ========Ninja2=========
+                    ninja2->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
+                    ninja2->drawNinja(window);
                 }
-            }
 
-            if(!mapa.getTransicionando()){
-                //Dibujamos todos los guardias estaticos
+
+
+
+                //========Enemigos=========
+
+                //Movimiento para el guardia al que le has silbado
+                if(guardiaEstaticoCercano != 0){
+                    //Se mueve a la posicion donde le dices
+                    if(guardiaEstaticoCercano->getMoviendose() && !guardiaEstaticoCercano->getEsperando()){
+                        guardiaEstaticoCercano->setHaRegresado(false);
+                        guardiaEstaticoCercano->moverse(deltaTime.asMilliseconds());
+                    }
+
+                    //Despues de esperar un TIEMPO_DE_ESPERA vuelve a la posicion original
+                    if(guardiaEstaticoCercano->getEsperando() && guardiaEstaticoCercano->getTiempoAntesDeVolver().getElapsedTime().asSeconds() > TIEMPO_DE_ESPERA){
+                       //Vuelve a la posicion inicial
+
+                        guardiaEstaticoCercano->setPosicionDestino(guardiaEstaticoCercano->getxInicial()); //La posicion destino será la posición inicial
+                        guardiaEstaticoCercano->setMoviendose(true);
+                        guardiaEstaticoCercano->setEsperando(false);
+                        guardiaEstaticoCercano->setVolviendo(true);
+                    }
+                }
+
+                if(!mapa.getTransicionando()){
+                    //Dibujamos todos los guardias estaticos
+                    for(int i=0; i<guardiasEstaticos.size();i++){
+                        guardiasEstaticos.at(i)->drawGuardiaEstatico(window);
+                    }
+
+                    //Dibujamos todos los guardias dinamicos
+                    for(int i=0; i<guardiasDinamicos.size();i++){
+                        guardiasDinamicos.at(i)->updateGuardiaDinamico(deltaTime.asMilliseconds());
+                        guardiasDinamicos.at(i)->drawGuardiaDinamico(window);
+                    }
+                }
+
+
+                //Comprobamos colisiones de los personajes y las visiones de los enemigos
                 for(int i=0; i<guardiasEstaticos.size();i++){
-                    guardiasEstaticos.at(i)->drawGuardiaEstatico(window);
+                    // == Ninja 1 ==
+                    if(ninja1->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds()) && !ninja1->getEnSigilo()){
+                        cout << "Detectado " << endl;
+                        ninja1->setSiendoDetectado(true);
+                    }
+
+                    // == Ninja 2 ==
+                    if(ninja2->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds()) && !ninja2->getEnSigilo()){
+                        cout << "Detectado " << endl;
+                        ninja2->setSiendoDetectado(true);
+                    }
                 }
 
-                //Dibujamos todos los guardias dinamicos
-                for(int i=0; i<guardiasDinamicos.size();i++){
-                    guardiasDinamicos.at(i)->updateGuardiaDinamico(deltaTime.asMilliseconds());
-                    guardiasDinamicos.at(i)->drawGuardiaDinamico(window);
-                }
-            }
 
-
-            //Comprobamos colisiones de los personajes y las visiones de los enemigos
-            for(int i=0; i<guardiasEstaticos.size();i++){
-                // == Ninja 1 ==
-                if(ninja1->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds()) && !ninja1->getEnSigilo()){
-                    cout << "Detectado " << endl;
-                    ninja1->setSiendoDetectado(true);
+                //Siempre al final de todas las posibles colisiones subimos o bajamos la vida
+                if(ninja1->getSiendoDetectado()){
+                    ninja1->descargarVida(deltaTime.asMilliseconds());
+                }else{
+                    ninja1->cargarVida(deltaTime.asMilliseconds());
                 }
 
-                // == Ninja 2 ==
-                if(ninja2->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds()) && !ninja2->getEnSigilo()){
-                    cout << "Detectado " << endl;
-                    ninja2->setSiendoDetectado(true);
+                if(ninja2->getSiendoDetectado()){
+                    ninja2->descargarVida(deltaTime.asMilliseconds());
+                }else{
+                    ninja2->cargarVida(deltaTime.asMilliseconds());
                 }
+
+                if(!mapa.getTransicionando()){
+                    // =========PUERTA Y PALANCA=============
+                    pu.drawPuerta(window);
+                    window.draw(*palanca1.palancaSprite);
+                    window.draw(*palanca2.palancaSprite);
+
+                    //=======HUD============
+                    hud->drawHUD(window);
+                    hud->drawSigilo(window, ninja1->getSliderSigilo(),ninja2->getSliderSigilo());
+                    hud->drawVida(window,ninja1->getSliderVida(),ninja2->getSliderVida(),ninja1->getVidaActual(),ninja2->getVidaActual());
+                }
+            }else if(nivel==2){
+
             }
 
-
-            //Siempre al final de todas las posibles colisiones subimos o bajamos la vida
-            if(ninja1->getSiendoDetectado()){
-                ninja1->descargarVida(deltaTime.asMilliseconds());
-            }else{
-                ninja1->cargarVida(deltaTime.asMilliseconds());
-            }
-
-            if(ninja2->getSiendoDetectado()){
-                ninja2->descargarVida(deltaTime.asMilliseconds());
-            }else{
-                ninja2->cargarVida(deltaTime.asMilliseconds());
-            }
-
-            if(!mapa.getTransicionando()){
-                // =========PUERTA Y PALANCA=============
-                pu.drawPuerta(window);
-                window.draw(*palanca1.palancaSprite);
-                window.draw(*palanca2.palancaSprite);
-
-                //=======HUD============
-                hud->drawHUD(window);
-                hud->drawSigilo(window, ninja1->getSliderSigilo(),ninja2->getSliderSigilo());
-                hud->drawVida(window,ninja1->getSliderVida(),ninja2->getSliderVida(),ninja1->getVidaActual(),ninja2->getVidaActual());
-            }
 
 
 
