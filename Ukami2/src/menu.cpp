@@ -266,7 +266,7 @@ void menu::cargarMenu()
         menuInicial[i]->setString(textoMenuInicial[i]);
         menuInicial[i]->setOrigin(menuInicial[i]->getGlobalBounds().width / 2.0, menuInicial[i]->getGlobalBounds().height / 2.0);
         menuInicial[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuInicial[i]->setColor(sf::Color(0,0,0));
+        menuInicial[i]->setColor(sf::Color(255,255,255));
 
     }
     for(int i = 0; i < 2; i++)
@@ -276,7 +276,7 @@ void menu::cargarMenu()
         menuSelectNivel[i]->setString(textoMenuSelectNivel[i]);
         menuSelectNivel[i]->setOrigin(menuSelectNivel[i]->getGlobalBounds().width / 2.0, menuSelectNivel[i]->getGlobalBounds().height / 2.0);
         menuSelectNivel[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuSelectNivel[i]->setColor(sf::Color(0,0,0));
+        menuSelectNivel[i]->setColor(sf::Color(255,255,255));
     }
     for(int i = 0; i < 3; i++)
     {
@@ -285,7 +285,7 @@ void menu::cargarMenu()
         menuNiveles[i]->setString(textoMenuNiveles[i]);
         menuNiveles[i]->setOrigin(menuNiveles[i]->getGlobalBounds().width / 2.0, menuNiveles[i]->getGlobalBounds().height / 2.0);
         menuNiveles[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuNiveles[i]->setColor(sf::Color(0,0,0));
+        menuNiveles[i]->setColor(sf::Color(255,255,255));
     }
     for(int i = 0; i < 3; i++)
     {
@@ -294,7 +294,7 @@ void menu::cargarMenu()
         menuEstad[i]->setString(textoMenuEstad[i]);
         menuEstad[i]->setOrigin(menuEstad[i]->getGlobalBounds().width / 2.0, menuEstad[i]->getGlobalBounds().height / 2.0);
         menuEstad[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuEstad[i]->setColor(sf::Color(0,0,0));
+        menuEstad[i]->setColor(sf::Color(255,255,255));
     }
     for(int i = 0; i < 4; i++)
     {
@@ -303,7 +303,7 @@ void menu::cargarMenu()
         menuMejoras[i]->setString(textoMenuMejoras[i]);
         menuMejoras[i]->setOrigin(menuMejoras[i]->getGlobalBounds().width / 2.0, menuMejoras[i]->getGlobalBounds().height / 2.0);
         menuMejoras[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuMejoras[i]->setColor(sf::Color(0,0,0));
+        menuMejoras[i]->setColor(sf::Color(255,255,255));
     }
 }
 
@@ -380,6 +380,8 @@ void menu::hoverMenu(sf::Text* menuAPintar [4])
 {
     sf::Color hover(197, 36, 36);
     menuAPintar[actual]->setColor(hover);
+    menuAPintar[actual]->setOutlineColor(sf::Color::White);
+    menuAPintar[actual]->setOutlineThickness(3);
 }
 
 int menu::actualizarMenu()
@@ -441,12 +443,18 @@ int menu::actualizarMenu()
                     if(idMenu == 0)
                     {
                         cont = 0;
-                        cout << "ENTRA";
-                        devolucion = 0;
+
+
                     }
                     else
                     {
                         cont = 2;
+
+                    }
+
+                    if(idMenu ==0 && actual==0){
+                        cout << "entra" << endl;
+                        devolucion = 0;
                     }
                     if(idMenu == 0 && actual == 1)
                     {

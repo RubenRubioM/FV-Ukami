@@ -283,8 +283,11 @@ Game::Game()
         // Estado 2 es para mostrar el menu
         if(estado==2){
             if(menu->drawMenu()==0){
+                //Aqui entra cuando le das a reanudar
                 estado=0;
                 mapa.empezarTransicion();
+
+                //TO-DO: Un metodo en menu que devuelva varialbes como nivel seleccionado, mejora evolucionada, etc.. Y actualizarlas aqui en el game.cpp
             }
 
         }

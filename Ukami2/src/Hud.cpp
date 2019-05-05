@@ -113,7 +113,6 @@ void Hud::drawVida(sf::RenderWindow &window, sf::RectangleShape* vida1, sf::Rect
 
 
     float trasparencia = (1-((1.0/317.0) *vidaMinima));
-    cout << trasparencia << endl;
     spriteVidaHud->setColor(sf::Color(255,255,255,255*trasparencia));
     window.draw(*spriteVidaHud);
 }
