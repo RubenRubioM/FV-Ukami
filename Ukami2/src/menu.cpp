@@ -380,8 +380,8 @@ void menu::hoverMenu(sf::Text* menuAPintar [4])
 {
     sf::Color hover(197, 36, 36);
     menuAPintar[actual]->setColor(hover);
-    menuAPintar[actual]->setOutlineColor(sf::Color::White);
-    menuAPintar[actual]->setOutlineThickness(3);
+    //menuAPintar[actual]->setOutlineColor(sf::Color::Black);
+    //menuAPintar[actual]->setOutlineThickness(3);
 }
 
 int menu::actualizarMenu()
