@@ -7,11 +7,12 @@ GuardiaDinamico::GuardiaDinamico(float posx, float posy, b2World* world)
 
     cout<<"Creamos guardia dinamico"<<endl;
     texture = new sf::Texture();
-    texture->loadFromFile("tileset/ninja2.png");
+    texture->loadFromFile("tileset/guardian1.png");
     texture->setSmooth(true);
     sprite = new sf::Sprite(*texture);
     sprite->setOrigin(10+texture->getSize().x / 2.f, texture->getSize().y / 2.f);
     sprite->setPosition(posx,posy);
+    sprite->scale(0.4f,0.4f);
 
 
 
@@ -34,24 +35,21 @@ GuardiaDinamico::GuardiaDinamico(float posx, float posy, b2World* world)
 void GuardiaDinamico::updateGuardiaDinamico(float _deltaTime){
 
     if(metros<rango){ //LA DISTANCIA QUE PUEDE RECORRER
-        //b2Vec2 vel = ninjaBody->GetLinearVelocity();
-        //vel.x = velocidad;
-        //vel.y = ninjaBody->GetLinearVelocity().y;
-        //ninjaBody->SetLinearVelocity(vel);
+        //Hacia la derecha
+        sprite->setTextureRect(sf::IntRect(0,0,sprite->getTexture()->getSize().x,sprite->getTexture()->getSize().y));
         sprite->move(velocidad*_deltaTime,0);
         triangle->setRotation(0);
-        triangle->move(velocidad*_deltaTime,0);
+        //triangle->move(velocidad*_deltaTime,0);
+        triangle->setPosition(sprite->getPosition().x + 80, sprite->getPosition().y);
         metros++;
     }
     else{
-
-        //b2Vec2 vel = ninjaBody->GetLinearVelocity();
-        //vel.x = -velocidad;
-        //vel.y = ninjaBody->GetLinearVelocity().y;
-        //ninjaBody->SetLinearVelocity(vel);
+        //Hacia la izquierda
+        sprite->setTextureRect(sf::IntRect(sprite->getTexture()->getSize().x,0,-sprite->getTexture()->getSize().x,sprite->getTexture()->getSize().y));
         sprite->move(-velocidad*_deltaTime,0);
         triangle->setRotation(180);
-        triangle->move(-velocidad*_deltaTime,0);
+        //triangle->move(-velocidad*_deltaTime,0);
+        triangle->setPosition(sprite->getPosition().x -80, sprite->getPosition().y);
         metros++;
         if(metros>rango*2){ //DOBLE DE LA DISTANCIA
             metros=0;

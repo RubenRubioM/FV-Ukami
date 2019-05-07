@@ -1346,10 +1346,10 @@
 	<vector>
 	<map>
 
-1557054604 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Game.cpp
+1557242691 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Game.cpp
 	"Game.h"
 
-1556547522 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/GuardiaEstatico.cpp
+1557239558 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/GuardiaEstatico.cpp
 	"GuardiaEstatico.h"
 
 1557053972 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Hud.cpp
@@ -1361,7 +1361,7 @@
 1556734385 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Map.cpp
 	"Map.h"
 
-1557054508 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/menu.cpp
+1557170217 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/menu.cpp
 	"menu.h"
 
 1556736386 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja.cpp
@@ -1370,7 +1370,7 @@
 1556545775 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja1.cpp
 	"Ninja1.h"
 
-1556545839 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja2.cpp
+1557238791 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Ninja2.cpp
 	"Ninja2.h"
 
 1556310889 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/Puerta.cpp
@@ -1390,11 +1390,11 @@
 	<cstddef>
 	<cstdarg>
 
-1556549198 /home/rrm73/Desktop/FV-Ukami/Ukami2/include/GuardiaDinamico.h
+1557235268 /home/rrm73/Desktop/FV-Ukami/Ukami2/include/GuardiaDinamico.h
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Box2D/Box2D.h"
 
-1556643480 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/GuardiaDinamico.cpp
+1557235567 source:/home/rrm73/Desktop/FV-Ukami/Ukami2/src/GuardiaDinamico.cpp
 	"GuardiaDinamico.h"
 

@@ -143,7 +143,7 @@ void Ninja2::updateMovement(View &view, float _deltaTime,sf::Clock frameClock)
         }
     }
 
-    if(Keyboard::isKeyPressed(Keyboard::R)){
+    if(Keyboard::isKeyPressed(Keyboard::Z)){
         //Para que no pueda entrar en sigilo cuando ya esta en sigilo
         if(!enSigilo && sigiloMax){
             activarSigilo();

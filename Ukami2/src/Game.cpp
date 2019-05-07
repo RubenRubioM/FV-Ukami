@@ -1,5 +1,6 @@
 #include "Game.h"
 #define F 30.0f
+#define distanciaMaximaHastaGuardia 1000
 
 Game *Game::unicaInstancia = 0;
 
@@ -12,6 +13,8 @@ En el menu tenemos una variable que es el nivel que deberiamos cambiarla y leerl
 struct Palanca{
     sf::Sprite* palancaSprite;
     sf::Texture* palancaTexture;
+    sf::Texture* bocadilloTexture;
+    sf::Sprite* bocadilloSprite;
 
     void inicializar(){
         palancaTexture = new sf::Texture();
@@ -20,6 +23,17 @@ struct Palanca{
         palancaSprite->setOrigin(palancaTexture->getSize().x/2.f , palancaTexture->getSize().y/2.f);
         palancaSprite->setScale(0.2,0.2);
 
+        bocadilloTexture = new sf::Texture();
+        bocadilloTexture->loadFromFile("tileset/interfaz-letra-e-bocadillo.png");
+        bocadilloSprite = new sf::Sprite(*bocadilloTexture);
+        bocadilloSprite->setOrigin(bocadilloTexture->getSize().x/2.f,bocadilloTexture->getSize().y/2.f);
+        bocadilloSprite->setScale(0.4,0.4);
+        bocadilloSprite->setColor(sf::Color(255,255,255,100));
+
+    }
+
+    void colocarBocadillo(){
+        bocadilloSprite->setPosition(palancaSprite->getPosition().x - 170,palancaSprite->getPosition().y -230);
     }
 };
 
@@ -52,10 +66,12 @@ Game::Game()
     Palanca palanca1;
     palanca1.inicializar();
     palanca1.palancaSprite->setPosition(700,440);
+    palanca1.colocarBocadillo();
 
     Palanca palanca2;
     palanca2.inicializar();
     palanca2.palancaSprite->setPosition(1000,440);
+    palanca2.bocadilloSprite->setPosition(1000,420);
 
 
     menu* menu = menu::getInstance(window,event);
@@ -68,11 +84,13 @@ Game::Game()
     GuardiaEstatico* g = new GuardiaEstatico(900,900);
     GuardiaEstatico* g2 = new GuardiaEstatico(900,200);
     guardiasEstaticos.push_back(g);
-    guardiasEstaticos.push_back(g2);
-    numGuardias += 2;
+    numGuardias++;
+    //guardiasEstaticos.push_back(g2);
+    //numGuardias++;
+
 
     GuardiaDinamico* gd = new GuardiaDinamico(900,300,mapa.getb2World());
-    guardiasDinamicos.push_back(gd);
+    //guardiasDinamicos.push_back(gd);
     numGuardias++;
 
     //Kanji
@@ -238,6 +256,24 @@ Game::Game()
                     hud->drawSigilo(window, ninja1->getSliderSigilo(),ninja2->getSliderSigilo());
                     hud->drawVida(window,ninja1->getSliderVida(),ninja2->getSliderVida(),ninja1->getVidaActual(),ninja2->getVidaActual());
                 }
+
+
+                //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
+                if(!mapa.getTransicionando()){
+                    if(ninja2->getBoxCollider()->getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds())){
+                        if(Keyboard::isKeyPressed(Keyboard::E)){
+                            estado=1;
+                        }
+
+                        window.draw(*palanca1.bocadilloSprite);
+                    }
+
+                    if(ninja2->getBoxCollider()->getGlobalBounds().intersects(palanca2.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
+                        cout << "Colisiona" << endl;
+                        estado=1;
+                    }
+                }
+
             }else if(nivel==2){
 
             }
@@ -293,17 +329,7 @@ Game::Game()
         }
 
 
-        //Aqui es buen sitio para comprobar si colisiona con cosas creo yo
 
-        if(ninja2->getBoxCollider()->getGlobalBounds().intersects(palanca1.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
-            cout << "Colisiona" << endl;
-            estado=1;
-        }
-
-        if(ninja2->getBoxCollider()->getGlobalBounds().intersects(palanca2.palancaSprite->getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::E)){
-            cout << "Colisiona" << endl;
-            estado=1;
-        }
 
 
 
@@ -345,7 +371,7 @@ GuardiaEstatico* Game::guardiaEstaticoMasCercano(){
     float distancia = 0;
     float powX = 0;
     float powY = 0;
-    GuardiaEstatico* guardiaCercano;
+    GuardiaEstatico* guardiaCercano = NULL;
 
     //Recorremos todos los guardas y calculamos cual esta mas cerca
     for(int i=0; i < guardiasEstaticos.size();i++){

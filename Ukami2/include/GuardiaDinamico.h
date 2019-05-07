@@ -26,9 +26,9 @@ class GuardiaDinamico
         sf::Sprite *sprite;
         sf::ConvexShape *triangle; //Vision
         b2Body *ninjaBody;
-        float velocidad = 0.3;
+        float velocidad = 0.2;
         int metros = 0;
-        int rango = 30; //Rango de distancia que anda
+        int rango = 120; //Rango de distancia que anda
 
 };
 

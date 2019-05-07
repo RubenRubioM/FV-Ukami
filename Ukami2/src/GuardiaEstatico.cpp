@@ -6,11 +6,11 @@ GuardiaEstatico::GuardiaEstatico(float _x, float _y)
     xInicial = _x;
     texture = new sf::Texture();
 
-    texture->loadFromFile("tileset/ninja2.png");
+    texture->loadFromFile("tileset/guardian2.png");
     sprite = new sf::Sprite(*texture);
     sprite->setOrigin(sprite->getTexture()->getSize().x/2.f,sprite->getTexture()->getSize().y/2.f);
     sprite->setPosition(_x,_y); //We set origin to 16,16 so now we have to spawn him at 16,16 instead of 0,0
-    sprite->scale(0.8f,0.8f);
+    sprite->scale(0.4f,0.4f);
 
     // ==== Triangulo de vision ====
     triangle = new sf::ConvexShape();
@@ -34,13 +34,16 @@ void GuardiaEstatico::moverse(float _deltaTime){
     //Detectamos si va hacia la derecha o hacia la izquierda
     if(posicionDestino >= sprite->getPosition().x){
         //hacia la derecha
+        sprite->setTextureRect(sf::IntRect(0,0,sprite->getTexture()->getSize().x,sprite->getTexture()->getSize().y));
         direccionDestino = 1;
 
         sprite->move(direccionDestino*velocidad*_deltaTime,0);
         triangle->setRotation(0);
-        triangle->move(direccionDestino*velocidad*_deltaTime,0);
+        triangle->setPosition(sprite->getPosition().x + 30, sprite->getPosition().y-20);
+        //triangle->move(direccionDestino*velocidad*_deltaTime,0);
     }else if(posicionDestino < sprite->getPosition().x){
         //hacia la izquierda
+        sprite->setTextureRect(sf::IntRect(sprite->getTexture()->getSize().x,0,-sprite->getTexture()->getSize().x,sprite->getTexture()->getSize().y));
         if(direccionDestino==1){
             //Aqui solo entra 1 vez cuando ha llegado al sitio ya que ponemos moviendose = false y en el update no vuelve a entrar con esa condicion
             moviendose = false;
@@ -61,10 +64,14 @@ void GuardiaEstatico::moverse(float _deltaTime){
         direccionDestino = -1;
 
         sprite->move(direccionDestino*velocidad*_deltaTime,0);
+
         if(!haRegresado){
             triangle->setRotation(180);
+            sprite->setTextureRect(sf::IntRect(sprite->getTexture()->getSize().x,0,-sprite->getTexture()->getSize().x,sprite->getTexture()->getSize().y));
+            triangle->setPosition(sprite->getPosition().x -30, sprite->getPosition().y-20);
         }
-        triangle->move(direccionDestino*velocidad*_deltaTime,0);
+        //triangle->move(direccionDestino*velocidad*_deltaTime,0);
+
     }
 
 }
