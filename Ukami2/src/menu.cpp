@@ -76,7 +76,7 @@ void menu::rellenarArrayMensajesConsolaMI(int indice)
     {
         case (0):
         {
-            mensajesConsolaMI[indice] = "Â¡A jugar!";
+            mensajesConsolaMI[indice] = "¡A jugar!";
             break;
         }
         case (1):

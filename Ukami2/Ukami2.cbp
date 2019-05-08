@@ -18,9 +18,9 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add library="sfml-graphics" />
-					<Add library="sfml-window" />
-					<Add library="sfml-system" />
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -41,7 +41,11 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="C:/Program Files (x86)/SFML_Codeblocks/SFML-2.5.1/include" />
 		</Compiler>
+		<Linker>
+			<Add directory="C:/Program Files (x86)/SFML_Codeblocks/SFML-2.5.1/lib" />
+		</Linker>
 		<Unit filename="Box2D/Box2D/Box2D.h" />
 		<Unit filename="Box2D/Box2D/Collision/Shapes/b2ChainShape.cpp" />
 		<Unit filename="Box2D/Box2D/Collision/Shapes/b2ChainShape.h" />
@@ -138,6 +142,7 @@
 		<Unit filename="cb.bmp" />
 		<Unit filename="include/AnimatedSprite.h" />
 		<Unit filename="include/Animation.h" />
+		<Unit filename="include/Caja.h" />
 		<Unit filename="include/Collision.h" />
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/GuardiaDinamico.h" />
@@ -148,6 +153,7 @@
 		<Unit filename="include/Ninja.h" />
 		<Unit filename="include/Ninja1.h" />
 		<Unit filename="include/Ninja2.h" />
+		<Unit filename="include/Palanca.h" />
 		<Unit filename="include/Puerta.h" />
 		<Unit filename="include/SFMLDebugDraw.h" />
 		<Unit filename="include/TextureHolder.h" />
@@ -156,6 +162,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AnimatedSprite.cpp" />
 		<Unit filename="src/Animation.cpp" />
+		<Unit filename="src/Caja.cpp" />
 		<Unit filename="src/Collision.cpp" />
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/GuardiaDinamico.cpp" />
@@ -166,6 +173,7 @@
 		<Unit filename="src/Ninja.cpp" />
 		<Unit filename="src/Ninja1.cpp" />
 		<Unit filename="src/Ninja2.cpp" />
+		<Unit filename="src/Palanca.cpp" />
 		<Unit filename="src/Puerta.cpp" />
 		<Unit filename="src/SFMLDebugDraw.cpp" />
 		<Unit filename="src/TextureHolder.cpp" />

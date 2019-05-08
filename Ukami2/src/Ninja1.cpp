@@ -45,15 +45,18 @@ Ninja1::Ninja1(float posx, float posy, b2World* world)
     noKeyWasPressed = true;
 
     animatedSprite = *new AnimatedSprite();
+
     // =========Cosas de box2D======
     b2BodyDef bodydef;
     bodydef.position.Set(posx / F, posy / F);
     bodydef.type = b2_dynamicBody;
     ninjaBody = world->CreateBody(&bodydef);
-    fixtureDef.density = 1.0f;
-    fixtureDef.friction = 5.0f;
 
-    shape.SetAsBox((233 / 2.f) / F, (176 / 2.f) / F);
+    shape.SetAsBox((150 / 2.f) / F, (140 / 2.f) / F);
+
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0;
+    fixtureDef.restitution = 0;
     fixtureDef.shape = &shape;
     ninjaBody->CreateFixture(&fixtureDef);
 
@@ -102,7 +105,7 @@ Ninja1::~Ninja1()
     //dtor
 }
 
-void Ninja1::updateMovement(View &view,float _deltaTime, sf::Clock frameClock)
+void Ninja1::updateMovement(View &view, float _deltaTime,sf::Clock frameClock)
 {
     sf::Time frameTime = frameClock.restart();
 
@@ -136,15 +139,14 @@ void Ninja1::updateMovement(View &view,float _deltaTime, sf::Clock frameClock)
         cargarDash(_deltaTime);
     }
 
+
     if(Keyboard::isKeyPressed(Keyboard::Right))
     {
         currentAnimation = &walkingAnimationRight;
         noKeyWasPressed = false;
 
-        b2Vec2 vel = ninjaBody->GetLinearVelocity();
-        vel.x = velocity*_deltaTime;
-        vel.y = ninjaBody->GetLinearVelocity().y;
-        ninjaBody->SetLinearVelocity(vel);
+        // Movemos al Ninja
+        ninjaBody->SetLinearVelocity(b2Vec2(10, ninjaBody->GetLinearVelocity().y));
     }
 
     if(Keyboard::isKeyPressed(Keyboard::Left))
@@ -152,10 +154,8 @@ void Ninja1::updateMovement(View &view,float _deltaTime, sf::Clock frameClock)
         currentAnimation = &walkingAnimationLeft;
         noKeyWasPressed = false;
 
-        b2Vec2 vel = ninjaBody->GetLinearVelocity();
-        vel.x = -velocity*_deltaTime;
-        vel.y = ninjaBody->GetLinearVelocity().y;
-        ninjaBody->SetLinearVelocity(vel);
+        // Movemos al Ninja
+        ninjaBody->SetLinearVelocity(b2Vec2(-10, ninjaBody->GetLinearVelocity().y));
     }
 
     if(Keyboard::isKeyPressed(Keyboard::Space))
@@ -166,7 +166,7 @@ void Ninja1::updateMovement(View &view,float _deltaTime, sf::Clock frameClock)
         }
     }
 
-    if(Keyboard::isKeyPressed(Keyboard::Q)){
+    if(Keyboard::isKeyPressed(Keyboard::P)){
         //Para que no pueda entrar en sigilo cuando ya esta en sigilo
         if(!enSigilo && sigiloMax){
             activarSigilo();
@@ -192,12 +192,19 @@ void Ninja1::updateMovement(View &view,float _deltaTime, sf::Clock frameClock)
     // if no key was pressed stop the animation
     if (noKeyWasPressed)
     {
+        // No hará ninguna animación
         animatedSprite.stop();
+        // Haremos que su velocidad lineal sea 0 para que no deslice
+        if(!enDash)
+            ninjaBody->SetLinearVelocity(b2Vec2(0,ninjaBody->GetLinearVelocity().y));
+
     }
     noKeyWasPressed = true;
 
     // update AnimatedSprite
     animatedSprite.update(frameTime);
+
+
 }
 
 
@@ -227,11 +234,11 @@ void Ninja1::activarDash(){
     b2Fixture *fixtureA = ninjaBody->GetFixtureList();
     ninjaBody->DestroyFixture(fixtureA);
 
-    shape.SetAsBox((233 / 2.f) / F, (50 / 2.f) / F);
+    shape.SetAsBox((150 / 2.f) / F, (50 / 2.f) / F);
     fixtureDef.shape = &shape;
     ninjaBody->CreateFixture(&fixtureDef);
 
-    ninjaBody->ApplyLinearImpulse(b2Vec2(400.f, 0),ninjaBody->GetWorldCenter(), true);
+    ninjaBody->ApplyLinearImpulse(b2Vec2(250.f, 0),ninjaBody->GetWorldCenter(), true);
 
     tiempoDash.restart(); //Reiniciamos el reloj para que se vaya desgastando el Dash
 
@@ -244,7 +251,7 @@ void Ninja1::desactivarDash(){
             b2Fixture *fixtureB = ninjaBody->GetFixtureList();
         ninjaBody->DestroyFixture(fixtureB);
 
-        shape2.SetAsBox((233 / 2.f) / F, (176 / 2.f) / F);
+        shape2.SetAsBox((150 / 2.f) / F, (140 / 2.f) / F);
         fixtureDef.shape = &shape2;
         ninjaBody->CreateFixture(&fixtureDef);
 

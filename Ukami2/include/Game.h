@@ -12,6 +12,7 @@
 #include "GuardiaDinamico.h"
 #include "Hud.h"
 #include "Puerta.h"
+#include "Caja.h"
 #include "Kanji.h"
 #include "AnimatedSprite.h"
 #include "Animation.h"

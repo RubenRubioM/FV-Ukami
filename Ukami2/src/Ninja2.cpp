@@ -43,16 +43,17 @@ Ninja2::Ninja2(float posx, float posy, b2World* world)
     bodydef.position.Set(posx / F, posy / F);
     bodydef.type = b2_dynamicBody;
     ninjaBody = world->CreateBody(&bodydef);
-    fixtureDef.density = 1.0f;
-    fixtureDef.friction = 5.0f;
 
-    shape.SetAsBox((233 / 2.f) / F, (176 / 2.f) / F);
+    shape.SetAsBox((150 / 2.f) / F, (140 / 2.f) / F);
+
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0;
+    fixtureDef.restitution = 0;
     fixtureDef.shape = &shape;
     ninjaBody->CreateFixture(&fixtureDef);
 
-
     // ======= Colider ficticio porque no va el de la animacion =======
-    boxCollider = new sf::RectangleShape(sf::Vector2f(walkingAnimationLeft.getFrame(0).width - 75,walkingAnimationLeft.getFrame(0).height));
+    boxCollider = new sf::RectangleShape(Vector2f(150.f, 140.f));
     boxCollider->setOrigin(boxCollider->getSize().x/2.f,boxCollider->getSize().y/2.f);
     boxCollider->setPosition(700,400);
     boxCollider->setFillColor(sf::Color::Transparent);
@@ -60,7 +61,6 @@ Ninja2::Ninja2(float posx, float posy, b2World* world)
     boxCollider->setOutlineThickness(5);
 
     // =============================
-
 
     //Slider del sigilo
 
@@ -90,7 +90,6 @@ Ninja2::~Ninja2()
 
 void Ninja2::updateMovement(View &view, float _deltaTime,sf::Clock frameClock)
 {
-
     sf::Time frameTime = frameClock.restart();
 
     if(cdSalto.getElapsedTime().asSeconds() > 1.5f){
@@ -112,16 +111,13 @@ void Ninja2::updateMovement(View &view, float _deltaTime,sf::Clock frameClock)
     }
 
 
-
     if(Keyboard::isKeyPressed(Keyboard::D))
     {
         currentAnimation = &walkingAnimationRight;
         noKeyWasPressed = false;
 
-        b2Vec2 vel = ninjaBody->GetLinearVelocity();
-        vel.x = velocity*_deltaTime;
-        vel.y = ninjaBody->GetLinearVelocity().y;
-        ninjaBody->SetLinearVelocity(vel);
+        // Movemos al Ninja
+        ninjaBody->SetLinearVelocity(b2Vec2(10, ninjaBody->GetLinearVelocity().y));
     }
 
     if(Keyboard::isKeyPressed(Keyboard::A))
@@ -129,10 +125,8 @@ void Ninja2::updateMovement(View &view, float _deltaTime,sf::Clock frameClock)
         currentAnimation = &walkingAnimationLeft;
         noKeyWasPressed = false;
 
-        b2Vec2 vel = ninjaBody->GetLinearVelocity();
-        vel.x = -velocity*_deltaTime;
-        vel.y = ninjaBody->GetLinearVelocity().y;
-        ninjaBody->SetLinearVelocity(vel);
+        // Movemos al Ninja
+        ninjaBody->SetLinearVelocity(b2Vec2(-10, ninjaBody->GetLinearVelocity().y));
     }
 
     if(Keyboard::isKeyPressed(Keyboard::W))
@@ -143,7 +137,7 @@ void Ninja2::updateMovement(View &view, float _deltaTime,sf::Clock frameClock)
         }
     }
 
-    if(Keyboard::isKeyPressed(Keyboard::Z)){
+    if(Keyboard::isKeyPressed(Keyboard::Q)){
         //Para que no pueda entrar en sigilo cuando ya esta en sigilo
         if(!enSigilo && sigiloMax){
             activarSigilo();
@@ -157,7 +151,11 @@ void Ninja2::updateMovement(View &view, float _deltaTime,sf::Clock frameClock)
     // if no key was pressed stop the animation
     if (noKeyWasPressed)
     {
+        // No hará ninguna animación
         animatedSprite.stop();
+        // Haremos que su velocidad lineal sea 0 para que no deslice
+        ninjaBody->SetLinearVelocity(b2Vec2(0,ninjaBody->GetLinearVelocity().y));
+
     }
     noKeyWasPressed = true;
 
@@ -187,3 +185,6 @@ AnimatedSprite Ninja2::getSprite()
     return animatedSprite;
 }
 
+
+
+//=================

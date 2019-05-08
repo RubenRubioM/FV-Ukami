@@ -1,16 +1,16 @@
 #ifndef GUARDIADINAMICO_H
 #define GUARDIADINAMICO_H
 
-#include <iostream>
+
 #include <SFML/Graphics.hpp>
-#include "Box2D/Box2D.h";
+#include <iostream>
 
 using namespace std;
 
 class GuardiaDinamico
 {
     public:
-        GuardiaDinamico(float,float, b2World* world);
+        GuardiaDinamico(float,float);
         virtual ~GuardiaDinamico();
 
         bool getMoviendose();
@@ -25,10 +25,11 @@ class GuardiaDinamico
         sf::Texture *texture;
         sf::Sprite *sprite;
         sf::ConvexShape *triangle; //Vision
-        b2Body *ninjaBody;
-        float velocidad = 0.2;
+        float velocidad = 0.12;
         int metros = 0;
         int rango = 120; //Rango de distancia que anda
+        sf::Clock relojFlotacion;
+        bool subiendo =false;
 
 };
 
