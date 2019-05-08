@@ -94,11 +94,11 @@ Game::Game()
     //Enemigos
     guardiaEstaticoCercano = 0;
     GuardiaEstatico* g = new GuardiaEstatico(3500,400);
-    //GuardiaEstatico* g2 = new GuardiaEstatico(900,200);
+    GuardiaEstatico* g2 = new GuardiaEstatico(5800,400);
     guardiasEstaticos.push_back(g);
     numGuardias++;
-    //guardiasEstaticos.push_back(g2);
-    //numGuardias++;
+    guardiasEstaticos.push_back(g2);
+    numGuardias++;
 
 
     GuardiaDinamico* gd = new GuardiaDinamico(5200,370);
@@ -205,7 +205,7 @@ Game::Game()
                     if(guardiaEstaticoCercano->getEsperando() && guardiaEstaticoCercano->getTiempoAntesDeVolver().getElapsedTime().asSeconds() > TIEMPO_DE_ESPERA){
                        //Vuelve a la posicion inicial
 
-                        guardiaEstaticoCercano->setPosicionDestino(guardiaEstaticoCercano->getxInicial()); //La posicion destino será la posición inicial
+                        guardiaEstaticoCercano->setPosicionDestino(guardiaEstaticoCercano->getxInicial()); //La posicion destino serÃ¡ la posiciÃ³n inicial
                         guardiaEstaticoCercano->setMoviendose(true);
                         guardiaEstaticoCercano->setEsperando(false);
                         guardiaEstaticoCercano->setVolviendo(true);
@@ -451,12 +451,12 @@ void Game::updateView(Ninja1 ninja1, Ninja2 ninja2, View &view)
 
     if(ninja1.getSprite().getPosition().x > ninja2.getSprite().getPosition().x)
     {
-        // Si sobrepasa los 960px, la cámara se ajusta a Ninja1
+        // Si sobrepasa los 960px, la cÃ¡mara se ajusta a Ninja1
         if(ninja1.getSprite().getPosition().x > 960)
             view.setCenter(ninja1.getSprite().getPosition().x, view.getSize().y / 2);
     }else if(ninja2.getSprite().getPosition().x > ninja1.getSprite().getPosition().x)
     {
-        // Si sobrepasa los 960px, la cámara se ajusta a Ninja2
+        // Si sobrepasa los 960px, la cÃ¡mara se ajusta a Ninja2
         if(ninja2.getSprite().getPosition().x > 960)
             view.setCenter(ninja2.getSprite().getPosition().x, view.getSize().y / 2);
     }else
