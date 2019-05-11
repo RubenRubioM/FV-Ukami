@@ -25,11 +25,9 @@ class GuardiaDinamico
         sf::Texture *texture;
         sf::Sprite *sprite;
         sf::ConvexShape *triangle; //Vision
-        float velocidad = 0.12;
+        float velocidad = 0.2;
         int metros = 0;
         int rango = 120; //Rango de distancia que anda
-        sf::Clock relojFlotacion;
-        bool subiendo =false;
 
 };
 

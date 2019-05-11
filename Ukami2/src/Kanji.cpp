@@ -334,7 +334,7 @@ bool Kanji::checkKanji()
 
     if(cont == 4)
     {
-        cout << "¡Has ganado!" << endl;
+        //cout << "¡Has ganado!" << endl;
         win = true;
         devolucion = true;
 

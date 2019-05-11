@@ -48,15 +48,13 @@ void GuardiaDinamico::updateGuardiaDinamico(float _deltaTime){
         sprite->setTextureRect(sf::IntRect(sprite->getTexture()->getSize().x,0,-sprite->getTexture()->getSize().x,sprite->getTexture()->getSize().y));
         sprite->move(-velocidad*_deltaTime,0);
         triangle->setRotation(180);
-
+        //triangle->move(-velocidad*_deltaTime,0);
         triangle->setPosition(sprite->getPosition().x -80, sprite->getPosition().y);
         metros++;
         if(metros>rango*2){ //DOBLE DE LA DISTANCIA
             metros=0;
         }
     }
-
-
 }
 
 

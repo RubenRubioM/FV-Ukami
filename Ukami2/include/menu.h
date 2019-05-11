@@ -3,7 +3,7 @@
 
 #include "Game.h"
 #include <SFML/Graphics.hpp>
-
+#include <fstream>
 #include <iostream>
 #include <cstring>
 
@@ -57,6 +57,13 @@ class menu
         string mensajesConsolaNivel [4];
         string mensajesConsolaEstad [4];
         string mensajesConsolaMej [5];
+        string muertes;
+        string kanjis;
+        string tiempo;
+        string nivel1;
+        string nivel2;
+        string nivel3;
+
 
 
         virtual ~menu();

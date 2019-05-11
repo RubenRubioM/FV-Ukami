@@ -70,7 +70,18 @@ Hud::Hud()
     spriteVidaHud->setPosition(0,0);
     spriteVidaHud->setScale(0.67,0.67);
 
+    gameOver.setFont(*aldhesFont);
+    gameOver.setString("GAME OVER");
+    gameOver.setCharacterSize(200);
+    gameOver.setPosition(200,200);
+    gameOver.setColor(sf::Color::Red);
 
+
+}
+
+sf::Text Hud::getTextGameOver()
+{
+    return gameOver;
 }
 
 void Hud::updateFPS(int _fps){

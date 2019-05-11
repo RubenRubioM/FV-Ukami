@@ -12,7 +12,7 @@ Puerta::Puerta(int x, int y, b2World* world)
 
       // =========Cosas de box2D======
     b2BodyDef bodydef;
-    bodydef.position.Set(x / F, (y+200) / F);
+    bodydef.position.Set(x / F, (y) / F);
     bodydef.type = b2_kinematicBody;
     puertaBody = world->CreateBody(&bodydef);
 

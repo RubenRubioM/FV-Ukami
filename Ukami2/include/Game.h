@@ -2,6 +2,8 @@
 #define GAME_H
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <fstream>
+#include <string>
 #include "tinyxml2.h"
 #include "TextureHolder.h"
 #include "Map.h"
@@ -12,7 +14,6 @@
 #include "GuardiaDinamico.h"
 #include "Hud.h"
 #include "Puerta.h"
-#include "Caja.h"
 #include "Kanji.h"
 #include "AnimatedSprite.h"
 #include "Animation.h"
@@ -56,6 +57,8 @@ class Game
         sf::Clock deltaClock;
         sf::Time deltaTime;
         sf::Clock frameClock;
+        sf::Clock tiempoGameOver;
+        sf::Clock tiempoDeJuego;
         int contadorFPS = 0;
         bool mostrarFPS = true;
         int estado = 2; // Como sustitucion hasta que tengamos el patron State ||||  0 = juego normal   1 = minijuego Kanji"
@@ -63,6 +66,9 @@ class Game
         int numGuardias = 0;
         int numKanjisResueltos = 0;
         int nivel = 1;
+        bool muerto = false;
+        float tiempoJugado;
+        int tiempojugado= 1;
 
         vector<GuardiaEstatico*> guardiasEstaticos; //Array con todos los guardias (quiza luego se hace herencia en diferentes tipos de guardias)
         vector<GuardiaDinamico*> guardiasDinamicos;
@@ -71,6 +77,10 @@ class Game
 
 
         void calcularFPS();
+        void nivelCompleto(string);
+        void kanjisCompletos();
+        void muertes();
+        void tiempo();
         // Método para actualizar la vista cuando los ninjas se mueven por el mapa
         void updateView(Ninja1 ninja1, Ninja2 ninja2, View &view);
         //metodos

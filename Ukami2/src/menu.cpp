@@ -76,7 +76,7 @@ void menu::rellenarArrayMensajesConsolaMI(int indice)
     {
         case (0):
         {
-            mensajesConsolaMI[indice] = "¡A jugar!";
+            mensajesConsolaMI[indice] = "Â¡A jugar!";
             break;
         }
         case (1):
@@ -142,7 +142,17 @@ void menu::rellenarArrayMensajesConsolaEstad(int indice)
     {
         case (0):
         {
-            mensajesConsolaEstad[indice] = "Estadistica 1";
+              string line;
+              ifstream myfile ("stats/muertes");
+              if (myfile.is_open())
+              {
+                while ( getline (myfile,line) )
+                {
+                  muertes = line;
+                }
+                myfile.close();
+              }
+            mensajesConsolaEstad[indice] = "Has muerto > "+muertes+"veces";
             break;
         }
         case (1):
@@ -217,8 +227,34 @@ void menu::rellenarArrayTextoMenu(int indice)
         {
             textoMenuInicial[indice] = "Nueva Partida / Continuar";
             textoMenuSelectNivel[indice] = "Niveles";
-            textoMenuNiveles[indice] = "Nivel 1";
-            textoMenuEstad[indice] = "Estadistica 1";
+            //Lee el fichero y muestra el dato
+              string line;
+              ifstream myfile ("stats/nivel1");
+              if (myfile.is_open())
+              {
+                while ( getline (myfile,line) )
+                {
+                  nivel1 = line;
+                }
+                myfile.close();
+              }
+              if(nivel1=="1")
+                textoMenuNiveles[indice] = "Nivel 1 (COMPLETADO)";
+              else
+                textoMenuNiveles[indice] = "Nivel 1";
+            //Lee el fichero y muestra el dato
+              line;
+              ifstream muert ("stats/muertes");
+              if (muert.is_open())
+              {
+                while ( getline (muert,line) )
+                {
+                  muertes = line;
+                }
+                muert.close();
+              }
+            textoMenuEstad[indice] = "Has muerto  "+muertes+" veces";
+
             textoMenuMejoras[indice] = "Mejora 1";
             break;
         }
@@ -226,16 +262,73 @@ void menu::rellenarArrayTextoMenu(int indice)
         {
             textoMenuInicial[indice] = "Selector de Niveles";
             textoMenuSelectNivel[indice] = "Estadisticas";
-            textoMenuNiveles[indice] = "Nivel 2";
-            textoMenuEstad[indice] = "Estadistica 2";
+            //Lee el fichero y muestra el dato
+            string line;
+              ifstream myfile ("stats/nivel2");
+              if (myfile.is_open())
+              {
+                while ( getline (myfile,line) )
+                {
+                  nivel2 = line;
+                }
+                myfile.close();
+              }
+              if(nivel2=="1")
+                textoMenuNiveles[indice] = "Nivel 2 (COMPLETADO)";
+              else
+                textoMenuNiveles[indice] = "Nivel 2";
+
+            //Lee el fichero y muestra el dato
+              line;
+              ifstream kanj ("stats/kanjisresueltos");
+              if (kanj.is_open())
+              {
+                while ( getline (kanj,line) )
+                {
+                  kanjis = line;
+                }
+                kanj.close();
+              }
+            textoMenuEstad[indice] = "Has completado  "+kanjis+" kanjis";
+
             textoMenuMejoras[indice] = "Mejora 2";
             break;
         }
         case (2):
         {
             textoMenuInicial[indice] = "Mejoras";
-            textoMenuNiveles[indice] = "Nivel 3";
-            textoMenuEstad[indice] = "Estadistica 3";
+            //Lee el fichero y muestra el dato
+            string line;
+              ifstream myfile ("stats/nivel3");
+              if (myfile.is_open())
+              {
+                while ( getline (myfile,line) )
+                {
+                  nivel3 = line;
+                }
+                myfile.close();
+              }
+              if(nivel3=="1")
+                textoMenuNiveles[indice] = "Nivel 3 (COMPLETADO)";
+              else
+                textoMenuNiveles[indice] = "Nivel 3";
+
+            //Lee el fichero y muestra el dato
+              line;
+              ifstream temp ("stats/tiempo");
+              if (temp.is_open())
+              {
+                while ( getline (temp,line) )
+                {
+                  tiempo = line;
+                }
+                temp.close();
+              }
+            int tiempoaux = stoi(tiempo);
+            int aux2 = tiempoaux/60;
+
+            textoMenuEstad[indice] = "Has jugado  "+to_string(aux2)+" minutos";
+
             textoMenuMejoras[indice] = "Mejora 3";
             break;
         }

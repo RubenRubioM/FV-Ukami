@@ -32,7 +32,7 @@ class Ninja1 : public Ninja
         bool dashMax = true; //Booleano para saber si tiene el Dash cargado al maximo
         float duracionDash = 1; //Duracion del Dash
         float maxDash = 100; //Duracion maxima del Dash (se usa en los sliders tambien)
-        float recargaDash = 3; //Tiempo para recargar el Dash
+        float recargaDash = 10; //Tiempo para recargar el Dash
         sf::Clock tiempoDash; //Reloj para ver la duracion del Dash
         sf::RectangleShape sliderDash[2];
 

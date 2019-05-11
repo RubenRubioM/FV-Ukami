@@ -11,7 +11,6 @@ GuardiaEstatico::GuardiaEstatico(float _x, float _y)
     sprite->setOrigin(sprite->getTexture()->getSize().x/2.f,sprite->getTexture()->getSize().y/2.f);
     sprite->setPosition(_x,_y); //We set origin to 16,16 so now we have to spawn him at 16,16 instead of 0,0
     sprite->scale(0.4f,0.4f);
-    sprite->setTextureRect(sf::IntRect(sprite->getTexture()->getSize().x,0,-sprite->getTexture()->getSize().x,sprite->getTexture()->getSize().y));
 
     // ==== Triangulo de vision ====
     triangle = new sf::ConvexShape();
@@ -22,9 +21,8 @@ GuardiaEstatico::GuardiaEstatico(float _x, float _y)
     triangle->setPoint(0, sf::Vector2f(0, 0));
     triangle->setPoint(1, sf::Vector2f(250,100));
     triangle->setPoint(2, sf::Vector2f(250,-80));
-    triangle->setPosition(_x-30,_y-20);
+    triangle->setPosition(_x+50,_y-20);
     triangle->setOrigin(0,0);
-    triangle->setRotation(180);
 }
 
 void GuardiaEstatico::moverse(float _deltaTime){

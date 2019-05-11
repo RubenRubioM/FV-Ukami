@@ -22,6 +22,7 @@ class Hud
         void drawHUD(sf::RenderWindow &window);
         void updateFPS(int);
         void drawVida(sf::RenderWindow &window, sf::RectangleShape*, sf::RectangleShape*, float, float);
+        sf::Text getTextGameOver();
         virtual ~Hud();
 
 
@@ -32,6 +33,7 @@ class Hud
         sf::View* vistaHUD;
         sf::Font* aldhesFont;
         sf::Text* fpsText;
+        sf::Text gameOver;
 
         //HUD
         sf::Texture* hudTextureNinja1;
