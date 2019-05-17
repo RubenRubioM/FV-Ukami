@@ -30,6 +30,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -150,6 +151,7 @@
 		<Unit filename="include/Ninja.h" />
 		<Unit filename="include/Ninja1.h" />
 		<Unit filename="include/Ninja2.h" />
+		<Unit filename="include/OjoDeJade.h" />
 		<Unit filename="include/Palanca.h" />
 		<Unit filename="include/Puerta.h" />
 		<Unit filename="include/SFMLDebugDraw.h" />
@@ -171,6 +173,7 @@
 		<Unit filename="src/Ninja.cpp" />
 		<Unit filename="src/Ninja1.cpp" />
 		<Unit filename="src/Ninja2.cpp" />
+		<Unit filename="src/OjoDeJade.cpp" />
 		<Unit filename="src/Palanca.cpp" />
 		<Unit filename="src/Puerta.cpp" />
 		<Unit filename="src/SFMLDebugDraw.cpp" />

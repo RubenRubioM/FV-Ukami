@@ -23,6 +23,7 @@
 #include "Box2D/Box2D.h"
 #include "SFMLDebugDraw.h"
 #include "menu.h"
+#include "OjoDeJade.h"
 #include <stddef.h>
 
 using namespace tinyxml2;
@@ -67,6 +68,7 @@ class Game
         int numKanjisResueltos = 0;
         int nivel = 1;
         bool muerto = false;
+        bool ganado = false;
         float tiempoJugado;
         int tiempojugado= 1;
 

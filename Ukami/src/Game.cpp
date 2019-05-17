@@ -66,6 +66,9 @@ Game::Game()
     Puerta pu2(4200,120,mapa.getb2World());
     Puerta pu3(6200,940,mapa.getb2World());
 
+    OjoDeJade ojo1(4760.f, 300.f);
+    OjoDeJade ojo2(4760.f, 800.f);
+
     // ==== Inicializamos palanca ====
     Palanca palanca1;
     palanca1.inicializar();
@@ -170,6 +173,12 @@ Game::Game()
                 updateView(*ninja1, *ninja2, view);
 
                 // ========Ninja1=========
+
+                //Actualiza las mejoras
+
+                ninja1->mejorarSigilo();
+                ninja1->mejorarDuracionDash();
+                ninja1->mejorarVelocidad();
                 //Al comienzo de cada frame ponemos que no estan siendo detectados para luego a lo largo de las comprobaciones cambiar o no
                 ninja1->setSiendoDetectado(false);
                 ninja2->setSiendoDetectado(false);
@@ -183,15 +192,27 @@ Game::Game()
                     }
                 }
                 enredadera1.drawEnredadera(window);
+                ojo1.dibujaOjoDeJade(window);
+                ojo2.dibujaOjoDeJade(window);
                 if(!mapa.getTransicionando()){
                     ninja1->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
                     ninja1->drawNinja(window);
                     // ======================
 
                     // ========Ninja2=========
+
+                    //=======Actualiza las mejoras
+
+                    ninja2->mejorarSigilo();
+                    ninja2->mejorarVelocidad();
                     ninja2->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
                     ninja2->drawNinja(window);
                 }
+
+                //==========OJO DE JADE==========
+                ojo1.dibujaOjoDeJade(window);
+                ojo2.dibujaOjoDeJade(window);
+
 
 
                 //========Enemigos=========
@@ -229,7 +250,17 @@ Game::Game()
                 }
 
 
-                //Comprobamos colisiones de los personajes y las visiones de los enemigos
+                //Comprobamos colisiones de los personajes y las visiones de los enemigos y si consiguen el ojo de jade
+                if(ninja2->getBoxCollider()->getGlobalBounds().intersects(ojo1.getSprite().getGlobalBounds())
+                    && ninja1->getBoxCollider()->getGlobalBounds().intersects(ojo2.getSprite().getGlobalBounds())
+                   && !muerto)
+                {
+                    //Ojo de jade conseguido
+                    cout<<"HAS GANADO\n";
+                    ganado = true;
+                    nivelCompleto("1");
+                }
+
                 for(int i=0; i<guardiasEstaticos.size();i++){
                     // == Ninja 1 ==
                     if(ninja1->getBoxCollider()->getGlobalBounds().intersects(guardiasEstaticos.at(i)->getVision()->getGlobalBounds()) && !ninja1->getEnSigilo()){
@@ -396,6 +427,7 @@ Game::Game()
         // Estado 2 es para mostrar el menu
         if(estado==2){
                 muerto=false;
+                ganado = false;
             if(menu->drawMenu()==0){
                 //Aqui entra cuando le das a reanudar
                 estado=0;
@@ -430,6 +462,22 @@ Game::Game()
 
                 estado = 2;
             }
+        }
+        if(ganado)
+        {
+            float tiempoGanado = tiempoGameOver.getElapsedTime().asMilliseconds();
+            if(tiempoGanado < 20000)
+            {
+                window.draw(hud->getTextGanado());
+            }
+
+            cout<<"Tiempo ganado -> " << tiempoGanado<<endl;
+            if(tiempoGanado > 20000)
+               {
+                //tiempoGameOver.restart();
+                //tiempoGameOver = new sf::Clock();
+                   estado = 2;
+               }
         }
 
 

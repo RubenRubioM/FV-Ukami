@@ -76,12 +76,23 @@ Hud::Hud()
     gameOver.setPosition(200,200);
     gameOver.setColor(sf::Color::Red);
 
+    victory.setFont(*aldhesFont);
+    victory.setString("HAS GANADO");
+    victory.setCharacterSize(200);
+    victory.setPosition(150,200);
+    victory.setColor(sf::Color::Red);
+
 
 }
 
 sf::Text Hud::getTextGameOver()
 {
     return gameOver;
+}
+
+sf::Text Hud::getTextGanado()
+{
+    return victory;
 }
 
 void Hud::updateFPS(int _fps){

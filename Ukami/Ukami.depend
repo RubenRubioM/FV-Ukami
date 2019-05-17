@@ -1273,13 +1273,14 @@
 	"Box2D/Dynamics/Joints/b2WeldJoint.h"
 	"Box2D/Dynamics/Joints/b2WheelJoint.h"
 
-1557486354 /home/angel/Escritorio/Ukami/include/Ninja.h
+1558101800 /home/angel/Escritorio/Ukami/include/Ninja.h
 	<SFML/Graphics.hpp>
 	"tinyxml2.h"
 	"TextureHolder.h"
 	"Map.h"
 	"Box2D/Box2D.h"
 	<iostream>
+	<fstream>
 	<vector>
 	<map>
 	"AnimatedSprite.h"
@@ -1298,7 +1299,7 @@
 	<SFML/Graphics/Rect.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1557922123 /home/angel/Escritorio/Ukami/include/Game.h
+1558097865 /home/angel/Escritorio/Ukami/include/Game.h
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	"tinyxml2.h"
@@ -1322,14 +1323,15 @@
 	"Box2D/Box2D.h"
 	"SFMLDebugDraw.h"
 	"menu.h"
+	"OjoDeJade.h"
 	<stddef.h>
 
-1557592720 /home/angel/Escritorio/Ukami/include/Ninja1.h
+1558101819 /home/angel/Escritorio/Ukami/include/Ninja1.h
 	"Ninja.h"
 	"AnimatedSprite.h"
 	"Animation.h"
 
-1557592784 /home/angel/Escritorio/Ukami/include/Ninja2.h
+1558101809 /home/angel/Escritorio/Ukami/include/Ninja2.h
 	"Ninja.h"
 
 1557343238 /home/angel/Escritorio/Ukami/include/GuardiaEstatico.h
@@ -1340,7 +1342,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1557922807 /home/angel/Escritorio/Ukami/include/Hud.h
+1558097904 /home/angel/Escritorio/Ukami/include/Hud.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	<stdlib.h>
@@ -1401,7 +1403,7 @@
 1557481420 source:/home/angel/Escritorio/Ukami/src/Enredadera.cpp
 	"Enredadera.h"
 
-1557922490 source:/home/angel/Escritorio/Ukami/src/Game.cpp
+1558102183 source:/home/angel/Escritorio/Ukami/src/Game.cpp
 	"Game.h"
 
 1557591640 source:/home/angel/Escritorio/Ukami/src/GuardiaDinamico.cpp
@@ -1410,7 +1412,7 @@
 1557591610 source:/home/angel/Escritorio/Ukami/src/GuardiaEstatico.cpp
 	"GuardiaEstatico.h"
 
-1557922890 source:/home/angel/Escritorio/Ukami/src/Hud.cpp
+1558098086 source:/home/angel/Escritorio/Ukami/src/Hud.cpp
 	"Hud.h"
 
 1557343238 source:/home/angel/Escritorio/Ukami/src/Kanji.cpp
@@ -1419,16 +1421,16 @@
 1557343238 source:/home/angel/Escritorio/Ukami/src/Map.cpp
 	"Map.h"
 
-1557921712 source:/home/angel/Escritorio/Ukami/src/menu.cpp
+1558101525 source:/home/angel/Escritorio/Ukami/src/menu.cpp
 	"menu.h"
 
-1557343238 source:/home/angel/Escritorio/Ukami/src/Ninja.cpp
+1558101675 source:/home/angel/Escritorio/Ukami/src/Ninja.cpp
 	"Ninja.h"
 
-1557592726 source:/home/angel/Escritorio/Ukami/src/Ninja1.cpp
+1558101690 source:/home/angel/Escritorio/Ukami/src/Ninja1.cpp
 	"Ninja1.h"
 
-1557592880 source:/home/angel/Escritorio/Ukami/src/Ninja2.cpp
+1558101727 source:/home/angel/Escritorio/Ukami/src/Ninja2.cpp
 	"Ninja2.h"
 
 1557481000 source:/home/angel/Escritorio/Ukami/src/Palanca.cpp
@@ -1453,4 +1455,12 @@
 	<stdarg.h>
 	<cstddef>
 	<cstdarg>
+
+1558092361 /home/angel/Escritorio/Ukami/include/OjoDeJade.h
+	<iostream>
+	"SFML/Graphics.hpp"
+
+1558095832 source:/home/angel/Escritorio/Ukami/src/OjoDeJade.cpp
+	"OjoDeJade.h"
+	<iostream>
 

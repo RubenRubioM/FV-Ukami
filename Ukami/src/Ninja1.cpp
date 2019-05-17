@@ -98,6 +98,8 @@ Ninja1::Ninja1(float posx, float posy, b2World* world)
     sliderVida->setSize(sf::Vector2f(maxVida,20));
     sliderVida->setFillColor(sf::Color::Blue);
     sliderVida->setPosition(sf::Vector2f(79,60));
+
+    mejorarDuracionDash();
 }
 
 Ninja1::~Ninja1()
@@ -283,4 +285,31 @@ void Ninja1::cargarDash(float _deltaTime){
     }
     sliderDash[0].setSize(sf::Vector2f(incremento,10));
 
+}
+
+void Ninja1::mejorarDuracionDash(){
+ int sg;
+  string line;
+  ifstream myfile ("skills/tdash");
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      cout << line << '\n';
+      sg = stoi(line);
+    }
+    myfile.close();
+  }
+  if(sg==0){
+    duracionDash=1;
+  }
+  else if(sg==1){
+    duracionDash=1.5;
+  }
+  else if(sg==2){
+    duracionDash=2;
+  }
+  else if(sg==3){
+    duracionDash=2.5;
+  }
 }

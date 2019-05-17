@@ -18,6 +18,7 @@ class Ninja1 : public Ninja
         void desactivarDash();
         void descargarDash(float);
         void cargarDash(float);
+        void mejorarDuracionDash();
         // ==============================
 
         virtual ~Ninja1();
