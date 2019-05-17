@@ -2,7 +2,7 @@
 
 Ninja::Ninja()
 {
-
+    mejorarSigilo();
 }
 
 //Se llama cuando presionas el sigilo
@@ -46,6 +46,33 @@ void Ninja::cargarSigilo(float _deltaTime){
     }
     sliderSigilo[0].setSize(sf::Vector2f(incremento,5));
 
+}
+
+void Ninja::mejorarSigilo(){
+ int sg;
+  string line;
+  ifstream myfile ("skills/sigilo");
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      cout << line << '\n';
+      sg = stoi(line);
+    }
+    myfile.close();
+  }
+  if(sg==0){
+    duracionSigilo=2.5;
+  }
+  else if(sg==1){
+    duracionSigilo=3;
+  }
+  else if(sg==2){
+    duracionSigilo=3.5;
+  }
+  else if(sg==3){
+    duracionSigilo=4;
+  }
 }
 
 void Ninja::cargarVida(float _deltaTime){

@@ -170,6 +170,11 @@ Game::Game()
                 updateView(*ninja1, *ninja2, view);
 
                 // ========Ninja1=========
+
+                //Actualiza las mejoras
+
+                ninja1->mejorarSigilo();
+
                 //Al comienzo de cada frame ponemos que no estan siendo detectados para luego a lo largo de las comprobaciones cambiar o no
                 ninja1->setSiendoDetectado(false);
                 ninja2->setSiendoDetectado(false);
@@ -189,6 +194,11 @@ Game::Game()
                     // ======================
 
                     // ========Ninja2=========
+
+                    //Actualiza las mejoras
+
+                    ninja2->mejorarSigilo();
+
                     ninja2->updateMovement(view, deltaTime.asMilliseconds(), frameClock);
                     ninja2->drawNinja(window);
                 }

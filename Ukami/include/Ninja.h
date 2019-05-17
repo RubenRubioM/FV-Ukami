@@ -8,6 +8,7 @@
 #include "Map.h"
 #include "Box2D/Box2D.h";
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <map>
 #include "AnimatedSprite.h"
@@ -28,6 +29,7 @@ class Ninja
         void activarSigilo();
         void desactivarSigilo();
         void descargarSigilo(float);
+        void mejorarSigilo();
         void cargarSigilo(float);
 
         //Getters

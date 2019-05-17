@@ -120,6 +120,8 @@ void menu::rellenarArrayMensajesConsolaNivel(int indice)
     {
         case (0):
         {
+
+            mensajesConsolaMej[indice] = "...";
             mensajesConsolaNivel[indice] = "Nivel 1";
             break;
         }
@@ -174,7 +176,7 @@ void menu::rellenarArrayMensajesConsolaMejoras(int indice)
     {
         case (0):
         {
-            mensajesConsolaMej[indice] = "Mejora 1";
+            mensajesConsolaMej[indice] = "mejora 1";
             break;
         }
         case (1):
@@ -255,7 +257,25 @@ void menu::rellenarArrayTextoMenu(int indice)
               }
             textoMenuEstad[indice] = "Has muerto  "+muertes+" veces";
 
-            textoMenuMejoras[indice] = "Mejora 1";
+              string nsig;
+              string linea;
+              ifstream ar ("skills/sigilo");
+              if (ar.is_open())
+              {
+                while ( getline (ar,linea) )
+                {
+                  nsig = linea;
+                }
+                ar.close();
+              }
+            if(nsig=="0")
+            textoMenuMejoras[indice] = "Sigilo nivel: 0";
+            else if(nsig=="1")
+            textoMenuMejoras[indice] = "Sigilo nivel: 1";
+            else if(nsig=="2")
+            textoMenuMejoras[indice] = "Sigilo nivel: 2";
+            else
+            textoMenuMejoras[indice] = "Sigilo nivel MAXIMO";
             break;
         }
         case (1):
@@ -482,6 +502,11 @@ int menu::actualizarMenu()
     int devolucion = -1;
     sf::Text* menuActual [4];
     memcpy(menuActual, menuInicial, 4);
+    rellenarArrayTextoMenu(0);
+    rellenarArrayTextoMenu(1);
+    rellenarArrayTextoMenu(2);
+    rellenarArrayTextoMenu(3);
+    cargarMenu();
 
     if(tiempoEntreTeclas.getElapsedTime().asSeconds()>0.2f){
 
@@ -640,6 +665,36 @@ void menu::escribirPorConsola()
     {
         if(cont == 2)
         {
+            if(presionado==0){
+                               //Lee y modifica el archivo del sigilo al hacer click
+              int total;
+              int nsigilo=0;
+              string line;
+              ifstream myfile ("skills/sigilo");
+              if (myfile.is_open())
+              {
+                while ( getline (myfile,line) )
+                {
+                  cout << line << '\n';
+                  total = stoi(line)+1;
+                }
+                myfile.close();
+              }
+              if(total<=3){
+                nsigilo=total;
+                cout << nsigilo <<endl;
+                ofstream suma;
+                suma.open ("skills/sigilo");
+                suma << nsigilo;
+                suma.close();
+                mensajesConsolaMej[presionado] = "Sigilo mejorado";
+              }
+              else{
+                mensajesConsolaMej[presionado] = "Sigilo al nivel máximo";
+              }
+
+            }
+
             cout << mensajesConsolaMej[presionado] << endl;
         }
         else
