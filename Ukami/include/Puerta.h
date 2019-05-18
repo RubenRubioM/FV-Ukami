@@ -6,18 +6,18 @@
 
 class Puerta
 {
-    public:
-        Puerta(int x, int y, b2World* world);
-        virtual ~Puerta();
-        void drawPuerta(sf::RenderWindow & window);
-        void ocultarPuerta();
-    protected:
+public:
+    Puerta(int x, int y, b2World *world);
+    virtual ~Puerta();
+    void drawPuerta(sf::RenderWindow &window);
+    void ocultarPuerta();
 
-    private:
-        sf::Texture texture;
-        sf::Sprite sprite;
+protected:
+private:
+    sf::Texture texture;
+    sf::Sprite sprite;
 
-        b2Body *puertaBody;
+    b2Body *puertaBody;
 };
 
 #endif // PUERTA_H

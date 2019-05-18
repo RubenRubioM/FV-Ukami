@@ -13,16 +13,12 @@ class TextureHolder
 {
     map<string, Texture> textures;
 
-    public:
-        TextureHolder();
-        virtual ~TextureHolder();
-        void loadTexture(XMLElement* mapa);
-        Texture& getTexture(const string& textureName);
-        Sprite setTexture(string path, int row, int col, int tileWidth, int tileHeight);
+public:
+    TextureHolder();
+    virtual ~TextureHolder();
+    void loadTexture(XMLElement *mapa);
+    Texture &getTexture(const string &textureName);
+    Sprite setTexture(string path, int row, int col, int tileWidth, int tileHeight);
 };
 
 #endif // TEXTUREHOLDER_H
-
-
-
-

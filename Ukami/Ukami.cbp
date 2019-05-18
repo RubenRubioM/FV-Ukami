@@ -21,6 +21,7 @@
 					<Add library="sfml-graphics" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
+					<Add library="sfml-audio" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -30,7 +31,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -139,6 +139,7 @@
 		<Unit filename="cb.bmp" />
 		<Unit filename="include/AnimatedSprite.h" />
 		<Unit filename="include/Animation.h" />
+		<Unit filename="include/AudioManager.h" />
 		<Unit filename="include/Caja.h" />
 		<Unit filename="include/Collision.h" />
 		<Unit filename="include/Enredadera.h" />
@@ -151,16 +152,17 @@
 		<Unit filename="include/Ninja.h" />
 		<Unit filename="include/Ninja1.h" />
 		<Unit filename="include/Ninja2.h" />
-		<Unit filename="include/OjoDeJade.h" />
+		<Unit filename="include/OjoJade.h" />
 		<Unit filename="include/Palanca.h" />
 		<Unit filename="include/Puerta.h" />
-		<Unit filename="include/SFMLDebugDraw.h" />
+		<Unit filename="include/SueloDetecta.h" />
 		<Unit filename="include/TextureHolder.h" />
 		<Unit filename="include/menu.h" />
 		<Unit filename="include/tinyxml2.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AnimatedSprite.cpp" />
 		<Unit filename="src/Animation.cpp" />
+		<Unit filename="src/AudioManager.cpp" />
 		<Unit filename="src/Caja.cpp" />
 		<Unit filename="src/Collision.cpp" />
 		<Unit filename="src/Enredadera.cpp" />
@@ -173,10 +175,10 @@
 		<Unit filename="src/Ninja.cpp" />
 		<Unit filename="src/Ninja1.cpp" />
 		<Unit filename="src/Ninja2.cpp" />
-		<Unit filename="src/OjoDeJade.cpp" />
+		<Unit filename="src/OjoJade.cpp" />
 		<Unit filename="src/Palanca.cpp" />
 		<Unit filename="src/Puerta.cpp" />
-		<Unit filename="src/SFMLDebugDraw.cpp" />
+		<Unit filename="src/SueloDetecta.cpp" />
 		<Unit filename="src/TextureHolder.cpp" />
 		<Unit filename="src/menu.cpp" />
 		<Unit filename="src/tinyxml2.cpp" />

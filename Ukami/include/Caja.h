@@ -11,19 +11,26 @@ using namespace sf;
 
 class Caja
 {
-    public:
-        Caja(int posx, int posy, b2World* world);
-        virtual ~Caja();
-        void drawCaja(RenderWindow &window);
+public:
+    Caja(int posx, int posy, b2World *world);
+    virtual ~Caja();
+    Sprite getSprite();
+    void moverCaja(int sent);
+    void detenerCaja();
+    void drawCaja(RenderWindow &window);
+    void drawBocadilloCaja(RenderWindow &window, int, int);
 
-    protected:
+protected:
+private:
+    // Sprite y texture de la caja
+    Sprite cajaS;
+    Texture cajaT;
+    b2FixtureDef fixtureDef;
 
-    private:
-        // Sprite y texture de la caja
-        Sprite cajaS;
-        Texture cajaT;
-        // Body de la caja
-        b2Body *cajaB;
+    sf::Texture *bocadilloTexture;
+    sf::Sprite *bocadilloSprite;
+    // Body de la caja
+    b2Body *cajaB;
 };
 
 #endif // CAJA_H

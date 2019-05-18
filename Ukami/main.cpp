@@ -9,7 +9,6 @@
 #include <vector>
 #include <map>
 #include "Box2D/Box2D.h"
-#include "SFMLDebugDraw.h"
 
 using namespace tinyxml2;
 using namespace std;

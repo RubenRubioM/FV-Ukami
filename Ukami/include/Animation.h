@@ -35,6 +35,7 @@ public:
 
     void addFrameInitial(sf::IntRect rect);
     void addFrame(sf::IntRect rect);
+    void addFrameEnemigo(sf::IntRect rect);
     void setSpriteSheet(const sf::Texture& texture);
     const sf::Texture* getSpriteSheet() const;
     std::size_t getSize() const;

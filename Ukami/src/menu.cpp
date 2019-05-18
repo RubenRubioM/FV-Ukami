@@ -16,12 +16,15 @@ menu::menu(sf::RenderWindow &window, sf::Event &eventGame)
 {
     //ctor
     mostrarMenu = 0;
-    separacion = 100;
+    separacion = 50;
     actual = 0;
     presionado = 0;
     idMenu = 0;
     cont = 0;
+    continuar_bool = false;
 
+    AudioManager *audio = AudioManager::getInstance();
+    AudioManager::getInstance()->menu();
 
     ventanaMenu = &window;
     evento = &eventGame;
@@ -48,7 +51,7 @@ menu::~menu()
 void menu::cargarFuente()
 {
     fuente = new sf::Font();
-    fuente->loadFromFile("./tipografia/ninjaNaruto/njnaruto.ttf");
+    fuente->loadFromFile("fonts/Aldhes.ttf");
 }
 
 void menu::cargarFondo()
@@ -76,12 +79,12 @@ void menu::rellenarArrayMensajesConsolaMI(int indice)
     {
         case (0):
         {
-            mensajesConsolaMI[indice] = "¡A jugar!";
+            mensajesConsolaMI[indice] = "Â¡A jugar!";
             break;
         }
         case (1):
         {
-            mensajesConsolaMI[indice] = "Ver Selector de Niveles";
+            mensajesConsolaMI[indice] = "Ver Niveles";
             break;
         }
         case (2):
@@ -120,8 +123,6 @@ void menu::rellenarArrayMensajesConsolaNivel(int indice)
     {
         case (0):
         {
-
-            mensajesConsolaMej[indice] = "...";
             mensajesConsolaNivel[indice] = "Nivel 1";
             break;
         }
@@ -167,6 +168,11 @@ void menu::rellenarArrayMensajesConsolaEstad(int indice)
             mensajesConsolaEstad[indice] = "Estadistica 3";
             break;
         }
+        case (3):
+        {
+            mensajesConsolaEstad[indice] = "Estadistica 4";
+            break;
+        }
     }
 }
 
@@ -176,7 +182,7 @@ void menu::rellenarArrayMensajesConsolaMejoras(int indice)
     {
         case (0):
         {
-            mensajesConsolaMej[indice] = "mejora 1";
+            mensajesConsolaMej[indice] = "Mejora 1";
             break;
         }
         case (1):
@@ -227,7 +233,11 @@ void menu::rellenarArrayTextoMenu(int indice)
     {
         case (0):
         {
-            textoMenuInicial[indice] = "Nueva Partida / Continuar";
+            if(continuar_bool){
+                textoMenuInicial[indice] = "Continuar";
+            }else{
+                textoMenuInicial[indice] = "Nueva Partida";
+            }
             textoMenuSelectNivel[indice] = "Niveles";
             //Lee el fichero y muestra el dato
               string line;
@@ -257,30 +267,12 @@ void menu::rellenarArrayTextoMenu(int indice)
               }
             textoMenuEstad[indice] = "Has muerto  "+muertes+" veces";
 
-              string nsig;
-              string linea;
-              ifstream ar ("skills/sigilo");
-              if (ar.is_open())
-              {
-                while ( getline (ar,linea) )
-                {
-                  nsig = linea;
-                }
-                ar.close();
-              }
-            if(nsig=="0")
-            textoMenuMejoras[indice] = "Sigilo nivel: 0";
-            else if(nsig=="1")
-            textoMenuMejoras[indice] = "Sigilo nivel: 1";
-            else if(nsig=="2")
-            textoMenuMejoras[indice] = "Sigilo nivel: 2";
-            else
-            textoMenuMejoras[indice] = "Sigilo nivel MAXIMO";
+            textoMenuMejoras[indice] = "Mejora 1";
             break;
         }
         case (1):
         {
-            textoMenuInicial[indice] = "Selector de Niveles";
+            textoMenuInicial[indice] = "Niveles";
             textoMenuSelectNivel[indice] = "Estadisticas";
             //Lee el fichero y muestra el dato
             string line;
@@ -311,30 +303,12 @@ void menu::rellenarArrayTextoMenu(int indice)
               }
             textoMenuEstad[indice] = "Has completado  "+kanjis+" kanjis";
 
-            string nsig;
-              string linea;
-              ifstream ar ("skills/tdash");
-              if (ar.is_open())
-              {
-                while ( getline (ar,linea) )
-                {
-                  nsig = linea;
-                }
-                ar.close();
-              }
-            if(nsig=="0")
-            textoMenuMejoras[indice] = "Duracion dash: 0";
-            else if(nsig=="1")
-            textoMenuMejoras[indice] = "Duracion dash: 1";
-            else if(nsig=="2")
-            textoMenuMejoras[indice] = "Duracion dash: 2";
-            else
-            textoMenuMejoras[indice] = "Duracion dash MAXIMA";
+            textoMenuMejoras[indice] = "Mejora 2";
             break;
         }
         case (2):
         {
-            textoMenuInicial[indice] = "Mejoras";
+            textoMenuInicial[indice] = "Estadisticas";
             //Lee el fichero y muestra el dato
             string line;
               ifstream myfile ("stats/nivel3");
@@ -367,30 +341,13 @@ void menu::rellenarArrayTextoMenu(int indice)
 
             textoMenuEstad[indice] = "Has jugado  "+to_string(aux2)+" minutos";
 
-            string nsig;
-              string linea;
-              ifstream ar ("skills/velocidad");
-              if (ar.is_open())
-              {
-                while ( getline (ar,linea) )
-                {
-                  nsig = linea;
-                }
-                ar.close();
-              }
-            if(nsig=="0")
-            textoMenuMejoras[indice] = "Nivel Velocidad: 0";
-            else if(nsig=="1")
-            textoMenuMejoras[indice] = "Nivel Velocidad: 1";
-            else if(nsig=="2")
-            textoMenuMejoras[indice] = "Nivel Velocidad: 2";
-            else
-            textoMenuMejoras[indice] = "Nivel Velocidad MAXIMO";
+            textoMenuMejoras[indice] = "Mejora 3";
             break;
         }
         case (3):
         {
             textoMenuInicial[indice] = "Salir a Escritorio";
+            textoMenuEstad[indice] = "Monedas  0";
             textoMenuMejoras[indice] = "Mejora 4";
             break;
         }
@@ -414,9 +371,8 @@ void menu::cargarMenu()
         menuInicial[i]->setFont(*fuente);
         menuInicial[i]->setString(textoMenuInicial[i]);
         menuInicial[i]->setOrigin(menuInicial[i]->getGlobalBounds().width / 2.0, menuInicial[i]->getGlobalBounds().height / 2.0);
-        menuInicial[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuInicial[i]->setColor(sf::Color(255,255,255));
-
+        menuInicial[i]->setPosition(ventanaMenu->getSize().x / 4.5, ventanaMenu->getSize().y / 1.9 + separacion * i);
+        menuInicial[i]->setColor(sf::Color(255, 255, 255));
     }
     for(int i = 0; i < 2; i++)
     {
@@ -424,8 +380,8 @@ void menu::cargarMenu()
         menuSelectNivel[i]->setFont(*fuente);
         menuSelectNivel[i]->setString(textoMenuSelectNivel[i]);
         menuSelectNivel[i]->setOrigin(menuSelectNivel[i]->getGlobalBounds().width / 2.0, menuSelectNivel[i]->getGlobalBounds().height / 2.0);
-        menuSelectNivel[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuSelectNivel[i]->setColor(sf::Color(255,255,255));
+        menuSelectNivel[i]->setPosition(ventanaMenu->getSize().x / 4.5, ventanaMenu->getSize().y / 1.9 + separacion * i);
+        menuSelectNivel[i]->setColor(sf::Color(255, 255, 255));
     }
     for(int i = 0; i < 3; i++)
     {
@@ -433,17 +389,17 @@ void menu::cargarMenu()
         menuNiveles[i]->setFont(*fuente);
         menuNiveles[i]->setString(textoMenuNiveles[i]);
         menuNiveles[i]->setOrigin(menuNiveles[i]->getGlobalBounds().width / 2.0, menuNiveles[i]->getGlobalBounds().height / 2.0);
-        menuNiveles[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuNiveles[i]->setColor(sf::Color(255,255,255));
+        menuNiveles[i]->setPosition(ventanaMenu->getSize().x / 4.5, ventanaMenu->getSize().y / 1.9 + separacion * i);
+        menuNiveles[i]->setColor(sf::Color(255, 255, 255));
     }
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < 4; i++)
     {
         menuEstad[i] = new sf::Text();
         menuEstad[i]->setFont(*fuente);
         menuEstad[i]->setString(textoMenuEstad[i]);
         menuEstad[i]->setOrigin(menuEstad[i]->getGlobalBounds().width / 2.0, menuEstad[i]->getGlobalBounds().height / 2.0);
-        menuEstad[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuEstad[i]->setColor(sf::Color(255,255,255));
+        menuEstad[i]->setPosition(ventanaMenu->getSize().x / 4.5, ventanaMenu->getSize().y / 1.9 + separacion * i);
+        menuEstad[i]->setColor(sf::Color(255, 255, 255));
     }
     for(int i = 0; i < 4; i++)
     {
@@ -451,8 +407,8 @@ void menu::cargarMenu()
         menuMejoras[i]->setFont(*fuente);
         menuMejoras[i]->setString(textoMenuMejoras[i]);
         menuMejoras[i]->setOrigin(menuMejoras[i]->getGlobalBounds().width / 2.0, menuMejoras[i]->getGlobalBounds().height / 2.0);
-        menuMejoras[i]->setPosition(ventanaMenu->getSize().x / 2.0, ventanaMenu->getSize().y / 4.0 + separacion * i);
-        menuMejoras[i]->setColor(sf::Color(255,255,255));
+        menuMejoras[i]->setPosition(ventanaMenu->getSize().x / 4.5, ventanaMenu->getSize().y / 1.9 + separacion * i);
+        menuMejoras[i]->setColor(sf::Color(255, 255, 255));
     }
 }
 
@@ -477,6 +433,8 @@ void menu::copiarTextArray(sf::Text* origen [4], sf::Text* destino [4])
         destino[i]->setOrigin(origen[i]->getOrigin());
         destino[i]->setPosition(origen[i]->getPosition());
         destino[i]->setColor(origen[i]->getColor());
+        destino[i]->setOutlineColor(sf::Color::Black);
+        destino[i]->setOutlineThickness(3.f);
     }
 }
 
@@ -500,22 +458,12 @@ void menu::renderMenu(int queMenu)
     }
     else if(queMenu == 1)
     {
-        copiarTextArray(menuSelectNivel, menuAPintar);
-        tam = 2;
-    }
-    else if(queMenu == 2)
-    {
         copiarTextArray(menuNiveles, menuAPintar);
-        tam = 3;
-    }
-    else if(queMenu == 3)
-    {
-        copiarTextArray(menuEstad, menuAPintar);
         tam = 3;
     }
     else
     {
-        copiarTextArray(menuMejoras, menuAPintar);
+        copiarTextArray(menuEstad, menuAPintar);
         tam = 4;
     }
     hoverMenu(menuAPintar);
@@ -537,12 +485,6 @@ int menu::actualizarMenu()
 {
     int devolucion = -1;
     sf::Text* menuActual [4];
-    memcpy(menuActual, menuInicial, 4);
-    rellenarArrayTextoMenu(0);
-    rellenarArrayTextoMenu(1);
-    rellenarArrayTextoMenu(2);
-    rellenarArrayTextoMenu(3);
-    cargarMenu();
 
     if(tiempoEntreTeclas.getElapsedTime().asSeconds()>0.2f){
 
@@ -556,58 +498,70 @@ int menu::actualizarMenu()
                         presionado = 0;
                         actual = 0;
                     }
+                    else //para que al volver a abrir el menu salga el menu principal
+                    {
+                        idMenu = 0;
+                        presionado = 0;
+                        actual = 0;
+                    }
                 }
                 else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
                 {
+                                AudioManager *audio = AudioManager::getInstance();
+            AudioManager::getInstance()->menu0();
                     tiempoEntreTeclas.restart();
                     actual--;
-                    if((idMenu == 0 || idMenu == 4) && actual < 0)
+                    if((idMenu == 0 || idMenu == 3 || idMenu == 4) && actual < 0)
                     {
                         actual = 3;
                     }
                     else if(idMenu == 1 && actual < 0)
                     {
-                        actual = 1;
+                        actual = 0;
                     }
-                    else if((idMenu == 2 || idMenu == 3) && actual < 0)
+                    else if((idMenu == 2) && actual < 0)
                     {
                         actual = 2;
                     }
                 }
                 else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                 {
+                                AudioManager *audio = AudioManager::getInstance();
+            AudioManager::getInstance()->menu0();
                     tiempoEntreTeclas.restart();
                     actual++;
-                    if((idMenu == 0 || idMenu == 4) && actual > 3)
+                    if((idMenu == 0 || idMenu == 3 || idMenu == 4) && actual > 3)
                     {
                         actual = 0;
                     }
-                    else if(idMenu == 1 && actual > 1)
+                    else if(idMenu == 1 && actual > 2)
                     {
                         actual = 0;
                     }
-                    else if((idMenu == 2 || idMenu == 3) && actual > 2)
+                    else if((idMenu == 2) && actual > 2)
                     {
                         actual = 0;
                     }
                 }
                 else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
                 {
+                    AudioManager *audio = AudioManager::getInstance();
+                    AudioManager::getInstance()->menu1();
                     tiempoEntreTeclas.restart();
                     if(idMenu == 0)
                     {
                         cont = 0;
-
-
                     }
                     else
                     {
                         cont = 2;
-
                     }
 
                     if(idMenu ==0 && actual==0){
                         cout << "entra" << endl;
+                        AudioManager *audio = AudioManager::getInstance();
+                        AudioManager::getInstance()->stop_music_menu();
+                        AudioManager::getInstance()->nivel(1);
                         devolucion = 0;
                     }
                     if(idMenu == 0 && actual == 1)
@@ -616,22 +570,16 @@ int menu::actualizarMenu()
                         idMenu = 1;
                         cont = 1;
                     }
-                    else if(idMenu == 1 && actual == 0)
+                    else if(idMenu == 0 && actual == 1)
                     {
                         actual = 0;
                         idMenu = 2;
                         cont = 1;
                     }
-                    else if(idMenu == 1 && actual == 1)
-                    {
-                        actual = 0;
-                        idMenu = 3;
-                        cont = 1;
-                    }
                     else if(idMenu == 0 && actual == 2)
                     {
                         actual = 0;
-                        idMenu = 4;
+                        idMenu = 3;
                         cont = 1;
                     }
                     else if(idMenu == 0 && actual == 3)
@@ -644,9 +592,12 @@ int menu::actualizarMenu()
                     }
                     presionado = actual;
                     escribirPorConsola();
+                    actualizarMonedas();
                 }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab))
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
                 {
+                    AudioManager *audio = AudioManager::getInstance();
+                    AudioManager::getInstance()->menu2();
                     tiempoEntreTeclas.restart();
                     idMenu = 0;
                     presionado = 0;
@@ -656,6 +607,24 @@ int menu::actualizarMenu()
     }
     return devolucion;
 
+}
+
+void menu::actualizarMonedas()
+{
+    int numMonedas;
+    string line;
+    ifstream myfile ("stats/monedasRecogidas");
+    if (myfile.is_open())
+    {
+        while ( getline (myfile,line) )
+        {
+            cout << line << '\n';
+            numMonedas = stoi(line);
+        }
+        myfile.close();
+    }
+    cout << numMonedas << endl;
+    menuEstad[3]->setString("Monedas  " + to_string(numMonedas)); //la posicion 3 es la ultima del array
 }
 
 void menu::escribirPorConsola()
@@ -668,17 +637,6 @@ void menu::escribirPorConsola()
     {
         if(cont == 2)
         {
-            cout << mensajesConsolaSelectNiv[presionado] << endl;
-        }
-        else
-        {
-            cout << mensajesConsolaMI[1] << endl;
-        }
-    }
-    else if(idMenu == 2)
-    {
-        if(cont == 2)
-        {
             cout << mensajesConsolaNivel[presionado] << endl;
         }
         else
@@ -686,7 +644,7 @@ void menu::escribirPorConsola()
             cout << "Lista de Niveles" << endl;
         }
     }
-    else if(idMenu == 3)
+    else
     {
         if(cont == 2)
         {
@@ -697,106 +655,10 @@ void menu::escribirPorConsola()
             cout << "Lista de Estadisticas" << endl;
         }
     }
-    else
-    {
-        if(cont == 2)
-        {
-            if(presionado==0){
-                               //Lee y modifica el archivo del sigilo al hacer click
-              int total;
-              int nsigilo=0;
-              string line;
-              ifstream myfile ("skills/sigilo");
-              if (myfile.is_open())
-              {
-                while ( getline (myfile,line) )
-                {
-                  cout << line << '\n';
-                  total = stoi(line)+1;
-                }
-                myfile.close();
-              }
-              if(total<=3){
-                nsigilo=total;
-                cout << nsigilo <<endl;
-                ofstream suma;
-                suma.open ("skills/sigilo");
-                suma << nsigilo;
-                suma.close();
-                mensajesConsolaMej[presionado] = "Sigilo mejorado";
-              }
-              else{
-                mensajesConsolaMej[presionado] = "Sigilo al nivel máximo";
-              }
+}
 
-            }
-            else if(presionado==1){
-                               //Lee y modifica el archivo del sigilo al hacer click
-              int total;
-              int nsigilo=0;
-              string line;
-              ifstream myfile ("skills/tdash");
-              if (myfile.is_open())
-              {
-                while ( getline (myfile,line) )
-                {
-                  cout << line << '\n';
-                  total = stoi(line)+1;
-                }
-                myfile.close();
-              }
-              if(total<=3){
-                nsigilo=total;
-                cout << nsigilo <<endl;
-                ofstream suma;
-                suma.open ("skills/tdash");
-                suma << nsigilo;
-                suma.close();
-                mensajesConsolaMej[presionado] = "Tiempo Dash mejorado";
-              }
-              else{
-                mensajesConsolaMej[presionado] = "Tiempo Dash al nivel máximo";
-              }
-
-            }
-
-            else if(presionado==2){
-                               //Lee y modifica el archivo del sigilo al hacer click
-              int total;
-              int nsigilo=0;
-              string line;
-              ifstream myfile ("skills/velocidad");
-              if (myfile.is_open())
-              {
-                while ( getline (myfile,line) )
-                {
-                  cout << line << '\n';
-                  total = stoi(line)+1;
-                }
-                myfile.close();
-              }
-              if(total<=3){
-                nsigilo=total;
-                cout << nsigilo <<endl;
-                ofstream suma;
-                suma.open ("skills/velocidad");
-                suma << nsigilo;
-                suma.close();
-                mensajesConsolaMej[presionado] = "Velocidad mejorada";
-              }
-              else{
-                mensajesConsolaMej[presionado] = "Velocidad al nivel máximo";
-              }
-
-            }
-
-            cout << mensajesConsolaMej[presionado] << endl;
-        }
-        else
-        {
-            cout << mensajesConsolaMI[2] << endl;
-        }
-    }
+void menu::continuar(){
+    continuar_bool = true;
 }
 
 int menu::getNivel(){return nivel;}

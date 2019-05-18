@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include <cstring>
+#include <AudioManager.h>
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class menu
 
         int drawMenu();
         int getNivel();
+        void continuar();
 
     protected:
 
@@ -26,14 +28,14 @@ class menu
         static menu* menuUnico;
 
 
-
+        bool continuar_bool;
         sf::RenderWindow* ventanaMenu;
         sf::Font* fuente;
         sf::Text* mensaje;
         sf::Text* menuInicial [4];
         sf::Text* menuSelectNivel [2];
         sf::Text* menuNiveles [3];
-        sf::Text* menuEstad [3];
+        sf::Text* menuEstad [4];
         sf::Text* menuMejoras [4];
         sf::Texture* texturaFondo;
         sf::Sprite* fondo;
@@ -85,6 +87,8 @@ class menu
         void hoverMenu(sf::Text* menuAPintar [4]);
 
         void renderMenu(int queMenu);
+
+        void actualizarMonedas();
         int actualizarMenu();
 };
 

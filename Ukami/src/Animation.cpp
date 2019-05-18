@@ -23,9 +23,9 @@
 
 #include "Animation.h"
 
-Animation::Animation() : m_texture(NULL)
+Animation::Animation()
+    : m_texture(NULL)
 {
-
 }
 
 void Animation::addFrameInitial(sf::IntRect rect)
@@ -35,9 +35,14 @@ void Animation::addFrameInitial(sf::IntRect rect)
 
 void Animation::addFrame(sf::IntRect rect)
 {
-    for(int i=0; i<6; i++){
+    for (int i = 0; i < 6; i++) {
         m_frames.push_back(rect);
     }
+}
+
+void Animation::addFrameEnemigo(sf::IntRect rect)
+{
+    m_frames.push_back(rect);
 }
 
 void Animation::setSpriteSheet(const sf::Texture& texture)

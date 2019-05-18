@@ -23,10 +23,14 @@
 
 #include "AnimatedSprite.h"
 
-AnimatedSprite::AnimatedSprite(sf::Time frameTime, bool paused, bool looped) :
-    m_animation(NULL), m_frameTime(frameTime), m_currentFrame(0), m_isPaused(paused), m_isLooped(looped), m_texture(NULL)
+AnimatedSprite::AnimatedSprite(sf::Time frameTime, bool paused, bool looped)
+    : m_animation(NULL)
+    , m_frameTime(frameTime)
+    , m_currentFrame(0)
+    , m_isPaused(paused)
+    , m_isLooped(looped)
+    , m_texture(NULL)
 {
-
 }
 
 void AnimatedSprite::setAnimation(const Animation& animation)
@@ -117,8 +121,7 @@ sf::Time AnimatedSprite::getFrameTime() const
 
 void AnimatedSprite::setFrame(std::size_t newFrame, bool resetTime)
 {
-    if (m_animation)
-    {
+    if (m_animation) {
         //calculate new vertex positions and texture coordiantes
         sf::IntRect rect = m_animation->getFrame(newFrame);
 
@@ -145,30 +148,25 @@ void AnimatedSprite::setFrame(std::size_t newFrame, bool resetTime)
 void AnimatedSprite::update(sf::Time deltaTime)
 {
     // if not paused and we have a valid animation
-    if (!m_isPaused && m_animation)
-    {
+    if (!m_isPaused && m_animation) {
         // add delta time
         m_currentTime += deltaTime;
 
         // if current time is bigger then the frame time advance one frame
-        if (m_currentTime >= m_frameTime)
-        {
+        if (m_currentTime >= m_frameTime) {
             // reset time, but keep the remainder
-            m_currentTime = sf::microseconds(m_currentTime.asMicroseconds() % m_frameTime.asMicroseconds());
+            m_currentTime = sf::microseconds(m_currentTime.asMicroseconds() * 2 % m_frameTime.asMicroseconds());
 
             // get next Frame index
             if (m_currentFrame + 1 < m_animation->getSize())
                 m_currentFrame++;
-            else
-            {
+            else {
                 // animation has ended
                 m_currentFrame = 1; // reset to start
 
-                if (!m_isLooped)
-                {
+                if (!m_isLooped) {
                     m_isPaused = true;
                 }
-
             }
 
             // set the current frame, not reseting the time
@@ -179,8 +177,7 @@ void AnimatedSprite::update(sf::Time deltaTime)
 
 void AnimatedSprite::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    if (m_animation && m_texture)
-    {
+    if (m_animation && m_texture) {
         states.transform *= getTransform();
         states.texture = m_texture;
         target.draw(m_vertices, 4, sf::Quads, states);
